@@ -59,7 +59,7 @@ export default function Step1() {
                         name: 'Single User',
                         value: 'single'
                     }}
-                    customStyling={{}}
+                    customStyle={{}}
                     onChange={onChange}
                 />
             </div>

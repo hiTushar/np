@@ -1,0 +1,25 @@
+.npav-dropdown {
+    border-radius: 1px;
+    background: rgba(34, 45, 56, 0.60);
+    color: white;
+    height: 34px;
+    width: 100%;
+    display: flex;
+    padding: 8px;
+}
+
+.npav-dropdown input {
+    background: none;
+    border: none;
+    caret-color: #F3B617;
+    width: 100%;
+}
+
+.npav-dropdown input:focus {
+    outline: none;
+}
+
+.npav-dropdown input::placeholder {
+    color: #465B72;
+    font-size: 14px;
+}

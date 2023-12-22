@@ -5,7 +5,7 @@ import "./UserRegistration.css"
 function UserRegistration(props) {
 
     return (
-        <div class="user-registration-container">
+        <div className="user-registration-container">
             <SidePanel />
             <FormPanel />
         </div>

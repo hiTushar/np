@@ -1,27 +1,33 @@
 .user-formpanel {
     padding: 32px;
     width: 70%;
+    height: calc(100% - 34px);
 }
 
-.user-formpanel__step1 {
+.user-formpanel__step1, .user-formpanel__step2 {
     margin-top: 24px;
-    border: solid 1px white;
     color: white;
+    height: 100%;
+    position: relative;
 }
 
-.user-formpanel__step1 p {
+.user-formpanel__step1 p, .user-formpanel__step2 p {
     font-size: 12px;
     font-weight: 400;
     margin-bottom: 8px;
 }
 
-.user-formpanel__step1 > p {
+.user-formpanel__step1 > p, .user-formpanel__step2 > p {
     font-size: 16px;
     font-weight: 700;
     margin-bottom: 16px;
 }
 
-.user-formpanel__step1-key {
+.user-formpanel__step1-key, 
+.user-formpanel__step1-type, 
+.user-formpanel__step2-name,
+.user-formpanel__step2-type,
+.user-formpanel__step2-address {
     margin-bottom: 16px;
 }
 
@@ -34,20 +40,71 @@
     font-size: 12px;
 }
 
-.user-formpanel__step1-type {
-    margin-bottom: 16px;
-}
-
-.user-formpanel__step1-footer {
+.user-formpanel__step1-footer, .user-formpanel__step2-footer {
     display: flex;
     justify-content: flex-end;
+    position: absolute;
+    bottom: 0px;
+    right: 0px;
 }
 
-.user-formpanel__step1-footer button {
+.user-formpanel__step1-footer button, .user-formpanel__step2-footer button {
     border: 1px solid #566E86;
     border-radius: 1px;
     padding: 8px 24px;
     color: #566E86;
     background: none;
     font-size: 12px;
+    cursor: pointer;
 }
+
+.user-formpanel__step2-name > p > span {
+    color: red;
+}
+
+.user-formpanel__step2-address {
+    display: flex;
+    gap: 3px;
+}
+
+.user-formpanel__step2-address > div {
+    width: calc(100% / 3);
+}
+
+.user-formpanel_step2-dealer {
+    display: flex;
+    gap: 3px;
+}
+
+.user-formpanel__step2-dealer-detail {
+    flex: 1;
+}
+
+.user-formpanel__step3 {
+    displaY: flex;
+    justify-content: center;
+    margin-top: 60px;
+}
+
+.user-formpanel__step3-success-banner {
+    color: white;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.user-formpanel__step3-success-banner img {
+    width: 142px;
+}
+
+.user-formpanel__step3-success-banner p:nth-child(2) {
+    font-size: 28px;
+    font-weight: 700;
+    line-height: 30px
+}
+
+.user-formpanel__step3-success-banner p:nth-child(3) {
+    font-size: 12px;
+    font-weight: 400;
+}
+

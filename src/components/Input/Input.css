@@ -6,7 +6,7 @@
 .npav-input input {
     background: none;
     border: none;
-    min-height: 0px;
+    line-height: 18px;
     width: 100%;
     border-radius: 2px;
     caret-color: #F3B617;
