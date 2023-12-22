@@ -1,0 +1,12 @@
+.npav-radio__option {
+    border-radius: 1px;
+    background: rgba(34, 45, 56, 0.60);
+    padding: 10px 16px;
+    margin-bottom: 5px;
+    display: flex;
+    font-size: 14px;
+}
+
+.npav-radio__option div:nth-child(1) {
+    margin-right: 10px;
+}

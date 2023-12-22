@@ -1,0 +1,53 @@
+.user-formpanel {
+    padding: 32px;
+    width: 70%;
+}
+
+.user-formpanel__step1 {
+    margin-top: 24px;
+    border: solid 1px white;
+    color: white;
+}
+
+.user-formpanel__step1 p {
+    font-size: 12px;
+    font-weight: 400;
+    margin-bottom: 8px;
+}
+
+.user-formpanel__step1 > p {
+    font-size: 16px;
+    font-weight: 700;
+    margin-bottom: 16px;
+}
+
+.user-formpanel__step1-key {
+    margin-bottom: 16px;
+}
+
+.user-formpanel__step1-code {
+    margin-bottom: 4px;
+}
+
+.user-formpanel__step1-code p:nth-last-child(1) {
+    color: #53646D;
+    font-size: 12px;
+}
+
+.user-formpanel__step1-type {
+    margin-bottom: 16px;
+}
+
+.user-formpanel__step1-footer {
+    display: flex;
+    justify-content: flex-end;
+}
+
+.user-formpanel__step1-footer button {
+    border: 1px solid #566E86;
+    border-radius: 1px;
+    padding: 8px 24px;
+    color: #566E86;
+    background: none;
+    font-size: 12px;
+}

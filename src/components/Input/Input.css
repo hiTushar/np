@@ -1,0 +1,24 @@
+.npav-input {
+    padding: 10px;
+    background: rgba(34, 45, 56, 0.6);
+}
+
+.npav-input input {
+    background: none;
+    border: none;
+    min-height: 0px;
+    width: 100%;
+    border-radius: 2px;
+    caret-color: #F3B617;
+    color: white;
+    padding: 0px;
+}
+
+.npav-input input:focus {
+    outline: none;
+}
+
+.npav-input input::placeholder {
+    color: #465B72;
+    font-size: 14px;
+}
