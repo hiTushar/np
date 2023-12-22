@@ -1,11 +1,8 @@
 import { combineReducers } from "redux"
 import { formReducer } from "./reducers/formReducer"
 
-export const initialState = {
-    userForm: {
-        currentStep: 1,
-        allData: {}
-    }
-}
+const rootReducer = combineReducers({ 
+    formReducer 
+})
 
-export default combineReducers({ formReducer });
+export default rootReducer;

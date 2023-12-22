@@ -1,5 +1,11 @@
-import { initialState } from "..";
 import { FORM_STEP_CHANGE } from "../actions/actionTypes";
+
+const initialState = {
+    userForm: {
+        currentStep: 1,
+        allData: {}
+    }
+}
 
 const formReducer = (state = initialState, action) => {
     const { type, payload } = action;
@@ -7,7 +13,7 @@ const formReducer = (state = initialState, action) => {
         case FORM_STEP_CHANGE: 
             return {
                 ...state, 
-                formStep: payload
+                userForm: payload
             } 
         default: 
             return state;

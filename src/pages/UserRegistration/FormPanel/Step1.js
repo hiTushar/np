@@ -3,15 +3,25 @@ import Input from '../../../components/Input/Input';
 import './FormPanel.css';
 import copy from '../../../assets/copy.svg';
 import Radio from '../../../components/Radio/Radio';
+import { useDispatch } from 'react-redux';
+import formStepChange from '../../../redux/actions/formActions';
 
 export default function Step1() {
     // const [key, setKey] = useState('');
     const keyRef = useRef(null);
+    const dispatch = useDispatch();
     // useEffect(() => {
     //     if(key.length === 1) {
     //         setKey(`${key} - `)
     //     }
     // }, [key])
+
+    const nextPage = () => {
+        dispatch(formStepChange({
+            currentStep: 2,
+            allData: {}
+        }));
+    }
 
     const onChange = (val) => {
         console.log(val);
@@ -68,7 +78,7 @@ export default function Step1() {
                 <p>One key can be used on one system only</p>
             </div>
             <div className='user-formpanel__step1-footer'>
-                <button>NEXT</button>
+                <button onClick={nextPage}>NEXT</button>
             </div>
         </div>
     )
