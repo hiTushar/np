@@ -22,3 +22,15 @@
     justify-content: center;
     margin-right: 8px;
 }
+
+.user-navpanel__step-name--active {
+    color: white;
+}
+
+.user-navpanel__step-name--inactive {
+    color: #566E86;
+}
+
+.user-navpanel__step-name--done {
+    color: #F3B617;
+}

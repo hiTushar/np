@@ -15,13 +15,13 @@ function NavPanel(props) {
                 </>
             )
         } 
-        if(currentStep > formStep || formStep === 3) {
+        if(currentStep > formStep) {
             return (
                 <>
                     <div className='user-navpanel__step-val'>
                         <img src={tick} alt={'tick'} />
                     </div>
-                    <div className='user-navpanel__step-name--active'>{formStepName}</div>
+                    <div className='user-navpanel__step-name--done'>{formStepName}</div>
                 </>
             )
         } 
