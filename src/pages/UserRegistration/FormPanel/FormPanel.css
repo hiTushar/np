@@ -35,6 +35,10 @@
     margin-bottom: 4px;
 }
 
+.user-formpanel__step1-code-copy {
+    cursor: pointer;
+}
+
 .user-formpanel__step1-code p:nth-last-child(1) {
     color: #53646D;
     font-size: 12px;
@@ -98,3 +102,6 @@
     font-weight: 400;
 }
 
+.Toastify__toast-icon svg {
+    fill: #F3B617;
+}

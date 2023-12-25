@@ -1,7 +1,10 @@
 import { useRef } from 'react';
+import copy from 'copy-to-clipboard';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 import Input from '../../../components/Input/Input';
 import './FormPanel.css';
-import copy from '../../../assets/copy.svg';
+import copyIcon from '../../../assets/copy.svg';
 import Radio from '../../../components/Radio/Radio';
 import { useDispatch } from 'react-redux';
 import formStepChange from '../../../redux/actions/formActions';
@@ -28,8 +31,25 @@ export default function Step1() {
         console.log(val);
     }
 
+    const copyCode = (text) => {
+        copy(text);
+        toast.success('Copied!');
+    }
+
     return (
         <div className="user-formpanel__step1">
+            <ToastContainer 
+                position="top-center"
+                autoClose={2000}
+                hideProgressBar
+                newestOnTop={false}
+                closeOnClick
+                rtl={false}
+                pauseOnFocusLoss
+                draggable={false}
+                pauseOnHover
+                theme="dark"
+            />
             <p>Dear customer!</p>
 
             <div className='user-formpanel__step1-key'>
@@ -74,7 +94,9 @@ export default function Step1() {
                         justifyContent: 'space-between'
                     }}
                 >
-                    <img src={copy} alt={'copy icon'} />
+                    <div>
+                        <img src={copyIcon} className={'user-formpanel__step1-code-copy'} alt={'copy icon'} onClick={() => copyCode('NN-55697-45887-33441-42095-07498')} />
+                    </div>
                 </Input>
                 <p>One key can be used on one system only</p>
             </div>
