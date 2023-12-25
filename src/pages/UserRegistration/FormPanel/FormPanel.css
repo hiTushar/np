@@ -48,16 +48,6 @@
     right: 0px;
 }
 
-.user-formpanel__step1-footer button, .user-formpanel__step2-footer button {
-    border: 1px solid #566E86;
-    border-radius: 1px;
-    padding: 8px 24px;
-    color: #566E86;
-    background: none;
-    font-size: 12px;
-    cursor: pointer;
-}
-
 .user-formpanel__step2-name > p > span {
     color: red;
 }

@@ -4,6 +4,7 @@ import Radio from "../../../components/Radio/Radio";
 import { useDispatch } from "react-redux";
 import formStepChange from "../../../redux/actions/formActions";
 import Dropdown from "../../../components/Dropdown/Dropdown";
+import Button from "../../../components/Button/Button";
 
 export default function Step2() {
     const nameRef = useRef(null);
@@ -114,7 +115,7 @@ export default function Step2() {
                 </div>
             </div>
             <div className='user-formpanel__step2-footer'>
-                <button onClick={nextPage}>NEXT</button>
+                <Button text={'NEXT'} onClick={nextPage} type={'secondary'} />
             </div>
         </div>
     )

@@ -5,6 +5,7 @@ import copy from '../../../assets/copy.svg';
 import Radio from '../../../components/Radio/Radio';
 import { useDispatch } from 'react-redux';
 import formStepChange from '../../../redux/actions/formActions';
+import Button from '../../../components/Button/Button';
 
 export default function Step1() {
     // const [key, setKey] = useState('');
@@ -78,7 +79,7 @@ export default function Step1() {
                 <p>One key can be used on one system only</p>
             </div>
             <div className='user-formpanel__step1-footer'>
-                <button onClick={nextPage}>NEXT</button>
+                <Button text={'NEXT'} onClick={nextPage} type={'secondary'} />
             </div>
         </div>
     )

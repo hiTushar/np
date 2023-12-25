@@ -1,0 +1,24 @@
+.npav-button {
+    border: none;
+    border-radius: 1px;
+    padding: 8px 24px;
+    font-size: 12px;
+    cursor: pointer;
+    line-height: 0.9rem;
+    font-weight: 700;
+}
+
+.npav-button--primary {
+    color: #17222D;
+    background: linear-gradient(207deg, #E5BE20 -10.75%, #F3B617 81.43%);
+}
+
+.npav-button--secondary {
+    color: #566E86;
+    background: none;
+    border: 1px solid #566E86;
+}
+
+.npav-button--text-only {
+    background: none;
+}
