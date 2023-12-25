@@ -12,8 +12,15 @@
 import './Button.css';
 
 export default function Button(props) {
-    const { text, type, onClick, disabled, customStyle } = props;
+    const { text, type, onClick, disabled, customStyle, children } = props;
     return (
-        <button className={`npav-button npav-button--${type}`} onClick={onClick} disabled={disabled}>{text}</button>
+        <button 
+            className={`npav-button npav-button--${type}`} 
+            onClick={onClick} 
+            disabled={disabled}
+        >
+            {text}
+            {children}
+        </button>
     )
 }
