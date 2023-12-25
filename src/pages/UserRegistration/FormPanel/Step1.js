@@ -68,7 +68,7 @@ export default function Step1() {
                 <p>Your Installation Code</p>
                 <Input 
                     value={'NN-55697-45887-33441-42095-07498'}
-                    disabled={true}
+                    readOnly={true}
                     customStyle={{ 
                         display: 'flex',
                         justifyContent: 'space-between'
