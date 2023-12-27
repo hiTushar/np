@@ -4,3 +4,8 @@
     align-items: center;
     height: inherit;
 }
+
+.home__all-screens {
+    display: flex;
+    flex-direction: column;
+}

@@ -1,0 +1,42 @@
+.taskbar-panel-container {
+    width: 300px;
+    height: 440px;
+    background: linear-gradient(0deg, rgba(0, 0, 0, 0.10) 0%, rgba(0, 0, 0, 0.10) 100%), linear-gradient(270deg, #1A2632 97.87%, #161E25 100%);
+    border-radius: 4px;
+    padding: 30px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.taskbar-panel-container__status {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.taskbar-panel-container__status-icon-text {
+    color: rgba(250, 250, 250, 0.7)
+}
+
+.taskbar-panel-container__status-icon {
+    margin-bottom: 8px;
+}
+
+.taskbar-panel-container__status-text {
+    font-size: 20px;
+    font-weight: 700;
+}
+
+.taskbar-panel-container__status-text--secure {
+    color: rgba(79, 216, 138, 1);
+}
+
+.taskbar-panel-container__status-text--partial {
+    color: rgba(244, 153, 13, 1);
+}
+
+.taskbar-panel-container__status-text--insecure {
+    color: rgba(255, 47, 98, 1)
+}

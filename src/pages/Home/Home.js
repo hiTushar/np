@@ -4,8 +4,9 @@ import './Home.css';
 function Home(props) {
     return (
         <div className="home">
-            <div>
+            <div className="home__all-screens">
                 <Link to='/new'>New User</Link>
+                <Link to='/taskbar'>Task Bar Panel</Link>
             </div>
         </div>
     )
