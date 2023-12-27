@@ -35,7 +35,7 @@ function NavPanel(props) {
         }
     }
 
-    console.log({ currentStep });
+    // console.log({ currentStep });
     return (
         <div className='user-navpanel'>
             <div className='user-navpanel__step'>{getStepStatus(1, 'Installation')}</div>
