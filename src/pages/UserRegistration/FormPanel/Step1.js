@@ -1,4 +1,4 @@
-import { useRef } from 'react';
+import { useRef, useState } from 'react';
 import copy from 'copy-to-clipboard';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
@@ -10,8 +10,10 @@ import { useDispatch } from 'react-redux';
 import formStepChange from '../../../redux/actions/formActions';
 import Button from '../../../components/Button/Button';
 
+const KEY_SEPERATOR = ' - ';
+
 export default function Step1() {
-    // const [key, setKey] = useState('');
+    const [key, setKey] = useState('');
     const keyRef = useRef(null);
     const dispatch = useDispatch();
     // useEffect(() => {
@@ -27,8 +29,25 @@ export default function Step1() {
         }));
     }
 
-    const onChange = (val) => {
-        console.log(val);
+    const onKeyChange = (keyField) => {
+        let keyVal = keyField.target.value;
+        if(keyVal.length > key) {
+            if(!keyVal.includes('-') && keyVal.length >= 2) {
+                let temp = keyVal.split('');
+                temp.splice(1, 0, KEY_SEPERATOR);
+                keyVal = temp.join('');
+            }
+        }
+        else {
+            if(keyVal.length === (1 + KEY_SEPERATOR.length)) { // 
+                keyVal = keyVal.slice(0, 1);
+            }
+        }
+        setKey(keyVal);
+    }
+
+    const onTypeChange = (val) => {
+        // console.log(key);
     }
 
     const copyCode = (text) => {
@@ -56,11 +75,11 @@ export default function Step1() {
                 <p>Please enter key number provided inside the box</p>
                 <Input 
                     ref={keyRef}
-                    // value={key}
+                    value={key}
                     placeholder={'X - XXXXXXXXXX'}
-                    maxLength={11}
+                    maxLength={14}
                     type={'text'}
-                    onChange={onChange}
+                    onChange={onKeyChange}
                 />
             </div>
             <div className='user-formpanel__step1-type'>
@@ -81,7 +100,7 @@ export default function Step1() {
                         value: 'single'
                     }}
                     customStyle={{}}
-                    onChange={onChange}
+                    onChange={onTypeChange}
                 />
             </div>
             <div className='user-formpanel__step1-code'>

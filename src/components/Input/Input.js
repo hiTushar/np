@@ -5,15 +5,14 @@ import './Input.css';
  * value, placeholder, childeren, ref, styling, max length, type, disabled, onchange, status
  */
 const Input = forwardRef(function Input(props, ref) {
-    const { children, value, placeholder, max, type, disabled, readOnly, onChange, customStyle } = props;
-
+    const { children, value, placeholder, maxLength, type, disabled, readOnly, onChange, customStyle } = props;
     return (
         <div className={'npav-input'} style={{...customStyle}}>
             <input
                 ref={ref}
                 value={value} 
                 placeholder={placeholder} 
-                maxLength={max} 
+                maxLength={maxLength} 
                 type={type} 
                 disabled={disabled} 
                 readOnly={readOnly}
