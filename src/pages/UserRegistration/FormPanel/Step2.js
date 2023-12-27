@@ -9,7 +9,6 @@ import Button from "../../../components/Button/Button";
 export default function Step2() {
     const nameRef = useRef(null);
     const dealerRef = useRef(null);
-    const locationRef = useRef(null);
 
     const dispatch = useDispatch();
 
