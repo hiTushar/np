@@ -102,6 +102,18 @@
     font-weight: 400;
 }
 
+.user-formpanel__step3-success-loader {
+    margin: 50px 20px;
+}
+
+.user-formpanel__step3-success-loader p {
+    color: #566E86;
+    font-size: 10px;
+    font-weight: 500;
+    text-align: center;
+    margin-top: 2px;
+}
+
 .Toastify__toast-icon svg {
     fill: #F3B617;
 }

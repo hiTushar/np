@@ -1,0 +1,35 @@
+.npav-progress {
+    box-sizing: content-box;
+    height: 10px;
+    position: relative;
+    background: #555;
+    border-radius: 2px;
+    overflow: hidden;
+}
+
+.npav-progress > span {
+    display: block;
+    height: 100%;
+    background-color: #E5BE20;
+    background-image: linear-gradient(
+    45deg,
+    rgba(0, 0, 0, 0.2) 25%,
+    transparent 25%,
+    transparent 50%,
+    rgba(0, 0, 0, 0.2) 25%,
+    rgba(0, 0, 0, 0.2) 75%,
+    transparent 75%,
+    transparent
+    );
+    background-size: 20px 20px;
+    animation: move 2s linear infinite;
+}
+
+@keyframes move {
+    0% {
+        background-position: 0px 20px;
+    }
+    100% {
+        background-position: 20px 0px;
+    }
+}
