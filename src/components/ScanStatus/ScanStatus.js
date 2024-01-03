@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 export default function ScanStatus(props) {
     const { progress } = props;
     return (
