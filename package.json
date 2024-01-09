@@ -43,6 +43,7 @@
     ]
   },
   "devDependencies": {
-    "@tauri-apps/cli": "^1.5.9"
+    "@tauri-apps/cli": "^1.5.9",
+    "sass": "^1.69.7"
   }
 }
