@@ -1,0 +1,44 @@
+.progress_bar_container {
+    width: 122px;
+    height: 122px;
+    position: relative;
+}
+
+.percentage {
+    color: #FFFFFF;
+    font-size: 26.881px;
+    font-weight: 700;
+    width: 40px;
+    height: 36px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    top: 43px;
+    left: 43px;
+}
+
+.symbol {
+    font-size: 10.752px;
+    font-weight: 500;
+    margin-top: 10px;
+}
+
+.pause {
+    position: absolute;
+    top: 73px;
+    left: 53px;
+    width: 16px;
+    height: 16px;
+    cursor: pointer;
+}
+
+.progress_bar_container {
+    position: relative;
+    width: 122px;
+    height: 122px;
+}
+
+.CircularProgressbar .CircularProgressbar-path {
+    stroke-linecap: unset;
+}

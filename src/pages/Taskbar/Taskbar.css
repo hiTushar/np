@@ -29,6 +29,10 @@
     font-weight: 700;
 }
 
+.quick_scan{
+    color: #FFFFFF;
+}
+
 .taskbar-panel-container__status-text--secure {
     color: rgba(79, 216, 138, 1);
 }
@@ -39,4 +43,53 @@
 
 .taskbar-panel-container__status-text--insecure {
     color: rgba(255, 47, 98, 1)
+}
+
+.files_scaned {
+    font-size: 12px;
+    font-weight: 400;
+    color: #FAFAFA70;
+}
+
+.found {
+    font-weight: 700;
+}
+
+.total {
+    font-weight: 500;
+}
+
+.threats_found {
+    margin-top: 32px;
+    font-size: 14px;
+    font-weight: 700;
+    color: #FF2F62;
+    display: flex;
+    gap: 4px;
+}
+
+.threats_neutrilized {
+    margin-top: 12px;
+    font-size: 14px;
+    font-weight: 700;
+    color: #4FD88A;
+    display: flex;
+    gap: 4px;
+}
+
+.threats {
+    margin-top: 4px;
+    font-size: 14px;
+    font-weight: 700;
+    color: #585861;
+}
+
+.view_details {
+    margin-top: 48px;
+    font-size: 10px;
+    font-weight: 500;
+    color: #F3B617;
+    display: flex;
+    gap: 7px;
+    cursor: pointer;
 }
