@@ -13,7 +13,7 @@
     border-left: 1px solid #191E25;
     background: linear-gradient(0deg, rgba(255, 255, 255, 0.02) 0%, rgba(255, 255, 255, 0.02) 100%), rgba(13, 14, 25, 0.90);
     background-blend-mode: normal, soft-light, normal;
-    backdrop-filter: blur(100px);
+    backdrop-filter: blur(4px);
 
     .protection_header {
         height: 19px;
@@ -44,6 +44,6 @@
         flex: 1 1;
         border: 1px solid #181A25;
         background: linear-gradient(0deg, rgba(0, 0, 0, 0.20) 0%, rgba(0, 0, 0, 0.20) 100%), linear-gradient(0deg, rgba(255, 255, 255, 0.02) 0%, rgba(255, 255, 255, 0.02) 100%), rgba(12, 13, 24, 0.50);
-        backdrop-filter: blur(200px);
+        backdrop-filter: blur(4px);
     }
 }
