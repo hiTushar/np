@@ -5,9 +5,11 @@ import ScanStatus from '../../components/ScanStatus/ScanStatus';
 import SystemSecureIcon from './assets/system_secure.svg';
 import SystemPartialSecureIcon from './assets/system_secure_partial.svg';
 import SystemInsecureIcon from './assets/system_insecure.svg';
-
+import bug from "./assets/BugFilled.svg";
+import arrow from "./assets/arrow-right.svg";
+import medicine from "./assets/MedicineBoxFilled.svg"
 export default function Taskbar(props) {
-    const [status, setStatus] = useState('insecure');
+    const [status, setStatus] = useState('scanning');
 
     const getStatus = () => {
         switch(status) {
@@ -15,7 +17,7 @@ export default function Taskbar(props) {
                 return (
                     <>
                         <ScanStatus />
-                        <p className='taskbar-panel-container__status-text taskbar-panel-container__status-text'>Quick Scan Running...</p>
+                        <p className='taskbar-panel-container__status-text quick_scan'>Quick Scan Running...</p>
                     </>
                 )
             }
@@ -54,6 +56,7 @@ export default function Taskbar(props) {
             default: 
                 return null;
         }
+        
     }
 
     return (
@@ -62,6 +65,12 @@ export default function Taskbar(props) {
                 {
                     getStatus()
                 }
+                <div className='files_scaned'>Files scanned <span className='found'>45703</span><span className='total'>/4,50,000</span></div>
+                <div className='threats_found'><img src={bug} alt="bug" title="bug" /> 203</div>
+                <div className='threats'>Threats Found</div>
+                <div className='threats_neutrilized'><img src={medicine} alt="medicine" title="medicine" /> 197</div>
+                <div className='threats'>Threats Neutralized</div>
+                <div className='view_details'>View Details <img src={arrow} alt="arrow" title="arrow" /></div>
             </div>
         </div>
     )
