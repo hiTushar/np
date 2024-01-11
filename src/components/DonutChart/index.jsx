@@ -21,7 +21,7 @@ export const DonutChart = ({ width, height, data }) => {
     const arcPathGenerator = d3.arc();
     return pie.map((p) =>
       arcPathGenerator({
-        innerRadius: 45,
+        innerRadius: 70,
         outerRadius: radius,
         startAngle: p.startAngle,
         endAngle: p.endAngle,
@@ -30,7 +30,7 @@ export const DonutChart = ({ width, height, data }) => {
   }, [radius, pie]);
 
   return (
-    <svg width={width} height={height} style={{ display: "inline-block" }}>
+    <svg width={width} height={height} >
       <g transform={`translate(${width / 2}, ${height / 2})`}>
         {arcs.map((arc, i) => {
           return <path key={i} d={arc} fill={colors[i]} />;

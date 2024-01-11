@@ -100,7 +100,7 @@
                 height: 509px;
                 padding: 16px 0 23px 0;
 
-                
+
             }
 
             .bot_sec_right {
@@ -148,8 +148,6 @@
                                 font-weight: 400;
                                 line-height: 130%;
                             }
-
-                            .top_widget_switch {}
                         }
                     }
                 }
@@ -161,9 +159,43 @@
                     width: 100%;
                     gap: 28px;
 
+                    .bot_widget_donut {
+                        position: relative;
+                        width:226px;
+                        height:226px;
+
+                        svg{
+                            position:absolute;
+                            top: 50%;
+                            left: 50%;
+                            transform: translate(-50%, -50%);
+                            max-width: none;
+                        }
+
+                        .bot_widget_donut_ {
+                            color: #ffff;
+                            position: absolute;
+                            top: 50%;
+                            left: 50%;
+                            transform: translate(-50%, -50%);
+                            text-align: center;
+                            font-size: 50px;
+                            font-style: normal;
+                            font-weight: 700;
+                            line-height: normal;
+
+                            span.perc_sym {
+                                font-size: 20px;
+                                font-style: normal;
+                                font-weight: 500;
+                                line-height: normal;
+                            }
+                        }
+                    }
+
                     .bot_widget_perc_items {
                         width: 387px;
-                        display:flex;
+                        display: flex;
                         justify-content: space-around;
 
                         .perc_item {
@@ -171,7 +203,7 @@
                             display: flex;
                             flex-direction: column;
                             align-items: center;
-                            gap:4px;
+                            gap: 4px;
 
                             &_top {
                                 display: flex;
@@ -199,7 +231,7 @@
                             }
 
                             &_bot {
-                                color:#585861;
+                                color: #585861;
                                 font-size: 16px;
                                 font-style: normal;
                                 font-weight: 500;

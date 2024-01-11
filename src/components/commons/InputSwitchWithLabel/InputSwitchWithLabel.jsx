@@ -5,7 +5,7 @@ import "./inputSwitchWithLabel.scss"
 const InputSwitchWithLabel = ({label,...props}) => {
   return (
     <div className="input_switch_with_label" {...props}>
-        <label htmlfor='switch_input'>{label || "Label"}</label>
+        <label htmlFor='switch_input'>{label || "Label"}</label>
         <InputSwitch id="switch_input"/>
     </div>
   )

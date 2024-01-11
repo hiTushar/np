@@ -96,12 +96,13 @@ const Protection = () => {
               </div>
             </div>
             <div className='botsec_bot_widget'>
-              <div>
-                <DonutChart data={data} width={226} height={226} />
+              <div className="bot_widget_donut">
+                <DonutChart data={data} width={295} height={295} />
+                <div className='bot_widget_donut_'>{data[0].value}<span className='perc_sym'>%</span></div>
               </div>
               <div className="bot_widget_perc_items">
                 {PercDataArr.map((percItem, index) => {
-                  return <PercItem SVGComponent={percItem.SVGComponent} desc={percItem.desc} percentage={percItem.percentage} colorClass={percItem.colorClass} />
+                  return <PercItem key={index} SVGComponent={percItem.SVGComponent} desc={percItem.desc} percentage={percItem.percentage} colorClass={percItem.colorClass} />
                 })}
               </div>
             </div>
