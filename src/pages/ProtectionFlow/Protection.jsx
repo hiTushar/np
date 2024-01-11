@@ -13,6 +13,7 @@ import HeatMapOutlinned from '../../components/SvgComponents/HeatMapOutlinned';
 import { DonutChart } from '../../components/DonutChart';
 import AppStoreOutlined from '../../components/commons/SideBar/SVGComponents/AppStoreOutlined';
 import InputSwitch from '../../components/commons/InputSwitch';
+import SideBar from '../../components/commons/SideBar/SideBar';
 
 export const PercItem = ({ SVGComponent, desc, percentage, colorClass, ...props }) => {
   return (
@@ -79,13 +80,7 @@ const Protection = () => {
         </div>
         <div className="protection_child_bot_sec">
           <div className="bot_sec_left">
-            <div className="sec_left_item">
-              <div className="sec_left_item_lftgrp">
-                <AppStoreOutlined />
-                <div className="sec_left_item_text">Application Control</div>
-              </div>
-              <InputSwitch />
-            </div>
+            <SideBar/>
           </div>
           <div className="bot_sec_right">
             <div className='botsec_top_widget'>
