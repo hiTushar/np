@@ -1,10 +1,59 @@
 import React from 'react'
-import "./protection.scss"
 import NpavSVG from '../../components/SvgComponents/NpavSVG';
 import HeadPhoneSVG from '../../components/SvgComponents/HeadPhoneSVG';
 import SettingsSVG from '../../components/SvgComponents/SettingsSVG';
 import UserSVG from '../../components/SvgComponents/UserSVG';
 import ArrowSVG from '../../components/SvgComponents/ArrowSVG';
+import CloudOutlinedSVG from '../../components/SvgComponents/CloudOutlinedSVG';
+import InputSwitchWithLabel from '../../components/commons/InputSwitchWithLabel/InputSwitchWithLabel';
+import "./protection.scss"
+import BugFilledSVG from '../../components/SvgComponents/BugFilledSVG';
+import MedicineBoxFilled from '../../components/SvgComponents/MedicineBoxFilled';
+import HeatMapOutlinned from '../../components/SvgComponents/HeatMapOutlinned';
+import { DonutChart } from '../../components/DonutChart';
+import AppStoreOutlined from '../../components/commons/SideBar/SVGComponents/AppStoreOutlined';
+import InputSwitch from '../../components/commons/InputSwitch';
+
+export const PercItem = ({ SVGComponent, desc, percentage, colorClass, ...props }) => {
+  return (
+    <div className='perc_item'>
+      <div className='perc_item_top'>
+        <SVGComponent />
+        <div className={`perc_item_top_perc ${colorClass}`}>{percentage}%</div>
+      </div>
+      <div className='perc_item_bot'>
+        {`${desc} Items`}
+      </div>
+    </div>
+  )
+}
+
+const PercDataArr = [
+  {
+    SVGComponent: BugFilledSVG,
+    colorClass: "red",
+    percentage: "20",
+    desc: "Malicious"
+  },
+  {
+    SVGComponent: MedicineBoxFilled,
+    colorClass: "green",
+    percentage: "65",
+    desc: "Good"
+  },
+  {
+    SVGComponent: HeatMapOutlinned,
+    colorClass: "orange",
+    percentage: "15",
+    desc: "Suspicious"
+  },
+]
+
+const data = [
+  { name: "Good", value: 65 },
+  { name: "Malicious", value: 20 },
+  { name: "Suspicious", value: 15 },
+];
 
 const Protection = () => {
   return (
@@ -15,17 +64,53 @@ const Protection = () => {
         </div>
         <div className='heading_txt'>Net Protector Antivirus 2025</div>
         <div className='header_ctas'>
-          <HeadPhoneSVG/>
-          <SettingsSVG/>
-          <UserSVG/>
+          <HeadPhoneSVG />
+          <SettingsSVG />
+          <UserSVG />
         </div>
       </div>
       <div className="protection_child_container">
-        <div>
-        <ArrowSVG/>
+        <div className="protection_child_top_sec">
+          <div className="back_n_heading">
+            <ArrowSVG />
+            <div className="protection_child_heading_text">Protection Type</div>
+          </div>
+          <div className="protection_child_desc">Protect your computer from Internet as well as other threats with advanced NPAV features.</div>
         </div>
-        <div>
-        Protection Type
+        <div className="protection_child_bot_sec">
+          <div className="bot_sec_left">
+            <div className="sec_left_item">
+              <div className="sec_left_item_lftgrp">
+                <AppStoreOutlined />
+                <div className="sec_left_item_text">Application Control</div>
+              </div>
+              <InputSwitch />
+            </div>
+          </div>
+          <div className="bot_sec_right">
+            <div className='botsec_top_widget'>
+              <div className='top_widget_left'>
+                <CloudOutlinedSVG />
+                <div className='top_widget_text_con'>
+                  <div className='text_con_texthead'>Cloud Protection</div>
+                  <div className='text_con_textdesc'>Scans processes on the cloud to check for the file safety rating</div>
+                </div>
+              </div>
+              <div className="top_widget_switch">
+                <InputSwitchWithLabel label={"Enable"} />
+              </div>
+            </div>
+            <div className='botsec_bot_widget'>
+              <div>
+                <DonutChart data={data} width={226} height={226} />
+              </div>
+              <div className="bot_widget_perc_items">
+                {PercDataArr.map((percItem, index) => {
+                  return <PercItem SVGComponent={percItem.SVGComponent} desc={percItem.desc} percentage={percItem.percentage} colorClass={percItem.colorClass} />
+                })}
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </div>
