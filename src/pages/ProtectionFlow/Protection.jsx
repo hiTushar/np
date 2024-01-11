@@ -11,8 +11,6 @@ import BugFilledSVG from '../../components/SvgComponents/BugFilledSVG';
 import MedicineBoxFilled from '../../components/SvgComponents/MedicineBoxFilled';
 import HeatMapOutlinned from '../../components/SvgComponents/HeatMapOutlinned';
 import { DonutChart } from '../../components/DonutChart';
-import AppStoreOutlined from '../../components/commons/SideBar/SVGComponents/AppStoreOutlined';
-import InputSwitch from '../../components/commons/InputSwitch';
 import SideBar from '../../components/commons/SideBar/SideBar';
 
 export const PercItem = ({ SVGComponent, desc, percentage, colorClass, ...props }) => {
