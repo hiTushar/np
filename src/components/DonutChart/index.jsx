@@ -9,7 +9,17 @@ const colors = [
   "rgba(243, 189, 51, 1)",
 ];
 
-export const DonutChart = ({ width, height, data }) => {
+
+/**
+ * 
+ * @param { Object } props
+ * @param { Number } props.width - width of donut chart svg 
+ * @param { Number } props.height - height of donut chart svg 
+ * @param { Number[] } props.data - numbers array for percentage of sections on chart
+ * @returns JSX component 
+ */
+
+export const DonutChart = ({ width, height, data}) => {
   const radius = Math.min(width, height) / 2 - MARGIN;
 
   const pie = useMemo(() => {

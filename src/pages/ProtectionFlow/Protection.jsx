@@ -13,6 +13,16 @@ import HeatMapOutlinned from '../../components/SvgComponents/HeatMapOutlinned';
 import { DonutChart } from '../../components/DonutChart';
 import SideBar from '../../components/commons/SideBar/SideBar';
 
+
+/**
+ * 
+ * @param { Object } props
+ * @param { SVGAElement } props.SVGComponent - SVGComponent for rendering svg
+ * @param { String } props.desc - title of the item
+ * @param { Number } props.percentage - percentage for the item
+ * @param { String } props.colorClass - className for custom color of text
+ * @returns JSX component 
+ */
 export const PercItem = ({ SVGComponent, desc, percentage, colorClass, ...props }) => {
   return (
     <div className='perc_item'>
