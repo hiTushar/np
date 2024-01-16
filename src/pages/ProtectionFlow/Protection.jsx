@@ -3,6 +3,7 @@ import "./protection.scss"
 import ProtectionFlowLayout from '../../components/Layout/ProtectionFlowLayout/ProtectionFlowLayout';
 import CloudProtection from '../../components/ProtectionFlowComponents/CloudProtection/CloudProtection';
 import { useSelector } from 'react-redux';
+import DataProtection from '../../components/ProtectionFlowComponents/CloudProtection/DataProtection';
 import AdvertiseBlocker from '../../components/ProtectionFlowComponents/AdvertiseBlocker/AdvertiseBlocker';
 
 const Protection = () => {
@@ -18,14 +19,21 @@ const Protection = () => {
     CloudProtection,
     CloudProtection,
     CloudProtection,
-    CloudProtection
+    DataProtection,
   ]
 
   return (
     <ProtectionFlowLayout>
       {protectionFlowContentComponentsArr.map(
-        (Component, idx) => <>
-          {idx === selected ? <Component key={idx} selected={enabled[selected]}  enabledIdx={idx}/> : ""}</>
+        (Component, idx) => {
+          let propsObj = { selected: enabled[selected], enabledIdx: idx };
+          if (idx === protectionFlowContentComponentsArr.length - 1) {
+            propsObj["width"] = "12%"
+          }
+
+          return (<>
+            {idx === selected ? <Component key={idx} {...propsObj} /> : ""}</>)
+        }
       )}
     </ProtectionFlowLayout>
   )
