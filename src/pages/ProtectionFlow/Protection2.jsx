@@ -23,7 +23,7 @@ const Protection2 = (props) => {
           </div>
           <div className='button_container'>
             <button className='disable'>DISABLE</button>
-            <button className='cancel'>CANCEL</button>
+            <button className='cancel' onClick={props.onClick}>CANCEL</button>
           </div>
           <div className='gradient'></div>
         </div>
