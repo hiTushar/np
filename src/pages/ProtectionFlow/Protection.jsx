@@ -3,6 +3,7 @@ import "./protection.scss"
 import ProtectionFlowLayout from '../../components/Layout/ProtectionFlowLayout/ProtectionFlowLayout';
 import CloudProtection from '../../components/ProtectionFlowComponents/CloudProtection/CloudProtection';
 import { useSelector } from 'react-redux';
+import AdvertiseBlocker from '../../components/ProtectionFlowComponents/AdvertiseBlocker/AdvertiseBlocker';
 
 const Protection = () => {
   const { selected, enabled } = useSelector(state => state.protectionSelReducer.allData);
@@ -12,7 +13,7 @@ const Protection = () => {
     CloudProtection,
     CloudProtection,
     CloudProtection,
-    CloudProtection,
+    AdvertiseBlocker,
     CloudProtection,
     CloudProtection,
     CloudProtection,

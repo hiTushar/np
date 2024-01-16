@@ -78,7 +78,7 @@ const CloudProtection = (props) => {
           </div>
         </div>
         <div className="top_widget_switch">
-          <InputSwitchWithLabel label={"Enable"} isToggled={props.selected} onToggle={(event)=>switchToggleHandler(event,props.enabledIdx)}/>
+          <InputSwitchWithLabel label={props.selected?"Disable":"Enable"} isToggled={props.selected} onToggle={(event)=>switchToggleHandler(event,props.enabledIdx)}/>
         </div>
       </div>
       <div className='botsec_bot_widget'>
