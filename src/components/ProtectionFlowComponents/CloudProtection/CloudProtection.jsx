@@ -8,7 +8,7 @@ import MedicineBoxFilled from '../../SvgComponents/MedicineBoxFilled'
 import HeatMapOutlinned from '../../SvgComponents/HeatMapOutlinned'
 import { setProtectionEnabled } from '../../../redux/actions/protectionFeatureActions'
 import { useDispatch, useSelector } from 'react-redux'
-import Protection2 from '../../../pages/ProtectionFlow/Protection2'
+import Protection2 from '../Protection2'
 
 
 /**

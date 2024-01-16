@@ -1,10 +1,10 @@
 import React from 'react'
 import "./protection.scss"
-import ProtectionFlowLayout from '../../components/Layout/ProtectionFlowLayout/ProtectionFlowLayout';
-import CloudProtection from '../../components/ProtectionFlowComponents/CloudProtection/CloudProtection';
+import ProtectionFlowLayout from '../Layout/ProtectionFlowLayout/ProtectionFlowLayout';
+import CloudProtection from './CloudProtection/CloudProtection';
 import { useSelector } from 'react-redux';
-import DataProtection from '../../components/ProtectionFlowComponents/CloudProtection/DataProtection';
-import AdvertiseBlocker from '../../components/ProtectionFlowComponents/AdvertiseBlocker/AdvertiseBlocker';
+import DataProtection from './CloudProtection/DataProtection';
+import AdvertiseBlocker from './AdvertiseBlocker/AdvertiseBlocker';
 
 const Protection = () => {
   const { selected, enabled } = useSelector(state => state.protectionSelReducer.allData);

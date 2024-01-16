@@ -4,8 +4,8 @@ import UserRegistration from './pages/UserRegistration/UserRegistration';
 import Home from './pages/Home/Home';
 import Taskbar from './pages/Taskbar/Taskbar';
 import Layout from './components/Layout/Layout';
-import Protection from './pages/ProtectionFlow/Protection';
-import Protection2 from './pages/ProtectionFlow/Protection2';
+import Protection from './components/ProtectionFlowComponents/Protection';
+import Protection2 from './components/ProtectionFlowComponents/Protection2';
 
 function App() {
   return (
