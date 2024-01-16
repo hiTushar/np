@@ -38,6 +38,7 @@ const ProtectionFlowLayout = (props) => {
           </div>
         </div>
       </div>
+      <div id="protection_modal_portal"></div>
     </div>
   )
 }

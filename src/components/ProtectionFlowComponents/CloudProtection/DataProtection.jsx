@@ -4,8 +4,6 @@ import hardisk from "../../SvgComponents/harddisk.svg"
 
 
 const DataProtection = (props) => {
-
-
     return (
         <>
             <div className='drive_container'>
@@ -20,29 +18,21 @@ const DataProtection = (props) => {
                         <div className='storage'>454 GB free of 512 GB</div>
                     </div>
                 </div>
-
             </div>
-
-
-            <div className='subtitle'>Backup Details</div>
-
-
-            <div className='backup_msg'>
-
-                <span className='text1'>
-                    Space used by backup&nbsp;
-                    <span className='bold'>52.1 MB</span>
-                </span>
-
-                <span className='text2'>Backup Interval 3 Days</span>
+            <div className='section_3'>
+                <div className='subtitle'>Backup Details</div>
+                <div className='backup_msg'>
+                    <span className='text1'>
+                        Space used by backup&nbsp;
+                        <span className='bold'>52.1 MB</span>
+                    </span>
+                    <span className='text2'>Backup Interval 3 Days</span>
+                </div>
             </div>
-
-
             <div className='buttons_container'>
                 <button className='cancel'>CANCEL</button>
                 <button className='apply'>APPLY</button>
             </div>
-
         </>
     )
 }

@@ -2,18 +2,20 @@ import React from 'react'
 import "./protection2.scss"
 import warning from '../../components/SvgComponents/Warning.svg';
 import cross from '../../components/SvgComponents/cross.svg';
-import { useState } from 'react';
+import { createPortal } from 'react-dom';
 
 
 
-const Protection2 = () => {
-  const [show, setShow] = useState(true)
-  return (
+const Protection2 = (props) => {
+  const portalContainer = document.getElementById('protection_modal_portal')
+  if (!portalContainer) {
+    return ""
+  }
+  return createPortal(
     <div className="protection_main_container2">
       <div className="protection_child_container2">
-        <div className={`popup_container ${show ? '' : 'hide'}`}>
-
-          <img className='cross' src={cross} alt="cross" onClick={() => setShow(false)} />
+        <div className={`popup_container ${props.show ? '' : 'hide'}`}>
+          <img className='cross' src={cross} alt="cross" onClick={props.onClick} />
           <img className='warning' src={warning} alt="warning" />
           <div className='title'>Disable Cloud Protection?</div>
           <div className='text'>
@@ -26,7 +28,7 @@ const Protection2 = () => {
           <div className='gradient'></div>
         </div>
       </div>
-    </div>
+    </div>, document.getElementById('protection_modal_portal')
   )
 }
 

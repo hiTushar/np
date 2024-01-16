@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import "./cloudProtection.scss"
 import CloudOutlinedSVG from '../../SvgComponents/CloudOutlinedSVG'
 import InputSwitchWithLabel from '../../commons/InputSwitchWithLabel/InputSwitchWithLabel'
@@ -7,7 +7,8 @@ import BugFilledSVG from '../../SvgComponents/BugFilledSVG'
 import MedicineBoxFilled from '../../SvgComponents/MedicineBoxFilled'
 import HeatMapOutlinned from '../../SvgComponents/HeatMapOutlinned'
 import { setProtectionEnabled } from '../../../redux/actions/protectionFeatureActions'
-import { useDispatch } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
+import Protection2 from '../../../pages/ProtectionFlow/Protection2'
 
 
 /**
@@ -20,53 +21,61 @@ import { useDispatch } from 'react-redux'
  * @returns JSX component 
  */
 export const PercItem = ({ SVGComponent, desc, percentage, colorClass, ...props }) => {
-    return (
-      <div className='perc_item'>
-        <div className='perc_item_top'>
-          <SVGComponent />
-          <div className={`perc_item_top_perc ${colorClass}`}>{percentage}%</div>
-        </div>
-        <div className='perc_item_bot'>
-          {`${desc} Items`}
-        </div>
+  return (
+    <div className='perc_item'>
+      <div className='perc_item_top'>
+        <SVGComponent />
+        <div className={`perc_item_top_perc ${colorClass}`}>{percentage}%</div>
       </div>
-    )
-  }
+      <div className='perc_item_bot'>
+        {`${desc} Items`}
+      </div>
+    </div>
+  )
+}
 
-  const PercDataArr = [
-    {
-      SVGComponent: BugFilledSVG,
-      colorClass: "red",
-      percentage: "20",
-      desc: "Malicious"
-    },
-    {
-      SVGComponent: MedicineBoxFilled,
-      colorClass: "green",
-      percentage: "65",
-      desc: "Good"
-    },
-    {
-      SVGComponent: HeatMapOutlinned,
-      colorClass: "orange",
-      percentage: "15",
-      desc: "Suspicious"
-    },
-  ]
-  
-  const data = [
-    { name: "Good", value: 65 },
-    { name: "Malicious", value: 20 },
-    { name: "Suspicious", value: 15 },
-  ];
+const PercDataArr = [
+  {
+    SVGComponent: BugFilledSVG,
+    colorClass: "red",
+    percentage: "20",
+    desc: "Malicious"
+  },
+  {
+    SVGComponent: MedicineBoxFilled,
+    colorClass: "green",
+    percentage: "65",
+    desc: "Good"
+  },
+  {
+    SVGComponent: HeatMapOutlinned,
+    colorClass: "orange",
+    percentage: "15",
+    desc: "Suspicious"
+  },
+]
+
+const data = [
+  { name: "Good", value: 65 },
+  { name: "Malicious", value: 20 },
+  { name: "Suspicious", value: 15 },
+];
 
 const CloudProtection = (props) => {
-    const dispatch = useDispatch()
+  const { selected, enabled } = useSelector(state => state.protectionSelReducer.allData);
+  const isEnabled = enabled[props.enabledIdx];
+  const [isOpen , setIsOpen] = useState(isEnabled);
 
-    const switchToggleHandler = (event,idx) => {
-        event.preventDefault();
-        dispatch(setProtectionEnabled(idx))
+  const dispatch = useDispatch()
+
+  const switchToggleHandler = (event, idx) => {
+    event.preventDefault();
+    if(isEnabled){
+      setIsOpen(state=>!state)
+    }else{
+      dispatch(setProtectionEnabled(idx))
     }
+  }
   return (
     <>
       <div className='botsec_top_widget'>
@@ -78,7 +87,7 @@ const CloudProtection = (props) => {
           </div>
         </div>
         <div className="top_widget_switch">
-          <InputSwitchWithLabel label={props.selected?"Disable":"Enable"} isToggled={props.selected} onToggle={(event)=>switchToggleHandler(event,props.enabledIdx)}/>
+          <InputSwitchWithLabel label={props.selected ? "Disable" : "Enable"} isToggled={props.selected} onToggle={(event) => switchToggleHandler(event, props.enabledIdx)} />
         </div>
       </div>
       <div className='botsec_bot_widget'>
@@ -92,6 +101,7 @@ const CloudProtection = (props) => {
           })}
         </div>
       </div>
+      {isOpen ? <Protection2 show={isOpen} onClick={()=>setIsOpen(state=>!state)} />:"" }
     </>
   )
 }

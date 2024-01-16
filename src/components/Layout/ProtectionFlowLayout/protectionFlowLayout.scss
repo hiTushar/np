@@ -14,6 +14,7 @@
     background: linear-gradient(0deg, rgba(255, 255, 255, 0.02) 0%, rgba(255, 255, 255, 0.02) 100%), rgba(13, 14, 25, 0.90);
     background-blend-mode: normal, soft-light, normal;
     backdrop-filter: blur(15px);
+    position:relative;
 
     .protection_header {
         height: 19px;

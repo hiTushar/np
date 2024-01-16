@@ -9,7 +9,6 @@ const initialState = {
 
 const protectionSelReducer = (state = initialState, action) => {
     const { type, payload } = action;
-    console.log(action)
     switch (type) {
         case SET_ENABLED_FEATURES:
             let currEnabledArr = [...state.allData.enabled];
