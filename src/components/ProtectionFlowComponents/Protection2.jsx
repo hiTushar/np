@@ -3,13 +3,21 @@ import "./protection2.scss"
 import warning from '../../components/SvgComponents/Warning.svg';
 import cross from '../../components/SvgComponents/cross.svg';
 import { createPortal } from 'react-dom';
+import { useDispatch } from 'react-redux';
+import { setProtectionDisabled } from '../../redux/actions/protectionFeatureActions';
 
 
 
 const Protection2 = (props) => {
   const portalContainer = document.getElementById('protection_modal_portal')
+  const dispatch = useDispatch();
   if (!portalContainer) {
     return ""
+  }
+
+  const handleDisable =()=>{
+    dispatch(setProtectionDisabled(props.disableIdx));
+    props.onClick()
   }
   return createPortal(
     <div className="protection_main_container2">
@@ -22,7 +30,7 @@ const Protection2 = (props) => {
             Your security score will drop if you disable cloud protection, and you won't be able to utilize all the benefits.
           </div>
           <div className='button_container'>
-            <button className='disable'>DISABLE</button>
+            <button className='disable' onClick={handleDisable}>DISABLE</button>
             <button className='cancel' onClick={props.onClick}>CANCEL</button>
           </div>
           <div className='gradient'></div>

@@ -1,4 +1,4 @@
-import { PROTECTION_SELECTED_FEATURE, SET_ENABLED_FEATURES } from "../actions/actionTypes";
+import { PROTECTION_SELECTED_FEATURE, SET_DISABLED_FEATURES, SET_ENABLED_FEATURES } from "../actions/actionTypes";
 
 const initialState = {
     allData:{
@@ -26,6 +26,16 @@ const protectionSelReducer = (state = initialState, action) => {
                 allData:{
                     enabled:[...state.allData.enabled],
                     selected: payload.selected
+                }
+            }
+        case SET_DISABLED_FEATURES:
+            let currDisabledArr = [...state.allData.enabled];
+            currDisabledArr[payload.disabledIdx] = !currDisabledArr[payload.disabledIdx];
+            return {
+                ...state,
+                allData:{
+                    enabled:[...currDisabledArr],
+                    selected: state.allData.selected
                 }
             }
         default:

@@ -101,7 +101,7 @@ const CloudProtection = (props) => {
           })}
         </div>
       </div>
-      {isOpen ? <Protection2 show={isOpen} onClick={()=>setIsOpen(state=>!state)} />:"" }
+      {isOpen ? <Protection2 show={isOpen} onClick={()=>setIsOpen(state=>!state)} disableIdx={props.enabledIdx}/>:"" }
     </>
   )
 }
