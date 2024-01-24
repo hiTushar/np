@@ -1,0 +1,13 @@
+.input_switch_with_label {
+    display: flex;
+    gap: 12px;
+    align-items: center;
+
+    label {
+        color: white;
+        font-size: 14px;
+        font-style: normal;
+        font-weight: 400;
+        line-height: 130%;
+    }
+}
