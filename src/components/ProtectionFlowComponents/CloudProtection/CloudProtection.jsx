@@ -62,18 +62,21 @@ const data = [
 ];
 
 const CloudProtection = (props) => {
-  const { selected, enabled } = useSelector(state => state.protectionSelReducer.allData);
+  const { enabled } = useSelector(state => state.protectionSelReducer.allData);
   const isEnabled = enabled[props.enabledIdx];
   const [isOpen , setIsOpen] = useState(isEnabled);
 
   const dispatch = useDispatch()
 
   const switchToggleHandler = (event, idx) => {
-    event.preventDefault();
     if(isEnabled){
-      setIsOpen(state=>!state)
+      setTimeout(() => {
+        setIsOpen(state => !state)
+      }, 300);
     }else{
-      dispatch(setProtectionEnabled(idx))
+      setTimeout(() => {
+        dispatch(setProtectionEnabled(idx));
+      }, 300);
     }
   }
   return (
