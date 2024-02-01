@@ -82,12 +82,14 @@ const SideBar = () => {
     const { selected, enabled:allEnabled } = useSelector(state => state.protectionSelReducer.allData);
     const dispatch = useDispatch()
     const sideBarFeatureSelectionHandler = (event, idx) => {
-        event.preventDefault();
-        dispatch(setProtectionSelected(idx))
+        setTimeout(() => {
+            dispatch(setProtectionSelected(idx))
+        }, 300);
     }
     const switchToggleHandler = (event,idx) => {
-        event.preventDefault();
-        dispatch(setProtectionEnabled(idx))
+        setTimeout(() => {
+            dispatch(setProtectionEnabled(idx));
+        }, 300);
 
     }
     return (
