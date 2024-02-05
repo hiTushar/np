@@ -1,11 +1,11 @@
-.home {
+.main {
     display: flex;
     justify-content: center;
     align-items: center;
     height: inherit;
 }
 
-.home__all-screens {
+.main__all-screens {
     display: flex;
     flex-direction: column;
 }

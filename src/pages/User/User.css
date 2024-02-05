@@ -1,0 +1,49 @@
+.window {
+    width: 1085px;
+    background: linear-gradient(0deg, rgba(255, 255, 255, 0.02) 0%, rgba(255, 255, 255, 0.02) 100%), rgba(13, 14, 25, 0.90);
+    backdrop-filter: blur(100px);
+
+    .window__head {
+        padding: 10px 40px;
+        display: flex;
+        justify-content: space-between;
+        user-select: none;
+    }
+
+    .head__title {
+        display: flex;
+        gap: 10px;
+
+        .title__logo {
+            width: 40px;
+            height: auto;
+    
+            img {
+                width: 100%;
+            }
+        }
+    
+        .title__text {
+            color: #53566D;
+            font-size: 14px;
+            font-weight: 500;
+        }
+    }
+
+    .head__options {
+        width: 100px;
+        display: flex;
+
+        .option {
+            cursor: pointer;
+            img {
+                width: 16px;
+            }
+        }
+
+        .option:nth-child(2) {
+            flex: 1;
+            padding-left: 14px;
+        }
+    }
+}
