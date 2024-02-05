@@ -31,7 +31,7 @@ export default function Step1() {
 
     const onKeyChange = (keyField) => {
         let keyVal = keyField.target.value;
-        if(keyVal.length > key) {
+        if(keyVal.length > key.length) {
             if(!keyVal.includes('-') && keyVal.length >= 2) {
                 let temp = keyVal.split('');
                 temp.splice(1, 0, KEY_SEPERATOR);
