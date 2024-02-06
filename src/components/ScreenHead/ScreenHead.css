@@ -1,0 +1,27 @@
+.screen__head {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+
+    .screen__exit {
+        width: 16px;
+        cursor: pointer;
+        line-height: 0.8;
+
+        img {
+            width: 100%;
+        }
+    }
+
+    .screen__name {
+        .title {
+            color: #FFF;
+            font-size: 12px;
+            font-weight: 700;
+        }
+    }
+
+    .screen__misc {
+        margin-left: auto;
+    }
+}
