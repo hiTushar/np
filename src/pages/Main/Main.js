@@ -8,7 +8,7 @@ function Main(props) {
                 <Link to='/new'>New User</Link>
                 <Link to='/taskbar'>Task Bar Panel</Link>
                 <Link to='/protection'>Protection Flow</Link>
-                <Link to='/user'>User</Link>
+                <Link to='/user'>User Window</Link>
             </div>
         </div>
     )

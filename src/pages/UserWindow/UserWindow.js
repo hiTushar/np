@@ -1,5 +1,5 @@
 import { Route, Routes } from "react-router-dom";
-import './User.css';
+import './UserWindow.css';
 import logo from './assets/npav-logo.png';
 import support from './assets/npav-support.png';
 import settings from './assets/npav-settings.png';
@@ -7,7 +7,7 @@ import user from './assets/npav-user.png';
 import Dashboard from "../Dashboard/Dashboard";
 import Scan from "../Scan/Scan";
 
-export default function User({ props }) {
+export default function UserWindow({ props }) {
     return (
         <div className="window">
             <div className="window__head">

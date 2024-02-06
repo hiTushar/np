@@ -4,7 +4,7 @@ import UserRegistration from './pages/UserRegistration/UserRegistration';
 import Main from './pages/Main/Main';
 import Taskbar from './pages/Taskbar/Taskbar';
 import Protection from './components/ProtectionFlowComponents/Protection';
-import User from './pages/User/User';
+import UserWindow from './pages/UserWindow/UserWindow';
 
 function App() {
   return (
@@ -15,7 +15,7 @@ function App() {
           <Route path='/new' element={<UserRegistration />} />
           <Route path='/taskbar' element={<Taskbar />} />
           <Route path='/protection' element={<Protection />} />
-          <Route path='/user/*' element={<User />} />
+          <Route path='/user/*' element={<UserWindow />} />
         </Routes>
       </div>
     </BrowserRouter>
