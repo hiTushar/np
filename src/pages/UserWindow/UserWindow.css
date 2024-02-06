@@ -1,9 +1,11 @@
 .window {
     width: 1085px;
-    height: 750px;
+    height: 690px;
     border-radius: 2px;
     background: linear-gradient(0deg, rgba(255, 255, 255, 0.02) 0%, rgba(255, 255, 255, 0.02) 100%), rgba(13, 14, 25, 0.90);
     backdrop-filter: blur(100px);
+    display: flex;
+    flex-direction: column;
 
     .window__head {
         padding: 10px 40px;
@@ -18,7 +20,7 @@
 
         .title__logo {
             width: 40px;
-            height: auto;
+            /* height: auto; */
     
             img {
                 width: 100%;
@@ -50,6 +52,7 @@
     }
 
     .window__body {
-        padding: 10px 40px;
+        padding: 10px 40px 40px;
+        flex: 1
     }
 }
