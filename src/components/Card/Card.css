@@ -1,0 +1,21 @@
+.npav-card {
+    background: #1A2632;
+    border-radius: 2px;
+    position: relative;
+    overflow: hidden;
+
+    .card__pattern {
+        position: absolute;
+        left: 0px;
+        top: 0px;
+        
+        width: 100%;
+        object-fit: scale-down;
+    }
+
+    .card__body {
+        padding: 16px;
+    }
+}
+
+
