@@ -5,7 +5,7 @@ export default function Dashboard({ props }) {
     return (
         <>
             <div>Dashboard</div>
-            <Link to='/user/scan'>Quick Scan</Link>
+            <Link to='/user/scan?type=quick'>Quick Scan</Link>
         </>
     )
 }
