@@ -19,6 +19,7 @@ export default function Button(props) {
             className={`npav-button npav-button--${type}`} 
             onClick={onClick} 
             disabled={disabled}
+            style={{...customStyle}}
         >
             {text}
             {children}
