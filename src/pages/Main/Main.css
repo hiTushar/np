@@ -8,4 +8,8 @@
 .main__all-screens {
     display: flex;
     flex-direction: column;
+
+    a {
+        color: black;
+    }
 }
