@@ -17,6 +17,7 @@ export default function ScanProgress(props) {
                         <feDropShadow dx="-0.0" dy="0.1" stdDeviation="0.1" />
                     </filter>
                 </defs>
+                {/* TODO: shadow not working */}
                 <circle
                     cx='50'
                     cy='50'
@@ -49,6 +50,7 @@ export default function ScanProgress(props) {
                 >
                 </circle>
                 {/* TODO: add changing percent */}
+                {/* TODO: add pause button */}
             </svg>
         </div>
     )

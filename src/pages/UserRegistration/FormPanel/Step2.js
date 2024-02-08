@@ -65,6 +65,7 @@ export default function Step2() {
                     onChange={() => {}}
                 />
             </div>
+            {/* TODO: Add location dropdowns */}
             <div className="user-formpanel__step2-address">
                 <div>
                     <p>Country</p>
