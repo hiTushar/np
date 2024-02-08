@@ -17,6 +17,8 @@ export default function Card(props) {
 
     const cutBottomCorner = (card) => {
         /* function to add consistent angled cut at the bottom corner proportional to the current card dimension */
+        // TODO: needs to corrected for height > width
+        
         const { width, height } = card.getBoundingClientRect();
         let verticalCut = height * .15;
         let horizontalCut = verticalCut;
