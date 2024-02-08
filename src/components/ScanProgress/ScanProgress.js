@@ -1,5 +1,7 @@
-import { useEffect } from 'react';
 import './ScanProgress.css';
+import pauseIcon from './assets/pause.png';
+
+const FULL_ARC = 2 * Math.PI * 40;
 
 export default function ScanProgress(props) {
     const { progress, pause, scanSwitch } = props;
@@ -9,9 +11,10 @@ export default function ScanProgress(props) {
     }
 
     getProgress(progress);
+
     return (
         <div className="npav-scan_progress"> 
-            <svg viewBox='0 0 100 100'>
+            <svg viewBox='0 0 101 101'>
                 <defs>
                     <filter id="shadow">
                         <feDropShadow dx="-0.0" dy="0.1" stdDeviation="0.1" />
@@ -19,39 +22,63 @@ export default function ScanProgress(props) {
                 </defs>
                 {/* TODO: shadow not working */}
                 <circle
-                    cx='50'
-                    cy='50'
+                    cx='50.5'
+                    cy='50.5'
+                    r='39'
+                    fill='transparent'
+                    strokeWidth='20'
+                    stroke='#b79e3c'
+                >
+                </circle>
+                <circle
+                    cx='50.5'
+                    cy='50.5'
                     r='40'
                     fill='transparent'
-                    stroke-width='20'
+                    strokeWidth='19.5'
                     stroke='#9c8629'
                 >
                 </circle>
                 <circle
-                    cx='50'
-                    cy='50'
+                    cx='50.5'
+                    cy='50.5'
                     r='40'
                     fill='transparent'
-                    stroke-width='10'
+                    strokeWidth='10'
                     strokeDasharray='1 3.2'
                     stroke='#dac651'
                 >
                 </circle>
                 <circle
-                    cx='50'
-                    cy='50'
+                    cx='49.5'
+                    cy='50.5'
                     r='40'
                     fill='transparent'
-                    // filter='url(#shadow)'
-                    stroke-width='20'
+                    strokeWidth='19.5'
                     stroke='#f4d352'
-                    stroke-dasharray={`${progress} 500`}
+                    strokeDasharray={`${FULL_ARC * progress} ${FULL_ARC}`}
                     transform='rotate(-90 50 50)'
                 >
                 </circle>
-                {/* TODO: add changing percent */}
-                {/* TODO: add pause button */}
             </svg>
+            <div className='progress__panel'>
+                {/* TODO: Add font and img size control prop or use em unit */}
+                <div className='panel__data'>
+                    <div className='data__percent'>{parseInt(progress * 100)}</div>
+                    <div className='data__symbol'>%</div>
+                </div>
+                {
+                    progress < 1 ? (
+                        <div className='panel__control' onClick={scanSwitch}>
+                            {
+                                !pause ? (
+                                    <img src={pauseIcon} alt={'pause icon'} />
+                                ) : 'play'
+                            }
+                        </div>
+                    ) : null
+                }
+            </div>
         </div>
     )
 }

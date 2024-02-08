@@ -1,4 +1,5 @@
-import { useEffect, useState } from 'react';
+/* eslint-disable no-unused-vars */
+import { useEffect, useRef, useState } from 'react';
 import { useNavigate, useSearchParams } from 'react-router-dom';
 import './Scan.css';
 import ScreenHead from '../../components/ScreenHead/ScreenHead';
@@ -10,6 +11,7 @@ import folderIcon from './assets/folder-open.png';
 import bug from './assets/bug.png';
 import medicineBox from './assets/medicine-box.png';
 import hourglass from './assets/hourglass.png';
+import { splitTimestamp } from '../../utils/Utils';
 
 const insightsCardData = [
     {
@@ -37,14 +39,17 @@ export default function Scan({ props }) {
     const [searchParams] = useSearchParams();
     const type = searchParams.get('type');
 
+    const fileTimerId = useRef(null);
+    const timeTimerId = useRef(null);
+
     const [progress, setProgress] = useState(0);
     const [scanPause, setScanPause] = useState(false);
-    const [totalFiles, setTotalFiles] = useState(345345);
-    const [scannedFiles, setScannedFiles] = useState(983);
+    const [totalFileCount, setTotalFileCount] = useState(100);
+    const [scannedFileCount, setScannedFileCount] = useState(0);
     const [panelData, setPanelData] = useState({
         threats_found: 203,
         threats_fixed: 197,
-        time_left: 9000000 // 2 hr 30 min
+        time_left: 90000 // 10000ms == 10s
     })
 
     const goTo = () => {
@@ -52,15 +57,52 @@ export default function Scan({ props }) {
     }
 
     const scanSwitch = () => {
+        if(!scanPause) {
+            setScanPause(true);
+            clearInterval(fileTimerId.current);
+            clearInterval(timeTimerId.current);
+        }
+        else {
+            setScanPause(false);
 
+            fileTimerId.current = setInterval(() => {
+                setScannedFileCount(prev => prev + 1);
+            }, 100)
+
+            timeTimerId.current = setInterval(() => {
+                setPanelData(prev => ({ ...prev, time_left: prev.time_left - 10}))
+            }, 1)
+        }
     }
 
-    // const panelItem = ({ })
     useEffect(() => {
-        setInterval(() => {
-            setProgress(val => val + 0.5);
-        }, 50)
+        if(!fileTimerId.current) {
+            fileTimerId.current = setInterval(() => {
+                setScannedFileCount(prev => prev + 1);
+            }, 100)
+        }
+
+        if(!timeTimerId.current) {
+            timeTimerId.current = setInterval(() => {
+                setPanelData(prev => ({ ...prev, time_left: prev.time_left - 10}))
+            }, 1)
+        }
     }, [])
+
+    useEffect(() => {
+        if(progress >= 1) {
+            clearInterval(fileTimerId.current);
+        }
+        if(progress >= 1 || panelData.time_left <= 0) {
+            clearInterval(timeTimerId.current);
+        }
+    }, [progress, panelData.time_left])
+
+    useEffect(() => {
+        setProgress(scannedFileCount / totalFileCount);
+    }, [scannedFileCount, totalFileCount])
+
+    console.log(panelData.time_left / 1000);
 
     return (
         <div className='scan'>
@@ -80,7 +122,7 @@ export default function Scan({ props }) {
                         </div>
                         <div className='progress-data__display'>
                             <div className='display__title'>Files Scanned</div>
-                            <div className='display__count'>{scannedFiles} / {totalFiles}</div>
+                            <div className='display__count'>{scannedFileCount} / {totalFileCount}</div>
                             {/* TODO: comma separated values */}
                         </div>
                     </div>
@@ -109,8 +151,12 @@ export default function Scan({ props }) {
                             <div className='display__icon'>
                                 <img src={hourglass} alt={'hourglass icon'} />
                             </div>
-                            <div className='display__count time_left'>{panelData.time_left}</div>
-                            {/* TODO: convert timestamp to hour minute second format */}
+                            <div className='display__count time_left'>
+                                {+splitTimestamp(panelData.time_left)[0] ? `${splitTimestamp(panelData.time_left)[0]}:` : null}
+                                {splitTimestamp(panelData.time_left)[1]}:
+                                {splitTimestamp(panelData.time_left)[2]}{' '}
+                                {splitTimestamp(panelData.time_left)[3]}
+                            </div>
                         </div>
                         <div className='item__title'>Time Remaining</div>
                     </div>

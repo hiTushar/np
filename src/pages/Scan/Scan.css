@@ -2,7 +2,7 @@
     height: 100%;
     padding: 30px;
     /* background: linear-gradient(0deg, rgba(0, 0, 0, 0.20) 0%, rgba(0, 0, 0, 0.20) 100%), linear-gradient(0deg, rgba(255, 255, 255, 0.02) 0%, rgba(255, 255, 255, 0.02) 100%), rgba(12, 13, 24, 0.50); */
-    background: radial-gradient(ellipse at 500px 150px, rgba(157, 141, 77, 0.4) 0%, rgba(157, 141, 77, 0.001) 25%, rgba(25, 27, 34, 1) 55%);
+    background: radial-gradient(ellipse at 500px 165px, rgba(157, 141, 77, 0.4) 0%, rgba(157, 141, 77, 0.001) 25%, rgba(25, 27, 34, 1) 55%);
     display: flex;
     flex-direction: column;
 }
@@ -24,7 +24,8 @@
 
         .display__progress-bar {
             flex: 1;
-
+            width: 220px;
+            height: 220px;
         }
 
         .progress-data__process-title {
