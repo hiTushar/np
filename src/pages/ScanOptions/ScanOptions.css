@@ -1,0 +1,97 @@
+.scan-options {
+    height: 100%;
+    padding: 30px;
+    background: linear-gradient(0deg, rgba(0, 0, 0, 0.20) 0%, rgba(0, 0, 0, 0.20) 100%), linear-gradient(0deg, rgba(255, 255, 255, 0.02) 0%, rgba(255, 255, 255, 0.02) 100%), rgba(12, 13, 24, 0.50);
+
+    .scan-options__schedule {
+        background-color: #1C2732;
+        border-radius: 1px;
+        width: 100%;
+        padding: 16px 16px 24px;
+        display: flex;
+        justify-content: space-between;
+        margin-bottom: 10px;
+
+        .schedule__desc {
+            color: rgba(250, 250, 250, 0.70);
+            font-size: 14px;
+            font-weight: 400;
+            max-width: 550px;
+        }
+    
+        .schedule__action {
+            .action__button {
+                display: flex;
+                align-items: center;
+                gap: 6px;
+                font-size: 10px;
+
+                .button__icon {
+                    width: 12px;
+                    line-height: 0.8;
+    
+                    &>img {
+                        width: 100%;
+                    }
+                }
+            }
+        }
+    }
+
+    .scan-options__scans {
+        .scans__title {
+            color: #FFF;
+            font-size: 12px;
+            font-weight: 700;
+            margin-bottom: 8px;
+        }
+
+        .scans__cards {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 10px;
+        }
+
+        .scan-option-card {
+            position: relative;
+            
+            &:hover {
+                .scan-option-card__action {
+                    /* display: block; */
+                    opacity: 1;
+                }
+            }
+
+            .scan-option-card__icon {
+                width: 32px;
+
+                &>img {
+                    width: 100%;
+                }
+            }
+
+            .scan-option-card__title {
+                color: #7D8B98;
+                font-size: 20px;
+                font-weight: 700;
+                margin-bottom: 10px;
+            }
+
+            .scan-option-card__desc {
+                color: #FFF;
+                font-size: 12px;
+                font-weight: 500;
+            }
+
+            .scan-option-card__action {
+                position: absolute;
+                right: 0px;
+                top: 0px;
+
+                /* display: none; */
+                opacity: 0;
+                transition: opacity 0.05s linear;
+            }
+        }
+    }
+}
