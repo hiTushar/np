@@ -4,6 +4,38 @@
     position: relative;
     overflow: hidden;
 
+    /* finer gradient transition effects */
+    &::before {
+        content: "";
+        background: radial-gradient(circle at 100% 0%, rgba(213, 187, 79, 0.05) 0%, rgba(0, 0, 0, 0) 55%);
+        position: absolute;
+        z-index: -1;
+        inset: 0;
+        opacity: 0;
+        transition: opacity 0.2s ease;
+    }
+
+    &::after {
+        content: "";
+        background: url('./card-pattern-2.png');
+        background-size: cover;
+        position: absolute;
+        z-index: -1;
+        inset: 0;
+        opacity: 0.45;
+        transition: opacity 2s ease-out;
+    }
+
+    &:hover {
+        &::before {
+            opacity: 1;
+        }
+        
+        &::after {
+            opacity: 0.7;
+        }
+    }
+
     .card__pattern {
         position: absolute;
         left: 0px;

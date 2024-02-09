@@ -33,7 +33,6 @@ export default function Card(props) {
 
     return (
         <div className="npav-card"  ref={cardRef}>
-            <img className="card__pattern" src={pattern} alt={'pattern'} />
             <div className="card__body" style={{ ...customStyle }}>
                 {children}
             </div>
