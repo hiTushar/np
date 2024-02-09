@@ -1,5 +1,6 @@
 import './ScanProgress.css';
 import pauseIcon from './assets/pause.png';
+import playIcon from './assets/play.png';
 
 const FULL_ARC = 2 * Math.PI * 40;
 
@@ -73,7 +74,7 @@ export default function ScanProgress(props) {
                             {
                                 !pause ? (
                                     <img src={pauseIcon} alt={'pause icon'} />
-                                ) : 'play'
+                                ) : <img src={playIcon} alt={'play icon'} />
                             }
                         </div>
                     ) : null
