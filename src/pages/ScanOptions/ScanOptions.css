@@ -54,7 +54,8 @@
 
         .scan-option-card {
             position: relative;
-            
+            padding: 16px;
+
             &:hover {
                 .scan-option-card__action {
                     /* display: block; */
@@ -85,8 +86,8 @@
 
             .scan-option-card__action {
                 position: absolute;
-                right: 0px;
-                top: 0px;
+                right: 16px;
+                top: 16px;
 
                 /* display: none; */
                 opacity: 0;
