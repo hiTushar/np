@@ -14,7 +14,7 @@ export default function ScanProgress(props) {
     getProgress(progress);
 
     return (
-        <div className="npav-scan_progress"> 
+        <div className="npav-scan_progress">
             <svg viewBox='0 0 101 101'>
                 <defs>
                     <filter id="shadow">
@@ -62,24 +62,22 @@ export default function ScanProgress(props) {
                 >
                 </circle>
             </svg>
-            <div className='progress__panel'>
-                {/* TODO: Add font and img size control prop or use em unit */}
-                <div className='panel__data'>
-                    <div className='data__percent'>{parseInt(progress * 100)}</div>
-                    <div className='data__symbol'>%</div>
-                </div>
-                {
-                    progress < 1 ? (
-                        <div className='panel__control' onClick={scanSwitch}>
-                            {
-                                !pause ? (
-                                    <img src={pauseIcon} alt={'pause icon'} />
-                                ) : <img src={playIcon} alt={'play icon'} />
-                            }
-                        </div>
-                    ) : null
-                }
+            {/* TODO: Add font and img size control prop or use em unit */}
+            <div className={`progress__data ${progress >= 1 ? 'complete' : ''}`}>
+                <div className='data__percent'>{parseInt(progress * 100)}</div>
+                <div className='data__symbol'>%</div>
             </div>
+            {
+                progress < 1 ? (
+                    <div className='progress__control' onClick={scanSwitch}>
+                        {
+                            !pause ? (
+                                <img src={pauseIcon} alt={'pause icon'} />
+                            ) : <img src={playIcon} alt={'play icon'} />
+                        }
+                    </div>
+                ) : null
+            }
         </div>
     )
 }
