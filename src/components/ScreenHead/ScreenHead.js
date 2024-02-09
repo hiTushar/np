@@ -18,8 +18,8 @@ export default function ScreenHead(props) {
                 <img src={arrowLeft} alt={'left arrow'} />
             </div>
             <div className='screen__name'>
-                <p className='title'>{title}</p>
-                <p className='desc'>{desc}</p>
+                <p className='name__title'>{title}</p>
+                <p className='name__desc'>{desc}</p>
             </div>
             <div className='screen__misc'>
                 {children}

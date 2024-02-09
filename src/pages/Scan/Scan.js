@@ -52,29 +52,6 @@ export default function Scan({ props }) {
         time_left: 90000 // 10000ms == 10s
     })
 
-    const goTo = () => {
-        navigate(-1);
-    }
-
-    const scanSwitch = () => {
-        if(!scanPause) {
-            setScanPause(true);
-            clearInterval(fileTimerId.current);
-            clearInterval(timeTimerId.current);
-        }
-        else {
-            setScanPause(false);
-
-            fileTimerId.current = setInterval(() => {
-                setScannedFileCount(prev => prev + 1);
-            }, 100)
-
-            timeTimerId.current = setInterval(() => {
-                setPanelData(prev => ({ ...prev, time_left: prev.time_left - 10}))
-            }, 1)
-        }
-    }
-
     useEffect(() => {
         if(!fileTimerId.current) {
             fileTimerId.current = setInterval(() => {
@@ -102,78 +79,129 @@ export default function Scan({ props }) {
         setProgress(scannedFileCount / totalFileCount);
     }, [scannedFileCount, totalFileCount])
 
-    console.log(panelData.time_left / 1000);
+    const goTo = () => {
+        navigate(-1);
+    }
+
+    const scanSwitch = () => {
+        if(!scanPause) {
+            setScanPause(true);
+            clearInterval(fileTimerId.current);
+            clearInterval(timeTimerId.current);
+        }
+        else {
+            setScanPause(false);
+
+            fileTimerId.current = setInterval(() => {
+                setScannedFileCount(prev => prev + 1);
+            }, 100)
+
+            timeTimerId.current = setInterval(() => {
+                setPanelData(prev => ({ ...prev, time_left: prev.time_left - 10}))
+            }, 1)
+        }
+    }
+
+    const getScreenHead = (type) => {
+        let propObj = {}, children = null;
+
+        if(type === 'quick') {
+            propObj = {
+                title: 'Quick Scan Running',
+                desc: null,
+                onClick: goTo
+            }
+            children = null;
+        }
+        else if (type === 'cloud') {
+            propObj = {
+                title: 'Cloud Scan',
+                desc: 'Our artificial intelligence Cloud Scan is now shielding you form viruses, spyware, and other threats.',
+                onClick: goTo,
+            }
+            children = null;
+        }
+        
+        return (
+            <ScreenHead 
+                {...propObj}
+            >
+                {children}
+            </ScreenHead>
+        )
+    }
 
     return (
         <div className='scan'>
-            <ScreenHead
-                title={'Quick Scan Running'}
-                onClick={goTo}
-            >
-            </ScreenHead>
-            <div className='scan__status'>
-                <div className='status__display'>
-                    <div className='display__progress-bar'>
-                        <ScanProgress progress={progress} pause={scanPause} scanSwitch={scanSwitch} />
-                    </div>
-                    <div className='display__progress-data'>
-                        <div className='progress-data__process-title'>
-                            Advanced Scanning
-                        </div>
-                        <div className='progress-data__display'>
-                            <div className='display__title'>Files Scanned</div>
-                            <div className='display__count'>{scannedFileCount} / {totalFileCount}</div>
-                            {/* TODO: comma separated values */}
-                        </div>
-                    </div>
-                </div>
-                <div className='status__panel'>
-                    <div className='panel__item'>
-                        <div className='item__display'>
-                            <div className='display__icon'>
-                                <img src={bug} alt={'bug icon'} />
-                            </div>
-                            <div className='display__count threat_found'>{panelData.threats_found}</div>
-                        </div>
-                        <div className='item__title'>Threats Found</div>
-                    </div>
-                    <div className='panel__item'>
-                        <div className='item__display'>
-                            <div className='display__icon'>
-                                <img src={medicineBox} alt={'medicine box icon'} />
-                            </div>
-                            <div className='display__count threat_fixed'>{panelData.threats_fixed}</div>
-                        </div>
-                        <div className='item__title'>Threats Neutralized</div>
-                    </div>
-                    <div className='panel__item'>
-                        <div className='item__display'>
-                            <div className='display__icon'>
-                                <img src={hourglass} alt={'hourglass icon'} />
-                            </div>
-                            <div className='display__count time_left'>
-                                {+splitTimestamp(panelData.time_left)[0] ? `${splitTimestamp(panelData.time_left)[0]}:` : null}
-                                {splitTimestamp(panelData.time_left)[1]}:
-                                {splitTimestamp(panelData.time_left)[2]}{' '}
-                                {splitTimestamp(panelData.time_left)[3]}
-                            </div>
-                        </div>
-                        <div className='item__title'>Time Remaining</div>
-                    </div>
-                </div>
+            <div className='scan__header'>
+                {getScreenHead(type)}
             </div>
-            {
-                type === 'quick' ? (
-                    <div className='scan__insights'>
-                        <p className='insights__title'>Insights</p>
-                        <div className='insights__cards'>
-                            {
-                                insightsCardData.map((cardData, index) => <InsightActionCard data={cardData} key={index} />)
-                            }
+            <div className='scan__body'>
+                <div className='scan__status'>
+                    <div className='status__display'>
+                        <div className='display__progress-bar'>
+                            <ScanProgress progress={progress} pause={scanPause} scanSwitch={scanSwitch} />
+                        </div>
+                        <div className='display__progress-data'>
+                            <div className='progress-data__process-title'>
+                                Advanced Scanning
+                            </div>
+                            <div className='progress-data__display'>
+                                <div className='display__title'>Files Scanned</div>
+                                <div className='display__count'>{scannedFileCount} / {totalFileCount}</div>
+                                {/* TODO: comma separated values */}
+                                {/* TODO: add dynamic space before the files scanned count so that 'Files Scanned' text does shift as the file count changes  */}
+                            </div>
                         </div>
                     </div>
-                ) : null
-            }
+                    <div className='status__panel'>
+                        <div className='panel__item'>
+                            <div className='item__display'>
+                                <div className='display__icon'>
+                                    <img src={bug} alt={'bug icon'} />
+                                </div>
+                                <div className='display__count threat_found'>{panelData.threats_found}</div>
+                            </div>
+                            <div className='item__title'>Threats Found</div>
+                        </div>
+                        <div className='panel__item'>
+                            <div className='item__display'>
+                                <div className='display__icon'>
+                                    <img src={medicineBox} alt={'medicine box icon'} />
+                                </div>
+                                <div className='display__count threat_fixed'>{panelData.threats_fixed}</div>
+                            </div>
+                            <div className='item__title'>Threats Neutralized</div>
+                        </div>
+                        <div className='panel__item'>
+                            <div className='item__display'>
+                                <div className='display__icon'>
+                                    <img src={hourglass} alt={'hourglass icon'} />
+                                </div>
+                                <div className='display__count time_left'>
+                                    {+splitTimestamp(panelData.time_left)[0] ? `${splitTimestamp(panelData.time_left)[0]}:` : null}
+                                    {splitTimestamp(panelData.time_left)[1]}:
+                                    {splitTimestamp(panelData.time_left)[2]}{' '}
+                                    {splitTimestamp(panelData.time_left)[3]}
+                                </div>
+                            </div>
+                            <div className='item__title'>Time Remaining</div>
+                        </div>
+                    </div>
+                </div>
+                {
+                    type === 'quick' ? (
+                        <div className='scan__insights'>
+                            <p className='insights__title'>Insights</p>
+                            <div className='insights__cards'>
+                                {
+                                    insightsCardData.map((cardData, index) => <InsightActionCard data={cardData} key={index} />)
+                                }
+                            </div>
+                        </div>
+                    ) : null
+                }
+            </div>
         </div>
     )
 }

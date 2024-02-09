@@ -6,6 +6,7 @@ export default function Dashboard({ props }) {
         <>
             <div>Dashboard</div>
             <Link to='/user/scan?type=quick'>Quick Scan</Link><br />
+            <Link to='/user/scan?type=cloud'>Cloud Scan</Link><br />
             <Link to='/user/scan-options'>Scan Options</Link>
         </>
     )
