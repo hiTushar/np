@@ -1,6 +1,5 @@
 import { useEffect, useRef } from 'react';
 import './Card.css';
-import pattern from './card-pattern-2.png';
 
 /**
  * 
