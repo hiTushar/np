@@ -1,0 +1,40 @@
+.npav-switch {
+    border-radius: 25% / 50%;
+    height: 100%;
+    padding: 2px;
+    cursor: pointer;
+    border: 2px solid rgba(103, 106, 132, 1);
+
+    &.checked {
+        background-color: rgba(243, 182, 23, 1);
+        border: none;
+        padding: 3px;
+    }
+
+    &.disabled {
+        cursor: not-allowed;
+    }
+
+    input {
+        display: none;
+    }
+}
+
+.npav-switch__handle {
+    display: block;
+    background-color: rgba(103, 106, 132, 1);
+    height: 100%;
+    aspect-ratio: 1;
+    border-radius: 50%;
+
+    animation: switch 0.5s ease;
+    &.checked {
+        background-color: rgba(10, 37, 43, 1);
+        margin-left: 100%;
+        transform: translateX(-100%);
+    }
+}
+
+@keyframes switch {
+    /* TODO: Add animation */
+}
