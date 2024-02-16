@@ -1,0 +1,45 @@
+.npav-table {
+    table {
+        table-layout: fixed;
+        width: 100%;
+        border-collapse: collapse;
+        border: 0.1px solid #22303F;
+    }
+
+    thead {
+        border-bottom: 2px solid #22303F;
+    }
+
+    th {
+        color: #FFF;
+        font-size: 12px;
+        font-weight: 700;   
+        text-align: left;
+        background-color: rgba(26, 38, 50, 0.40);
+
+        padding: 8px 16px;
+    }
+
+    td {
+        color: #FFF;
+        font-size: 10px;
+        font-weight: 400;
+        text-align: left;
+
+        padding: 6px 16px;
+    }
+
+    tr:nth-child(2n+1) {
+        td {
+            background-color: rgba(23, 34, 45, 1);            
+        }
+    }
+
+    tr:nth-child(2n) {
+        td {
+            background-color: rgba(26, 38, 50, 0.4);
+
+        }
+    }
+
+}
