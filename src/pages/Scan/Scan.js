@@ -107,7 +107,7 @@ export default function Scan({ props }) {
 
         if(type === 'quick') {
             propObj = {
-                title: 'Quick Scan Running',
+                titleBreadcrumbs: ['Quick Scan Running'],
                 desc: null,
                 onClick: goTo
             }
@@ -115,7 +115,7 @@ export default function Scan({ props }) {
         }
         else if (type === 'cloud') {
             propObj = {
-                title: 'Cloud Scan',
+                titleBreadcrumbs: ['Cloud Scan'],
                 desc: 'Our artificial intelligence Cloud Scan is now shielding you form viruses, spyware, and other threats.',
                 onClick: goTo,
             }

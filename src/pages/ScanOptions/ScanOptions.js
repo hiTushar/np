@@ -51,7 +51,7 @@ export default function ScanOptions(props) {
 
     return (
         <div className="scan-options">
-            <ScreenHead title={'Select Scan Type'} onClick={goTo} />
+            <ScreenHead titleBreadcrumbs={['Select Scan Type']} onClick={goTo} />
             <div className='scan-options__schedule'>
                 <div className='schedule__desc'>
                 Option to scan your PC, and removable drives for the latest viruses and emerging threats
