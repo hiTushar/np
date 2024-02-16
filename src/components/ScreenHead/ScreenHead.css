@@ -1,6 +1,7 @@
 .screen__head {
     display: flex;
     gap: 8px;
+    margin-bottom: 8px;
 
     .screen__exit {
         width: 16px;
@@ -18,9 +19,32 @@
         gap: 8px;
 
         .name__title {
-            color: #FFF;
-            font-size: 12px;
-            font-weight: 700;
+            display: flex;
+
+            .title__breadcrumb {
+                color: #676A84;
+                font-size: 12px;
+                font-weight: 700;
+
+                display: flex; /* for psuedo-element */
+                align-items: center;
+            }
+
+            .title__breadcrumb:last-child {
+                color: #FFF;
+            }
+
+            /* TODO: Add nav arrow */
+            .title__breadcrumb:not(:last-child)::after {
+                content: '';
+                display: inline-block;
+                line-height: 1;;
+                width: 16px;
+                height: 16px;
+                background: url('./assets/navRight.png');
+                background-size: 16px 16px;
+                margin-inline: 8px;
+            }
         }
 
         .name__desc {
