@@ -7,6 +7,7 @@ import user from './assets/npav-user.png';
 import Dashboard from "../Dashboard/Dashboard";
 import Scan from "../Scan/Scan";
 import ScanOptions from "../ScanOptions/ScanOptions";
+import JunkCleaner from "../JunkCleaner/JunkCleaner";
 
 export default function UserWindow({ props }) {
     return (
@@ -37,6 +38,7 @@ export default function UserWindow({ props }) {
                     <Route path='/' element={<Dashboard />} />
                     <Route path='/scan' element={<Scan />} />
                     <Route path='/scan-options' element={<ScanOptions />} />
+                    <Route path='/junk-cleaner' element={<JunkCleaner />} />
                 </Routes>
             </div>
         </div>

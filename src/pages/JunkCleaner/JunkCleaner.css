@@ -1,0 +1,140 @@
+.junk-cleaner {
+    height: 100%;
+    padding: 30px;
+    background: rgba(25, 27, 34, 1);
+    position: relative;
+}
+
+.junk-cleaner__optimize {
+    background-color: #1C2732;
+    border-radius: 1px;
+    width: 100%;
+    padding: 16px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+
+    .optimize__desc {
+        color: rgba(250, 250, 250, 0.70);
+        font-size: 14px;
+        font-weight: 200;
+        max-width: 550px;
+    }
+
+    .optimize__action {
+        .action__button {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            font-size: 10px;
+
+            .button__icon {
+                width: 12px;
+                line-height: 0.8;
+
+                &>img {
+                    width: 100%;
+                }
+            }
+        }
+    }
+}
+
+.junk-cleaner__file-system {
+    margin-bottom: 24px;
+}
+
+.junk-cleaner__others {
+    .others__title {
+        color: #FFF;
+        font-size: 12px;
+        font-weight: 700;
+        margin-bottom: 8px;
+    }
+
+    /* TODO: look into creating a component out of this banner strip and action button combo */
+    .others__clean-disk {
+        background-color: #1C2732;
+        border-radius: 1px;
+        width: 100%;
+        padding: 16px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 10px;
+
+        .clean-disk__desc {
+            color: rgba(250, 250, 250, 0.70);
+            font-size: 14px;
+            font-weight: 200;
+            max-width: 550px;
+        }
+
+        .clean-disk__action {
+            .action__button {
+                display: flex;
+                align-items: center;
+                gap: 6px;
+                font-size: 10px;
+
+                .button__icon {
+                    width: 12px;
+                    line-height: 0.8;
+
+                    &>img {
+                        width: 100%;
+                    }
+                }
+            }
+        }
+    }
+
+    .others__all-cards {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 10px;
+
+        .others-card {
+            position: relative;
+            padding: 16px;
+
+            /* &:hover {
+                .scan-option-card__action {
+                    opacity: 1;
+                }
+            } */
+
+            .others-card__icon {
+                width: 32px;
+
+                &>img {
+                    width: 100%;
+                }
+            }
+
+            .others-card__title {
+                color: #7D8B98;
+                font-size: 20px;
+                font-weight: 700;
+                margin-bottom: 10px;
+            }
+
+            .others-card__desc {
+                color: #FFF;
+                font-size: 12px;
+                font-weight: 500;
+            }
+
+            .others-card__action {
+                position: absolute;
+                right: 16px;
+                top: 16px;
+
+                width: 30px;
+                height: 15px;
+            }
+        }
+    }
+
+}
