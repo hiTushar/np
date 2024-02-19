@@ -7,6 +7,7 @@
 
 .user-navpanel__step {
     display: flex;
+    align-items: center;
     margin-inline: 8px;
 }
 

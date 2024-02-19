@@ -110,12 +110,11 @@ export default function Step1() {
                     readOnly={true}
                     customStyle={{ 
                         display: 'flex',
-                        justifyContent: 'space-between'
+                        justifyContent: 'space-between',
+                        alignItems: 'center'
                     }}
                 >
-                    <div>
-                        <img src={copyIcon} className={'user-formpanel__step1-code-copy'} alt={'copy icon'} onClick={() => copyCode('NN-55697-45887-33441-42095-07498')} />
-                    </div>
+                    <img src={copyIcon} className={'user-formpanel__step1-code-copy'} alt={'copy icon'} onClick={() => copyCode('NN-55697-45887-33441-42095-07498')} />
                 </Input>
                 <p>One key can be used on one system only</p>
             </div>

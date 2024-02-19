@@ -19,6 +19,13 @@ export default function Step2() {
         }));
     }
 
+    const prevPage = () => {
+        dispatch(formStepChange({
+            currentStep: 1,
+            allData: {}
+        }))
+    }
+
     const selectLocation = (data) => {
         console.log({ data });
     }
@@ -115,6 +122,7 @@ export default function Step2() {
                 </div>
             </div>
             <div className='user-formpanel__step2-footer'>
+                <Button text={'BACK'} onClick={prevPage} type={'secondary'} />
                 <Button text={'NEXT'} onClick={nextPage} type={'secondary'} />
             </div>
         </div>

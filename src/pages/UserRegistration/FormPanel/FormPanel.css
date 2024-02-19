@@ -47,6 +47,7 @@
 .user-formpanel__step1-footer, .user-formpanel__step2-footer {
     display: flex;
     justify-content: flex-end;
+    gap: 4px;
     position: absolute;
     bottom: 0px;
     right: 0px;

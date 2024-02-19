@@ -9,13 +9,9 @@ const Option = (props) => {
         <div className='npav-radio__option' onClick={() => setSelected(data)} style={{ ...style }}>
             {
                 selected ? (
-                    <div>
-                        <img src={radio_active} alt={'active option'} />
-                    </div>
+                    <img src={radio_active} alt={'active option'} />
                 ) : (
-                    <div>
-                        <img src={radio_inactive} alt={'inactive option'} />
-                    </div>
+                    <img src={radio_inactive} alt={'inactive option'} />
                 )
             }
             <div>
