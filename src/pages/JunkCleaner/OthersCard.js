@@ -1,15 +1,23 @@
 import { useState } from "react";
 import Card from "../../components/Card/Card";
 import Switch from "../../components/Switch/Switch";
+import { useNavigate } from "react-router-dom";
 
 export default function OthersCard({ data }) {
-    const { icon, title, desc, state } = data;
-
+    const { icon, title, desc, state, navUrl } = data;
+    const navigate = useNavigate();
     const [otherSettingState, setOtherSettingState] = useState(state);
+
+    const goTo = () => navigate(navUrl);
+
+    const toggleSetting = (e) => {
+        e.stopPropagation();
+        setOtherSettingState(prev => !prev);
+    }
 
     return (
         <Card>
-            <div className='others-card'>
+            <div className={`others-card ${navUrl ? 'nav-click' : ''}`} onClick={navUrl ? goTo : () => {}}>
                 <div className="others-card__icon">
                     <img src={icon} alt={'icon'} />
                 </div>
@@ -21,7 +29,7 @@ export default function OthersCard({ data }) {
                 </div>
                 <div className="others-card__action">
                     <Switch 
-                        onClick={() => {setOtherSettingState(prev => !prev)}} 
+                        onClick={toggleSetting} 
                         checked={otherSettingState} 
                     />
                     {/* <Button text='SCAN NOW' type='primary' onClick={() => {}} customStyle={{ fontSize: '10px' }}/> */}
