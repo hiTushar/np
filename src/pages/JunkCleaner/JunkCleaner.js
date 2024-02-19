@@ -43,6 +43,7 @@ const othersCardData = [
         icon: alertIcon,
         title: 'Start-up Program',
         desc: 'Protects from malware and virus infection over the LAN',
+        navUrl: '/user/junk-cleaner/startup',
         state: true
     },
     {

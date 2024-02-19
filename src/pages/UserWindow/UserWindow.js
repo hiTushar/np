@@ -8,6 +8,7 @@ import Dashboard from "../Dashboard/Dashboard";
 import Scan from "../Scan/Scan";
 import ScanOptions from "../ScanOptions/ScanOptions";
 import JunkCleaner from "../JunkCleaner/JunkCleaner";
+import StartupProgram from "../StartupProgram/StartupProgram";
 
 export default function UserWindow({ props }) {
     return (
@@ -39,6 +40,7 @@ export default function UserWindow({ props }) {
                     <Route path='/scan' element={<Scan />} />
                     <Route path='/scan-options' element={<ScanOptions />} />
                     <Route path='/junk-cleaner' element={<JunkCleaner />} />
+                    <Route path='/junk-cleaner/startup' element={<StartupProgram />} />
                 </Routes>
             </div>
         </div>
