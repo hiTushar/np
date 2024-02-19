@@ -1,10 +1,13 @@
 import { useEffect, useRef, useState } from 'react';
 import ProgressBar from '../../../components/ProgressBar/ProgressBar';
 import activation_success from '../assets/activation_success.svg';
+import { useNavigate } from 'react-router-dom';
 
 export default function Step3() {
     const [progress, setProgress] = useState(0);
     const timerId = useRef(null);
+
+    const navigate = useNavigate();
 
     useEffect(() => {
         if(!timerId.current) {
@@ -16,6 +19,9 @@ export default function Step3() {
         return () => {
             if(progress >= 100) {
                 clearInterval(timerId.current);
+                setTimeout(() => {
+                    navigate('/user'); // TODO: temporary redirect
+                }, 2000)
             }
         }
     }, [progress])
