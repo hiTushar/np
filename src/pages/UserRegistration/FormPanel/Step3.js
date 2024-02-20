@@ -24,6 +24,7 @@ export default function Step3() {
                 }, 2000)
             }
         }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [progress])
 
     return (
