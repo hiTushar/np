@@ -1,14 +1,24 @@
 .user-formpanel {
     padding: 32px;
     width: 70%;
-    height: calc(100% - 34px);
+    display: flex;
+    flex-direction: column;
+}
+
+.user-formpanel__step1-body, .user-formpanel__step2-body {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 16px;
 }
 
 .user-formpanel__step1, .user-formpanel__step2 {
     margin-top: 24px;
     color: white;
-    height: 100%;
-    position: relative;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
 }
 
 .user-formpanel__step1 p, .user-formpanel__step2 p {
@@ -20,19 +30,7 @@
 .user-formpanel__step1 > p, .user-formpanel__step2 > p {
     font-size: 16px;
     font-weight: 700;
-    margin-bottom: 16px;
-}
-
-.user-formpanel__step1-key, 
-.user-formpanel__step1-type, 
-.user-formpanel__step2-name,
-.user-formpanel__step2-type,
-.user-formpanel__step2-address {
-    margin-bottom: 16px;
-}
-
-.user-formpanel__step1-code {
-    margin-bottom: 4px;
+    margin-bottom: 0px;
 }
 
 .user-formpanel__step1-code-copy {
@@ -47,10 +45,7 @@
 .user-formpanel__step1-footer, .user-formpanel__step2-footer {
     display: flex;
     justify-content: flex-end;
-    gap: 4px;
-    position: absolute;
-    bottom: 0px;
-    right: 0px;
+    gap: 16px;
 }
 
 .user-formpanel__step2-name > p > span {
