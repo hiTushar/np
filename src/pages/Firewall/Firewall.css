@@ -1,0 +1,119 @@
+.firewall { /* TODO: make this a common layout */
+    height: 100%;
+    padding: 30px;
+    background: rgba(25, 27, 34, 1);
+    display: flex;
+    flex-direction: column;
+    
+    .firewall__options {
+        display: flex;
+        align-items: center;
+        gap: 24px;
+        
+        .options__enable {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+    
+            .enable__title {
+                color: #FFF;
+                font-size: 14px;
+                font-weight: 400;
+                letter-spacing: 0.8px;
+            }
+    
+            .enable__button {
+                height: 16px;
+                width: 32px;
+            }
+        }
+    
+        .options__settings {
+            cursor: pointer;
+            line-height: 0.8;
+            img {
+                height: 16px;
+            }
+        }
+    }
+    
+    .firewall__statistics {
+        flex: 1;
+    }
+    
+    .firewall__settings {
+        .settings__title {
+            color: #FFF;
+            font-size: 12px;
+            font-weight: 400;
+            letter-spacing: 0.5;
+            margin-bottom: 8px;
+        }
+
+        .settings__all-cards {
+            display: flex;
+            gap: 10px;
+
+            &> * {
+                flex: 1;
+            }
+        }
+    }
+
+    .setting-card {
+        padding: 16px;
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+        cursor: pointer;
+
+        .setting-card__title {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+
+            .title__icon {
+                width: 16px;
+                line-height: 0.8;
+                img {
+                    width: 100%;
+                }
+            }
+
+            .title__name {
+                color: rgba(103, 106, 132, 1);
+                font-size: 16px;
+                font-weight: 700;
+            }
+        }
+
+        .setting-card__desc {
+            color: #FFF;
+            font-size: 12px;
+            font-weight: 400;
+            letter-spacing: 0.5px;
+            /* word-break: break-all; */
+        }
+
+        .setting-card__action {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+
+            .action__name {
+                color: rgba(243, 182, 23, 1);
+                font-size: 10px;
+                font-weight: 400;
+            }
+            .action__icon {
+                width: 14px;
+                line-height: 0.8;
+
+                img {
+                    width: 100%;
+                    transform: rotate(180deg);
+                }
+            }
+        }
+    }
+}
