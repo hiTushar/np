@@ -1,18 +1,16 @@
-import { FIREWALL_SETTING_CHANGE } from "../actions/actionTypes";
+import { FIREWALL_CHANGE } from "../actions/actionTypes";
 
 const initialState = {
-    firewallState: {
-        enabled: true
-    }
+    firewallEnabled: true
 }
 
 const firewallReducer = (state = initialState, action) => {
     const { type, payload } = action;
     switch(type) {
-        case FIREWALL_SETTING_CHANGE: 
+        case FIREWALL_CHANGE: 
             return {
-                ...state, 
-                firewallState: payload
+                ...state,
+                ...payload
             }
         default: 
             return state;

@@ -17,10 +17,10 @@ export default function FirewallFeatures(props) {
     const section = searchParams.get('section');
 
     const dispatch = useDispatch();
-    const { firewallState } = useSelector(state => state.firewallReducer);
+    const { firewallEnabled } = useSelector(state => state.firewallReducer);
     const toggleFirewall = () => { // TODO: have individual setting keys instead of a common one
         dispatch(firewallChange({
-            enabled: !firewallState.enabled
+            firewallEnabled: !firewallEnabled
         }))
     }
 
@@ -32,11 +32,11 @@ export default function FirewallFeatures(props) {
             >
                 <div className='firewall-features__options'>
                     <div className='options__enable'>
-                        <div className='enable__title'>{firewallState.enabled ? 'Enabled' : 'Disabled'}</div>
+                        <div className='enable__title'>{firewallEnabled ? 'Enabled' : 'Disabled'}</div>
                         <div className='enable__button'>
                             <Switch
                                 onClick={toggleFirewall}
-                                checked={firewallState.enabled}
+                                checked={firewallEnabled}
                             />
                         </div>
                     </div>

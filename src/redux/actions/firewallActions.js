@@ -1,8 +1,8 @@
-import { FIREWALL_SETTING_CHANGE } from "./actionTypes";
+import { FIREWALL_CHANGE } from "./actionTypes";
 
-const firewallSettingChange = (settingObj) => ({
-    type: FIREWALL_SETTING_CHANGE,
+const firewallChange = (settingObj) => ({
+    type: FIREWALL_CHANGE,
     payload: settingObj
 })
 
-export default firewallSettingChange;
+export default firewallChange;
