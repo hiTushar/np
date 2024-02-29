@@ -20,7 +20,7 @@
     width: 100%;
     max-height: 140px; /* TODO: make it as per the height of the option or the space availabel below and not hardcoded */
     scrollbar-width: thin;
-    scrollbar-color: rgba(53, 64, 74, 1) #232d38;
+    scrollbar-color: rgba(53, 64, 74, 1) #232d38; /* TODO: Make scrollbar as per design */
     box-shadow: 0px 10px 10px rgba(0, 0, 0, 0.22) ;
     
     .menu__option {
