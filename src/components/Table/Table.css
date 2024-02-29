@@ -31,7 +31,7 @@
 
     tr:nth-child(2n+1) {
         td {
-            background-color: rgba(23, 34, 45, 1);            
+            background-color: rgba(23, 34, 45, 1);          
         }
     }
 
@@ -40,6 +40,17 @@
             background-color: rgba(26, 38, 50, 0.4);
 
         }
+    }
+
+
+    tr.row-highlight {
+            &:hover {
+                td {
+                    /* cursor: pointer; */
+                    background-color: rgb(196, 154, 45, 0.08);
+                }
+            }
+        
     }
 
 }

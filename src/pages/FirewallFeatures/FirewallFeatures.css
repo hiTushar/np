@@ -1,0 +1,78 @@
+.firewall-features {
+    height: 100%;
+    padding: 30px;
+    background: rgba(25, 27, 34, 1);
+    display: flex;
+    flex-direction: column;
+
+    .firewall-features__options {
+        display: flex;
+        align-items: center;
+        gap: 24px;
+        
+        .options__enable {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+    
+            .enable__title {
+                color: #FFF;
+                font-size: 14px;
+                font-weight: 400;
+                letter-spacing: 0.8px;
+            }
+    
+            .enable__button {
+                height: 16px;
+                width: 32px;
+            }
+        }
+    }
+
+    .firewall-features__content {
+        flex: 1;
+        /* outline: red 1px solid; */
+        .firewall-features__side-panel {
+            height: 100%;
+            padding-top: 20px;
+
+            .side-panel__section {
+                padding: 16px;
+                border-left: rgb(0, 0, 0, 0) 2px solid;
+                display: flex;
+                gap: 16px;
+                cursor: pointer;
+                
+
+                &.highlight {
+                    background: linear-gradient(90deg, rgba(243, 182, 23, 0.52) 0%, rgba(243, 182, 23, 0.2) 30%, rgba(25, 37, 49, 0.5) 95%, rgba(25, 37, 49, 0) 100%);;
+                    border-left: #E5BE20 2px solid;
+                }
+
+                .section__icon {
+                    width: 16px;
+                    height: 16px;
+                    
+                    img {
+                        width: 100%;
+                    }
+                }
+    
+                .section__title {
+                    color: #71748E;
+                    font-size: 12px;
+                    font-weight: 700;
+                    
+                    &.highlight {
+                        color: #C3E3E9;
+                    }
+                }
+            }
+        }
+
+        .firewall-features__main-panel {
+            padding: 30px;
+            height: 100%;
+        }
+    }
+}

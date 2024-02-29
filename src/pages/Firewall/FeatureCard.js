@@ -2,23 +2,23 @@ import Card from "../../components/Card/Card";
 import ArrowLeft from '../../assets/arrow-left.png';
 import { useNavigate } from "react-router-dom";
 
-export default function SettingCard({ data }) {
-    const { title, icon, desc, navUrl } = data;
+export default function FeatureCard({ data }) {
+    const { key, title, icons, desc } = data;
     const navigate = useNavigate();
 
-    const goto = (url) => navigate(url);
+    const goto = (section) => navigate(`/user/firewall/features?section=${section}`);
 
     return (
         <Card>
-            <div className="setting-card" onClick={() => goto(navUrl)}>
-                <div className="setting-card__title">
+            <div className="feature-card" onClick={() => goto(key)}>
+                <div className="feature-card__title">
                     <div className="title__icon">
-                        <img src={icon} alt='icon' />
+                        <img src={icons[0]} alt='icon' />
                     </div>
                     <div className="title__name">{title}</div>
                 </div>
-                <div className="setting-card__desc">{desc}</div>
-                <div className="setting-card__action">
+                <div className="feature-card__desc">{desc}</div>
+                <div className="feature-card__action">
                     <div className="action__name">Manage</div>
                     <div className="action__icon">
                         <img src={ArrowLeft} alt='arrow left' />

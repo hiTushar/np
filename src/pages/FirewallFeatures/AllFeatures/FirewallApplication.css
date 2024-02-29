@@ -1,0 +1,85 @@
+.firewall-applications {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    position: relative;
+
+    .firewall-applications__selector {
+        margin-bottom: 16px;
+        display: flex;
+        gap: 16px;
+
+        .selector__title {
+            color: #71748E;
+            font-size: 12px;
+            font-weight: 400;
+            cursor: pointer;
+            
+            &.active {
+                color: #FFF;
+                font-weight: 700;
+            }
+        }
+    }
+
+    .firewall-applications__table {
+        display: flex;
+        flex-direction: column;
+        height: 100%;
+
+        .table__title {
+            color: rgb(250, 250, 250, 0.5);
+            font-size: 12px;
+            font-weight: 400;
+            margin-bottom: 8px;
+        }
+
+        .table__data {
+            flex: 1;
+            flex-basis: 0px;
+            overflow: auto;
+            scrollbar-width: thin;
+            scrollbar-color: rgba(53, 64, 74, 1) rgba(255, 255, 255, 0.02);
+
+            .actions {
+                display: flex;
+                gap: 24px;
+
+                & > * {
+                    width: 11px;
+                    cursor: pointer;
+                    img {
+                        width: 100%;
+                    }
+                }
+            }
+        }
+    }
+
+    .firewall-applications__input {
+        position: absolute;
+        top: 0px;
+        right: 0px;
+
+        background-color: #222D38;
+        padding: 6px 12px;
+        cursor: pointer;
+        
+        display: flex;
+        gap: 5px;
+
+        .input__icon {
+            width: 16px;
+            line-height: 0.8;
+            img {
+                width: 100%;
+            }
+        }
+
+        .input__title {
+            color: #71748E;
+            font-size: 12px;
+            font-weight: 500;
+        }
+    }
+}

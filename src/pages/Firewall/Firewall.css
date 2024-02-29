@@ -41,8 +41,8 @@
         flex: 1;
     }
     
-    .firewall__settings {
-        .settings__title {
+    .firewall__features {
+        .features__title {
             color: #FFF;
             font-size: 12px;
             font-weight: 400;
@@ -50,7 +50,7 @@
             margin-bottom: 8px;
         }
 
-        .settings__all-cards {
+        .features__all-cards {
             display: flex;
             gap: 10px;
 
@@ -60,14 +60,14 @@
         }
     }
 
-    .setting-card {
+    .feature-card {
         padding: 16px;
         display: flex;
         flex-direction: column;
         gap: 10px;
         cursor: pointer;
 
-        .setting-card__title {
+        .feature-card__title {
             display: flex;
             align-items: center;
             gap: 5px;
@@ -87,7 +87,7 @@
             }
         }
 
-        .setting-card__desc {
+        .feature-card__desc {
             color: #FFF;
             font-size: 12px;
             font-weight: 400;
@@ -95,7 +95,7 @@
             /* word-break: break-all; */
         }
 
-        .setting-card__action {
+        .feature-card__action {
             display: flex;
             justify-content: space-between;
             align-items: center;
