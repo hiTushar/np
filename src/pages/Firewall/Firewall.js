@@ -10,14 +10,14 @@ import settings from './assets/settings-2.png';
 
 export default function Firewall(props) {
     const navigate = useNavigate();
-    const goTo = () => navigate('/user');
+    const goTo = (url) => navigate(url);
 
     const dispatch = useDispatch();
-    const { firewallEnabled } = useSelector(state => state.firewallReducer);
+    const { firewall_enabled } = useSelector(state => state.firewallReducer);
 
     const toggleFirewall = () => {
         dispatch(firewallChange({
-            firewallEnabled: !firewallEnabled
+            firewall_enabled: !firewall_enabled
         }))
     }
 
@@ -25,19 +25,19 @@ export default function Firewall(props) {
         <div className="firewall">
             <ScreenHead
                 titleBreadcrumbs={['Firewall']}
-                onClick={goTo}
+                onClick={() => goTo('/user')}
             >
                 <div className='firewall__options'>
                     <div className='options__enable'>
-                        <div className='enable__title'>{firewallEnabled ? 'Enabled' : 'Disabled'}</div>
+                        <div className='enable__title'>{firewall_enabled ? 'Enabled' : 'Disabled'}</div>
                         <div className='enable__button'>
                             <Switch
                                 onClick={toggleFirewall}
-                                checked={firewallEnabled}
+                                checked={firewall_enabled}
                             />
                         </div>
                     </div>
-                    <div className='options__settings'>
+                    <div className='options__settings' onClick={() => goTo('/user/firewall/settings')}>
                         <img src={settings} alt='settings button icon' />
                     </div>
                 </div>

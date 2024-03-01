@@ -13,14 +13,15 @@ export default function FirewallFeatures(props) {
     const navigate = useNavigate();
     const goTo = (url) => navigate(url);
 
+    // eslint-disable-next-line no-unused-vars
     let [searchParams, setSearchParams] = useSearchParams();
     const section = searchParams.get('section');
 
     const dispatch = useDispatch();
-    const { firewallEnabled } = useSelector(state => state.firewallReducer);
+    const { firewall_enabled } = useSelector(state => state.firewallReducer);
     const toggleFirewall = () => { // TODO: have individual setting keys instead of a common one
         dispatch(firewallChange({
-            firewallEnabled: !firewallEnabled
+            firewall_enabled: !firewall_enabled
         }))
     }
 
@@ -32,11 +33,11 @@ export default function FirewallFeatures(props) {
             >
                 <div className='firewall-features__options'>
                     <div className='options__enable'>
-                        <div className='enable__title'>{firewallEnabled ? 'Enabled' : 'Disabled'}</div>
+                        <div className='enable__title'>{firewall_enabled ? 'Enabled' : 'Disabled'}</div>
                         <div className='enable__button'>
                             <Switch
                                 onClick={toggleFirewall}
-                                checked={firewallEnabled}
+                                checked={firewall_enabled}
                             />
                         </div>
                     </div>

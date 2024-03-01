@@ -11,6 +11,7 @@ import JunkCleaner from "../JunkCleaner/JunkCleaner";
 import StartupProgram from "../StartupProgram/StartupProgram";
 import Firewall from "../Firewall/Firewall";
 import FirewallFeatures from "../FirewallFeatures/FirewallFeatures";
+import FirewallSettings from "../FirewallSettings/FirewallSettings";
 
 export default function UserWindow({ props }) {
     return (
@@ -41,10 +42,11 @@ export default function UserWindow({ props }) {
                     <Route path='/' element={<Dashboard />} />
                     <Route path='/scan' element={<Scan />} />
                     <Route path='/scan-options' element={<ScanOptions />} />
-                    <Route path='/junk-cleaner' element={<JunkCleaner />} />
                     <Route path='/junk-cleaner/startup' element={<StartupProgram />} />
-                    <Route path='/firewall' element={<Firewall />} />
+                    <Route path='/junk-cleaner' element={<JunkCleaner />} />
+                    <Route path='/firewall/settings' element={<FirewallSettings />} />
                     <Route path='/firewall/features' element={<FirewallFeatures />} />
+                    <Route path='/firewall' element={<Firewall />} />
                 </Routes>
             </div>
         </div>
