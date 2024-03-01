@@ -1,6 +1,7 @@
 .npav-switch {
     border-radius: 25% / 50%;
     height: 100%;
+    aspect-ratio: 2;
     padding: 2px;
     cursor: pointer;
     border: 2px solid rgba(103, 106, 132, 1);
