@@ -50,6 +50,17 @@ const fetchCities = async (country, state) => {
     return res;
 }
 
+const USAGE_TYPE_DATA = [
+    {
+        label: 'Home use',
+        value: 'home'
+    },
+    {
+        label: 'Office use',
+        value: 'office'
+    }
+]
+
 export default function Step2() {
     const nameRef = useRef(null);
     const dealerRef = useRef(null);
@@ -61,6 +72,8 @@ export default function Step2() {
         state: null,
         city: null
     })
+
+    const [usageType, setUsageType] = useState(USAGE_TYPE_DATA[0])
 
     const { data: countryData, status: countryStatus } = useQuery('country', fetchCoutries);
     const { data: stateData, status: stateStatus } = useQuery(['state', location], () => fetchStates(location.country));
@@ -108,6 +121,8 @@ export default function Step2() {
         })
     }
 
+    const onTypeChange = (val) => setUsageType(val);
+
     return (
         <div className="user-formpanel__step2">
             <div className="user-formpanel__step2-body">
@@ -123,22 +138,10 @@ export default function Step2() {
                     />
                 </div>
                 <div className="user-formpanel__step2-type">
-                    <p>Select user type</p>
+                    <p>Select usage type</p>
                     <Radio
-                        options={[
-                            {
-                                name: 'Home use',
-                                value: 'home'
-                            },
-                            {
-                                name: 'Office use',
-                                value: 'office'
-                            }
-                        ]}
-                        defaultValue={{
-                            name: 'Home use',
-                            value: 'home'
-                        }}
+                        options={USAGE_TYPE_DATA}
+                        selected={usageType}
                         customStyle={{
                             container: {
                                 display: 'flex',
@@ -148,10 +151,9 @@ export default function Step2() {
                                 flex: 1
                             }
                         }}
-                        onChange={() => { }}
+                        onChange={onTypeChange}
                     />
                 </div>
-                {/* TODO: Add location dropdowns */}
                 <div className="user-formpanel__step2-address">
                     <div>
                         <p>Country</p>

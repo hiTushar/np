@@ -12,7 +12,18 @@ import Button from '../../../components/Button/Button';
 
 const KEY_SEPERATOR = ' - ';
 
-export default function Step1() {
+const USER_TYPE_DATA = [
+    {
+        label: 'Single User',
+        value: 'single'
+    },
+    {
+        label: 'Multiple PCs with corporate ID',
+        value: 'multi'
+    }
+]
+
+function Step1() {
     const [key, setKey] = useState('');
     const keyRef = useRef(null);
     const dispatch = useDispatch();
@@ -21,6 +32,7 @@ export default function Step1() {
     //         setKey(`${key} - `)
     //     }
     // }, [key])
+    const [userType, setUserType] = useState(USER_TYPE_DATA[0])
 
     const nextPage = () => {
         dispatch(formStepChange({
@@ -47,7 +59,7 @@ export default function Step1() {
     }
 
     const onTypeChange = (val) => {
-        // console.log(key);
+        setUserType(val);
     }
 
     const copyCode = (text) => {
@@ -75,21 +87,8 @@ export default function Step1() {
                     <div className='user-formpanel__step1-type'>
                         <p>Select user type</p>
                         <Radio 
-                            options={[
-                                {
-                                    name: 'Single User',
-                                    value: 'single'
-                                },
-                                {
-                                    name: 'Multiple PCs with corporate ID',
-                                    value: 'multi'
-                                }
-                            ]}
-                            defaultValue={{
-                                name: 'Single User',
-                                value: 'single'
-                            }}
-                            customStyle={{}}
+                            options={USER_TYPE_DATA}
+                            selected={userType}
                             onChange={onTypeChange}
                         />
                     </div>
@@ -128,3 +127,5 @@ export default function Step1() {
         </>
     )
 }
+
+export default Step1;
