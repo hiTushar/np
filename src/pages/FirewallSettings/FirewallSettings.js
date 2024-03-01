@@ -1,32 +1,53 @@
+import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
+import { ToastContainer, toast } from 'react-toastify';
 import './FirewallSettings.css';
 import firewallChange from '../../redux/actions/firewallActions';
 import ScreenHead from '../../components/ScreenHead/ScreenHead';
 import Switch from '../../components/Switch/Switch';
-import { firewallModes, otherSettings } from './data';
 import Radio from '../../components/Radio/Radio';
-
+import Button from '../../components/Button/Button';
+import { firewallModes, otherSettings } from './data';
 
 export default function FirewallSettings(props) {
-
     const navigate = useNavigate();
     const goTo = (url) => navigate(url); // TODO: make a custom hook out of this and then just it be a navigate() directly
-
+    
     const dispatch = useDispatch();
     const firewallState = useSelector(state => state.firewallReducer);
-    const toggleFirewallSettings = (settingVal) => { // TODO: have individual setting keys instead of a common one
+    
+    const [firewallSettingsTemp, setFirewallSettingsTemp] = useState({ ...firewallState })
+
+    const toggleFirewall = () => {
         dispatch(firewallChange({
-            ...firewallState,
-            [settingVal]: !firewallState[settingVal]
+            firewall_enabled: !firewallState.firewall_enabled
         }))
     }
 
-    const changeFirewallMode = (modeVal) => {
+    const changeFirewallSettings = (val) => {
+        setFirewallSettingsTemp(prev => ({ ...prev, ...val }))
+    }
+
+    const setDefaultFirewallSettings = () => {
+        setFirewallSettingsTemp({
+            firewall_mode: 'learning',
+            outgoing_rule: true,
+            incoming_rule: true,
+            outgoing_admin_alert: true,
+            incoming_admin_alert: true,
+            action_after_timeout: true,
+            outgoing_log: true,
+            incoming_log: true
+        })
+    }
+
+    const saveSettings = () => {
         dispatch(firewallChange({
             ...firewallState,
-            firewall_mode: modeVal
-        }))
+            ...firewallSettingsTemp
+        }));
+        toast.success('Settings saved!'); // TODO: add a proper callback 'after' redux store is updated - https://fkhadra.github.io/react-toastify/use-react-toastify-with-redux
     }
 
     return (
@@ -37,10 +58,10 @@ export default function FirewallSettings(props) {
             >
                 <div className='firewall-settings__options'>
                     <div className='options__enable'>
-                        <div className='enable__title'>{firewallState.firewallEnabled ? 'Enabled' : 'Disabled'}</div>
+                        <div className='enable__title'>{firewallState.firewall_enabled ? 'Enabled' : 'Disabled'}</div>
                         <div className='enable__button'>
                             <Switch
-                                onClick={() => toggleFirewallSettings('firewall_enabled')}
+                                onClick={toggleFirewall}
                                 checked={firewallState.firewall_enabled}
                             />
                         </div>
@@ -54,8 +75,8 @@ export default function FirewallSettings(props) {
                     </div>
                     <div className='mode__options'>
                         <Radio
-                            value={firewallState.firewall_mode}
-                            selected={firewallState.firewall_mode}
+                            value={firewallSettingsTemp.firewall_mode}
+                            selected={firewallSettingsTemp.firewall_mode}
                             customStyle={{
                                 container: {
 
@@ -68,7 +89,7 @@ export default function FirewallSettings(props) {
                                         className='options__item' 
                                         key={mode.value}
                                         data-value={mode.value}
-                                        onChange={changeFirewallMode}
+                                        onChange={() => changeFirewallSettings({ firewall_mode: mode.value })}
                                     >
                                         <div className='item__detail'>
                                             <div className='options__title'>{mode.title}</div>
@@ -97,7 +118,7 @@ export default function FirewallSettings(props) {
                                         {setting.title}
                                     </div>
                                     <div className='item__switch'>
-                                        <Switch checked={firewallState[setting.value]} onClick={() => toggleFirewallSettings(setting.value)} />
+                                        <Switch checked={firewallSettingsTemp[setting.value]} onClick={() => changeFirewallSettings({ [setting.value]: !firewallSettingsTemp[setting.value]})} />
                                     </div>
                                 </div>
                             ))
@@ -105,6 +126,24 @@ export default function FirewallSettings(props) {
                     </div>
                 </div>
             </div>
+            <div className='firewall-settings__action'>
+                <div className='action__button'>
+                    <Button text='DEFAULT' type='secondary' onClick={setDefaultFirewallSettings} />
+                    <Button text='APPLY' type='primary' onClick={saveSettings} />
+                </div>
+            </div>
+            <ToastContainer 
+                position="top-center"
+                autoClose={2000}
+                hideProgressBar
+                newestOnTop={false}
+                closeOnClick
+                rtl={false}
+                pauseOnFocusLoss
+                draggable={false}
+                pauseOnHover
+                theme="dark"
+            />
         </div>
     )
 }
