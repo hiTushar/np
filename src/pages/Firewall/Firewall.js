@@ -7,6 +7,7 @@ import ScreenHead from '../../components/ScreenHead/ScreenHead';
 import Switch from '../../components/Switch/Switch';
 import FeatureCard from './FeatureCard';
 import settings from './assets/settings-2.png';
+import FirewallStatsChart from './FirewallStatsChart';
 
 export default function Firewall(props) {
     const navigate = useNavigate();
@@ -42,7 +43,12 @@ export default function Firewall(props) {
                     </div>
                 </div>
             </ScreenHead>
-            <div className='firewall__statistics'></div>
+            <div className='firewall__data'>
+                <div className='data__title'>
+                    Connection Statistics
+                </div>
+                <FirewallStatsChart />
+            </div>
             <div className='firewall__features'>
                 <div className='features__title'>Features</div>
                 <div className='features__all-cards'>

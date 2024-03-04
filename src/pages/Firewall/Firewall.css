@@ -37,10 +37,73 @@
         }
     }
     
-    .firewall__statistics {
+    .firewall__data {
         flex: 1;
+
+        .data__title {
+            color: #FFF;
+            font-size: 12px;
+            font-weight: 400;
+            margin-bottom: 8px;
+        }
     }
     
+    .firewall-chart {
+        padding-block: 20px;
+        position: relative;
+
+        .firewall-chart__xlabel {
+            position: absolute;
+            color: rgba(251, 251, 251, 0.5);
+            font-weight: 200;
+            font-size: 12px;
+            letter-spacing: 0.5px;
+            right: 30px;
+        }
+        
+        .firewall-chart__ylabel {
+            position: absolute;
+            color: rgba(251, 251, 251, 0.5);
+            font-weight: 200;
+            font-size: 12px;
+            letter-spacing: 0.5px;
+            top: 0px;
+            left: 5px;
+        }
+
+        .firewall-chart__legend {
+            position: absolute;
+            left: 40px;
+            display: flex;
+            gap: 16px;
+
+            .legend__item {
+                display: flex;
+                gap: 8px;
+            }
+
+            .item__icon {
+                width: 12px;
+                line-height: 0.8;
+                img {
+                    width: 100%;
+                }
+            }
+
+            .item__title {
+                color: rgba(251, 251, 251, 0.5);
+                font-weight: 200;
+                font-size: 12px;
+                letter-spacing: 0.5px;
+            }
+
+            .item__value {
+                color: #FFF;
+                font-size: 12px;
+            }
+        }
+    }
+
     .firewall__features {
         .features__title {
             color: #FFF;
