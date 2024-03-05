@@ -9,6 +9,8 @@ function UserRegistration(props) {
             <FoldedPanel
                 SidePanelComponent={() => <SidePanel />}
                 MainPanelComponent={() => <FormPanel />}
+                sidePanelWidth={'30%'}
+                mainPanelWidth={'70%'}
             />
         </div>
     )

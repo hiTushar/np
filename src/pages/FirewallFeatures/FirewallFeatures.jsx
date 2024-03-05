@@ -47,6 +47,8 @@ export default function FirewallFeatures(props) {
                 <FoldedPanel
                     SidePanelComponent={() => <FirewallFeaturesSidePanel sectionRoute={section} featuresData={featuresData} />}
                     MainPanelComponent={() => <FirewallFeaturesMainPanel sectionRoute={section} />}
+                    sidePanelWidth={'25%'}
+                    mainPanelWidth={'75%'}
                 />
             </div>
 

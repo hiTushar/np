@@ -1,7 +1,7 @@
 import { useEffect } from 'react';
 import './FoldedPanel.css';
 
-export default function FoldedPanel({ SidePanelComponent, MainPanelComponent }) {
+export default function FoldedPanel({ SidePanelComponent, MainPanelComponent, sidePanelWidth, mainPanelWidth }) {
 
     // const getVerticalShift = (x0, x1, x2, x3, endX, endY) => {
     //     let coordArr = [];
@@ -39,7 +39,7 @@ export default function FoldedPanel({ SidePanelComponent, MainPanelComponent }) 
 
     return (
         <div className="folded-panel">
-            <div className="folded-panel__side">
+            <div className="folded-panel__side" style={{ '--side-width': sidePanelWidth }}>
                 {/* <svg  xmlns="http://www.w3.org/2000/svg" style={{position:'absolute'}}>
                     <defs>
                         <clipPath id="mask"  clipPathUnits="objectBoundingBox">
@@ -49,7 +49,7 @@ export default function FoldedPanel({ SidePanelComponent, MainPanelComponent }) 
                 </svg> */}
                 <SidePanelComponent />
             </div>
-            <div className="folded-panel__main">
+            <div className="folded-panel__main" style={{ '--main-width': mainPanelWidth }}>
                 <MainPanelComponent />
             </div>
         </div>
