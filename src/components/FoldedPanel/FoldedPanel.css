@@ -3,15 +3,16 @@
     align-items: center;
     
     height: 100%;
+    flex: 1;
 
     .folded-panel__side {
-        background: linear-gradient(90deg, rgba(26, 38, 50, 1) 0%, rgba(26, 38, 50, 1) 92%, rgba(29, 36, 45, 0.5) 99.5%);
+        background: linear-gradient(90deg, rgba(26, 38, 50, 1) 0%, rgba(26, 38, 50, 1) 92%, rgb(27, 29, 36) 99.5%);
         height: 100%;
         width: 25%;
     }
     
     .folded-panel__main {
-        background: linear-gradient(90deg, rgba(29, 36, 45, 0.5) 0.5%, rgba(26, 38, 50, 1) 2%, rgba(26, 38, 50, 1) 100%);
+        background: linear-gradient(90deg, rgba(27, 29, 36, 1) 0.5%, rgba(26, 38, 50, 1) 2%, rgba(26, 38, 50, 1) 100%);
         height: calc(100% - 9.6px); /* the smaller size is due to perception of the fold/depth (which stays constant hence px) */
         width: 75%;
     }

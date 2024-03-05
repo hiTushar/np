@@ -1,6 +1,5 @@
 .user-registration-container {
-    width: 800px;
+    width: 900px;
     height: 500px;
-    background: linear-gradient(0deg, rgba(0, 0, 0, 0.10) 0%, rgba(0, 0, 0, 0.10) 100%), linear-gradient(270deg, #1A2632 97.87%, #161E25 100%);
     display: flex;
 }

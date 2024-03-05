@@ -1,6 +1,6 @@
 .user-formpanel {
-    padding: 32px;
-    width: 70%;
+    padding: 28px;
+    height: 100%;
     display: flex;
     flex-direction: column;
 }

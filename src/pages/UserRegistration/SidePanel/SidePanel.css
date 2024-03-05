@@ -1,6 +1,7 @@
 .user-sidepanel {
     /* border: solid 2px white; */
-    width: 30%;
+    /* width: 30%; */
+    padding-block: 32px;
 }
 
 /* user-sidepanel__welcome */
