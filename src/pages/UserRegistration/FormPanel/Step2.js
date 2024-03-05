@@ -7,7 +7,7 @@ import Dropdown from "../../../components/Dropdown/Dropdown";
 import Button from "../../../components/Button/Button";
 import { useQuery } from "react-query";
 
-// TODO: Move API calls to separate files
+// TODO: Move API calls to separate files, hide API key
 const fetchCoutries = async () => {
     const myHeaders = new Headers();
     myHeaders.append("X-CSCAPI-KEY", "Z1N0TDAzYVdRM1hGckRZRU42SGI1S3A4MWZ5OW1VOFZROTk4Yk0zRA==");

@@ -3,7 +3,7 @@ import SidePanel from "./SidePanel/SidePanel";
 import "./UserRegistration.css"
 
 function UserRegistration(props) {
-
+    // TODO: Add the folded panel 
     return (
         <div className="user-registration-container">
             <SidePanel />

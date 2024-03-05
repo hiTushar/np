@@ -26,6 +26,7 @@ export default function FoldedPanel({ SidePanelComponent, MainPanelComponent }) 
         let foldSlopeLength = 3.5 * verticalGap;
         let foldSlopeStartPt = widthSidePanel - foldSlopeLength; 
 
+        // TODO: make all hardcoded values a function of the height diff/depth value (10px)
         sidePanelElement.style.clipPath = `
         polygon(0% 0%, ${foldSlopeStartPt}px 0%, ${foldSlopeStartPt + 2}px 0.5px, ${foldSlopeStartPt + 4}px 1px, ${foldSlopeStartPt + 6}px 1.5px, calc(100% - 4px) ${verticalGap - 0.5}px, calc(100% - 2px) ${verticalGap - 0.1}px, 100% ${verticalGap}px, 
         100% ${verticalGap + heightMainPanel}px, calc(100% - 2px) ${verticalGap  + heightMainPanel + 0.1}px, calc(100% - 4px) ${verticalGap + heightMainPanel + 0.5}px, ${foldSlopeStartPt + 6}px ${verticalGap + heightMainPanel + verticalGap - 1.5}px, ${foldSlopeStartPt + 4}px ${verticalGap + heightMainPanel + verticalGap - 1}px, ${foldSlopeStartPt + 2}px ${verticalGap + heightMainPanel + verticalGap - 0.5}px, ${foldSlopeStartPt}px 100%, 0% 100%)`;
