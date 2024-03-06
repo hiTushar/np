@@ -8,8 +8,6 @@ export default function OthersCard({ data }) {
     const navigate = useNavigate();
     const [otherSettingState, setOtherSettingState] = useState(state);
 
-    const goTo = () => navigate(navUrl);
-
     const toggleSetting = (e) => {
         e.stopPropagation();
         setOtherSettingState(prev => !prev);
@@ -17,7 +15,7 @@ export default function OthersCard({ data }) {
 
     return (
         <Card>
-            <div className={`others-card ${navUrl ? 'nav-click' : ''}`} onClick={navUrl ? goTo : () => {}}>
+            <div className={`others-card ${navUrl ? 'nav-click' : ''}`} onClick={navUrl ? () => navigate(navUrl) : () => {}}>
                 <div className="others-card__icon">
                     <img src={icon} alt={'icon'} />
                 </div>

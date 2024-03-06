@@ -14,7 +14,6 @@ const ALL_TABS = {
 
 export default function StartupProgram(props) {
     const navigate = useNavigate();
-    const goTo = () => navigate(-1);
 
     const [currentTab, setCurrentTab] = useState(ALL_TABS.STARTUP_PROGRAM);
     const [currentData, setCurrentData] = useState(startupProgramData);
@@ -45,8 +44,8 @@ export default function StartupProgram(props) {
         <div className='startup-program'>
             <ScreenHead
                 titleBreadcrumbs={['System Tuner', 'Junk Cleaner', 'Start-up Program']}
-                onClick={goTo}
-            // TODO: make goTo a common util function that takes url as parameter
+                onClick={() => navigate('/user/junk-cleaner')}
+            // TODO: make goTo a common util function that takes url as parameter, query param for same page navigation
             />
             <div className='startup-program__tabs'>
                 {

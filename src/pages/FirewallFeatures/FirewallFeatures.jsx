@@ -11,7 +11,6 @@ import featuresData from "../Firewall/data";
 
 export default function FirewallFeatures(props) {
     const navigate = useNavigate();
-    const goTo = (url) => navigate(url);
 
     // eslint-disable-next-line no-unused-vars
     let [searchParams, setSearchParams] = useSearchParams();
@@ -29,7 +28,7 @@ export default function FirewallFeatures(props) {
         <div className="firewall-features">
             <ScreenHead
                 titleBreadcrumbs={['Firewall', 'Features']}
-                onClick={() => goTo('/user/firewall')}
+                onClick={() => navigate('/user/firewall')}
             >
                 <div className='firewall-features__options'>
                     <div className='options__enable'>

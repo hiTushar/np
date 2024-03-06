@@ -12,7 +12,6 @@ import { firewallModes, otherSettings } from './data';
 
 export default function FirewallSettings(props) {
     const navigate = useNavigate();
-    const goTo = (url) => navigate(url); // TODO: make a custom hook out of this and then just it be a navigate() directly
     
     const dispatch = useDispatch();
     const firewallState = useSelector(state => state.firewallReducer);
@@ -54,7 +53,7 @@ export default function FirewallSettings(props) {
         <div className='firewall-settings'>
             <ScreenHead
                 titleBreadcrumbs={['Firewall', 'Settings']}
-                onClick={() => goTo('/user/firewall')}
+                onClick={() => navigate('/user/firewall')}
             >
                 <div className='firewall-settings__options'>
                     <div className='options__enable'>

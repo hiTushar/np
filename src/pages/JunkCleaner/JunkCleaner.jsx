@@ -56,13 +56,12 @@ const othersCardData = [
 
 export default function JunkCleaner(props) {
     const navigate = useNavigate();
-    const goTo = () => navigate(-1);
-
+    
     return (
         <div className="junk-cleaner">
             <ScreenHead
                 titleBreadcrumbs={['System Tuner', 'Junk Cleaner']}
-                onClick={goTo}
+                onClick={() => navigate('/user')}
             />
             <div className='junk-cleaner__optimize'>
                 <div className='optimize__desc'>

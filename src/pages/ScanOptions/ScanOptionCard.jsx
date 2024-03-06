@@ -1,8 +1,10 @@
+import { useNavigate } from "react-router-dom";
 import Button from "../../components/Button/Button";
 import Card from "../../components/Card/Card";
 
 export default function ScanOptionCard({ data }) {
-    const { icon, title, desc } = data;
+    const { icon, title, desc, scanType } = data;
+    const navigate = useNavigate();
 
     return (
         <Card>
@@ -17,7 +19,8 @@ export default function ScanOptionCard({ data }) {
                     {desc}
                 </div>
                 <div className="scan-option-card__action">
-                    <Button text='SCAN NOW' type='primary' onClick={() => {}} customStyle={{ fontSize: '10px' }}/>
+                    {/* TODO: scan pages for all scan types */}
+                    <Button text='SCAN NOW' type='primary' onClick={() => navigate(`/user/scan?type=${scanType ? scanType : 'cloud'}`)} customStyle={{ fontSize: '10px' }}/>
                 </div>
             </div>
         </Card>

@@ -6,11 +6,9 @@ export default function FeatureCard({ data }) {
     const { key, title, icons, desc } = data;
     const navigate = useNavigate();
 
-    const goto = (section) => navigate(`/user/firewall/features?section=${section}`);
-
     return (
         <Card>
-            <div className="feature-card" onClick={() => goto(key)}>
+            <div className="feature-card" onClick={() => navigate(`/user/firewall/features?section=${section}`)}>
                 <div className="feature-card__title">
                     <div className="title__icon">
                         <img src={icons[0]} alt='icon' />

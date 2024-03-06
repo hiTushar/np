@@ -79,10 +79,6 @@ export default function Scan({ props }) {
         setProgress(scannedFileCount / totalFileCount);
     }, [scannedFileCount, totalFileCount])
 
-    const goTo = () => {
-        navigate(-1);
-    }
-
     const scanSwitch = () => {
         if(!scanPause) {
             setScanPause(true);
@@ -109,7 +105,7 @@ export default function Scan({ props }) {
             propObj = {
                 titleBreadcrumbs: ['Quick Scan Running'],
                 desc: null,
-                onClick: goTo
+                onClick: () => navigate('/user')
             }
             children = null;
         }
@@ -117,7 +113,7 @@ export default function Scan({ props }) {
             propObj = {
                 titleBreadcrumbs: ['Cloud Scan'],
                 desc: 'Our artificial intelligence Cloud Scan is now shielding you form viruses, spyware, and other threats.',
-                onClick: goTo,
+                onClick: () => navigate('/user'),
             }
             children = null;
         }

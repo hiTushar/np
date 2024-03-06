@@ -11,7 +11,6 @@ import FirewallStatsChart from './FirewallStatsChart';
 
 export default function Firewall(props) {
     const navigate = useNavigate();
-    const goTo = (url) => navigate(url);
 
     const dispatch = useDispatch();
     const { firewall_enabled } = useSelector(state => state.firewallReducer);
@@ -26,7 +25,7 @@ export default function Firewall(props) {
         <div className="firewall">
             <ScreenHead
                 titleBreadcrumbs={['Firewall']}
-                onClick={() => goTo('/user')}
+                onClick={() => navigate('/user')}
             >
                 <div className='firewall__options'>
                     <div className='options__enable'>
@@ -38,7 +37,7 @@ export default function Firewall(props) {
                             />
                         </div>
                     </div>
-                    <div className='options__settings' onClick={() => goTo('/user/firewall/settings')}>
+                    <div className='options__settings' onClick={() => navigate('/user/firewall/settings')}>
                         <img src={settings} alt='settings button icon' />
                     </div>
                 </div>

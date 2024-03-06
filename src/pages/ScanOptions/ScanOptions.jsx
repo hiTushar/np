@@ -40,18 +40,17 @@ const scansCardData = [
     {
         icon: cloudIcon,
         title: 'Cloud Scan',
-        desc: 'Testing cloud-based infrastructure, services and applications for known security vulnerabilities'
+        desc: 'Testing cloud-based infrastructure, services and applications for known security vulnerabilities',
+        scanType: 'cloud'
     }
 ]
 
 export default function ScanOptions(props) {
     const navigate = useNavigate();
-    
-    const goTo = () => navigate(-1);
 
     return (
         <div className="scan-options">
-            <ScreenHead titleBreadcrumbs={['Select Scan Type']} onClick={goTo} />
+            <ScreenHead titleBreadcrumbs={['Select Scan Type']} onClick={() => navigate('/user')} />
             <div className='scan-options__schedule'>
                 <div className='schedule__desc'>
                 Option to scan your PC, and removable drives for the latest viruses and emerging threats
