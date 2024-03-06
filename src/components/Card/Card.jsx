@@ -16,14 +16,14 @@ export default function Card(props) {
 
     const cutBottomCorner = (card) => {
         /* function to add consistent angled cut at the bottom corner proportional to the current card dimension */
-        // TODO: needs to corrected for height > width
-        
         const { width, height } = card.getBoundingClientRect();
-        let verticalCut = height * .15;
+        const shorterSide = Math.min(width, height);
+        let verticalCut = shorterSide * .15;
         let horizontalCut = verticalCut;
-        let straightWidth = ((width - horizontalCut) / width) * 100;
+        let verticalStraight = ((height - verticalCut) / height) * 100;
+        let horizontalStraight = ((width - horizontalCut) / width) * 100;
 
-        card.style.clipPath = `polygon(100% 0, 100% 85%, ${straightWidth}% 100%, 0 100%, 0 0)`;
+        card.style.clipPath = `polygon(100% 0, 100% ${verticalStraight}%, ${horizontalStraight}% 100%, 0 100%, 0 0)`;
     }
 
     useEffect(() => {
