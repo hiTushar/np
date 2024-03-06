@@ -37,7 +37,7 @@ export default function Firewall(props) {
                             />
                         </div>
                     </div>
-                    <div className='options__settings' onClick={() => navigate('/user/firewall/settings')}>
+                    <div className='options__settings' onClick={() => navigate('/user/web-security/firewall/settings')}>
                         <img src={settings} alt='settings button icon' />
                     </div>
                 </div>

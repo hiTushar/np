@@ -44,7 +44,7 @@ export default function StartupProgram(props) {
         <div className='startup-program'>
             <ScreenHead
                 titleBreadcrumbs={['System Tuner', 'Junk Cleaner', 'Start-up Program']}
-                onClick={() => navigate('/user/junk-cleaner')}
+                onClick={() => navigate('/user/system-tuner/junk-cleaner')}
             // TODO: make goTo a common util function that takes url as parameter, query param for same page navigation
             />
             <div className='startup-program__tabs'>

@@ -28,7 +28,7 @@ export default function FirewallFeatures(props) {
         <div className="firewall-features">
             <ScreenHead
                 titleBreadcrumbs={['Firewall', 'Features']}
-                onClick={() => navigate('/user/firewall')}
+                onClick={() => navigate('/user/web-security/firewall')}
             >
                 <div className='firewall-features__options'>
                     <div className='options__enable'>

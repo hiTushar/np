@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router-dom';
 export default function FirewallFeaturesSidePanel({ sectionRoute, featuresData }) {
     console.debug({ sectionRoute });
     const navigate = useNavigate();
-    const goto = (section) => navigate(`/user/firewall/features?section=${section}`);
+    const goto = (section) => navigate(`/user/web-security/firewall/features?section=${section}`);
     return (
         <div className="firewall-features__side-panel">
             {

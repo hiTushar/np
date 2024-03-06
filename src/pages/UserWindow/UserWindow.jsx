@@ -12,6 +12,8 @@ import StartupProgram from "../StartupProgram/StartupProgram";
 import Firewall from "../Firewall/Firewall";
 import FirewallFeatures from "../FirewallFeatures/FirewallFeatures";
 import FirewallSettings from "../FirewallSettings/FirewallSettings";
+import SystemTuner from "../SystemTuner/SystemTuner";
+import WebSecurity from "../WebSecurity/WebSecurity";
 
 export default function UserWindow({ props }) {
     return (
@@ -40,13 +42,17 @@ export default function UserWindow({ props }) {
             <div className="window__body">
                 <Routes>
                     <Route path='/' element={<Dashboard />} />
+                    <Route path='/protection' element={<></>} />
+                    <Route path='/privacy' element={<></>} />
+                    <Route path='/system-tuner' element={<SystemTuner />} />
+                    <Route path='/system-tuner/junk-cleaner/startup' element={<StartupProgram />} />
+                    <Route path='/system-tuner/junk-cleaner' element={<JunkCleaner />} />
+                    <Route path='/web-security' element={<WebSecurity />} />
+                    <Route path='/web-security/firewall/settings' element={<FirewallSettings />} />
+                    <Route path='/web-security/firewall/features' element={<FirewallFeatures />} />
+                    <Route path='/web-security/firewall' element={<Firewall />} />
                     <Route path='/scan' element={<Scan />} />
                     <Route path='/scan-options' element={<ScanOptions />} />
-                    <Route path='/junk-cleaner/startup' element={<StartupProgram />} />
-                    <Route path='/junk-cleaner' element={<JunkCleaner />} />
-                    <Route path='/firewall/settings' element={<FirewallSettings />} />
-                    <Route path='/firewall/features' element={<FirewallFeatures />} />
-                    <Route path='/firewall' element={<Firewall />} />
                 </Routes>
             </div>
         </div>
