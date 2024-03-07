@@ -1,0 +1,141 @@
+.taskbar-panel {
+    width: 300px;
+    height: 440px;
+    border-radius: 4px;
+
+    background: linear-gradient(90deg, #1A2632 62.68%, #18242F 95.59%, #131A20 100%);
+    padding: 30px;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.taskbar-panel__status {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    .status__display {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+
+        .display__indicator {
+            flex: 1;
+            width: calc(100% - 60px);
+            .indicator__title {
+                color: rgba(250, 250, 250, 0.7);
+                font-size: 12px;
+                font-weight: 200;
+                text-align: center;
+                margin-top: 5px;
+            }
+        }
+
+        .display__title {
+            margin-top: 30px;
+
+            font-size: 20px;
+            font-weight: 700;
+
+            &.scanning {
+                color: #FFF;
+            }
+
+            &.secure {
+                color: #4FD88A;
+            }
+
+            &.partial {
+                color: #F4990D;
+            }
+
+            &.insecure {
+                color: #FF2F62;
+            }
+        }
+    }
+
+    .status__files {
+        color: rgba(250, 250, 250, 0.7);
+        font-size: 12px;
+        font-weight: 400;
+        text-align: center;
+
+        .files__count {
+            margin-left: 4px;
+            font-weight: 700;
+        }
+    }
+}
+
+.taskbar-panel__threat-section {
+    padding-block: 32px 48px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
+
+    .threat-section__item {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+
+        .item__display {
+            display: flex;
+            gap: 4px;
+
+            .display__icon {
+                width: 12px;
+                line-height: 1;
+
+                img {
+                    width: 100%;
+                }
+            }
+
+            .display__count {
+                font-size: 14px;
+                font-weight: 700;
+
+                &.threat_found {
+                    color: #FF2F62;
+                }
+
+                &.threat_fixed {
+                    color: #4FD88A;
+                }
+            }
+        }
+
+        .item__title {
+            color: #585861;
+            font-size: 14px;
+            font-weight: 700;
+        }
+    }
+}
+
+.taskbar-panel__action {
+    display: flex;
+    gap: 7px;
+
+    .action__title {
+        color: #F3B617;
+        font-size: 10px;
+        font-weight: 500;
+    }
+    .action__icon {
+        width: 14px;
+        line-height: 0.8;
+        img {
+            width: 100%;
+            transform: rotate(180deg);
+            cursor: pointer;
+        }
+    }
+}
+
