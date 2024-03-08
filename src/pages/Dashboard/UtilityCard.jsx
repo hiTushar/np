@@ -1,9 +1,8 @@
 import './UtilityCard.css';
 import Button from "../../components/Button/Button";
 import Card from "../../components/Card/Card";
-import bulbIcon from './assets/bulb.png';
-import arrowLeft from '../../assets/arrow-left.png';
 import { useNavigate } from 'react-router-dom';
+import { arrowLeftPng, bulbPng } from '../../assets/assets';
 
 export default function UtilityCard(props) {
     const { title, icon, desc, inc, navUrl } = props;
@@ -29,7 +28,7 @@ export default function UtilityCard(props) {
                 </div>
                 <div className="utility-card__enable-section">
                     <div className="enable-section__icon">
-                        <img src={bulbIcon} alt='bulb icon' />
+                        <img src={bulbPng} alt='bulb icon' />
                     </div>
                     <div className="enable-section__desc">{desc}</div>
                     <div className="enable-section__button">
@@ -46,7 +45,7 @@ export default function UtilityCard(props) {
                     </div>
                 </div>
                 <div className="utility-card__action">
-                    <img src={arrowLeft} alt='right arrow' onClick={() => navigate(navUrl)}/>
+                    <img src={arrowLeftPng} alt='right arrow' onClick={() => navigate(navUrl)}/>
                 </div>
             </div>
         </Card>

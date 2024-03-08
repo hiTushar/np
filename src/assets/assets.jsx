@@ -5,6 +5,14 @@ import arrowLeftPng from './arrow-left.png';
 import secureShieldSvg from './secure-shield.svg';
 import insecureShieldSvg from './insecure-shield.svg';
 import partialShieldSvg from './partial-shield.svg';
+import gearCheckPng from './gear-check.png';
+import globeCheckPng from './globe-check.png';
+import privacyCheckPng from './privacy-check.png';
+import shieldCheckPng from './shield-check.png';
+import bulbPng from './bulb.png';
+import greenTickPng from './green-tick.png';
+import optimizeIconPng from './optimize-icon.png';
+import chevronRightPng from './chevron-right.png';
 
 export { 
     bugPng, 
@@ -12,5 +20,13 @@ export {
     arrowLeftPng, 
     secureShieldSvg, 
     insecureShieldSvg, 
-    partialShieldSvg 
+    partialShieldSvg,
+    gearCheckPng,
+    globeCheckPng,
+    privacyCheckPng,
+    shieldCheckPng,
+    bulbPng,
+    greenTickPng,
+    optimizeIconPng,
+    chevronRightPng
 };
