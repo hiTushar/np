@@ -1,0 +1,187 @@
+.daily-report {
+    .threat-found-color {
+        color: #CF4545;
+    }
+    .threat-fixed-color {
+        color: #4FD88A;
+    }
+    .daily-report__timestamp {
+        background-color: #2E3A46;
+        padding: 8px 16px;
+        display: flex;
+        align-items: center;
+        gap: 4px;
+    
+        .timestamp__icon {
+            width: 16px;
+            line-height: 0.8;
+            img {
+                width: 100%;
+            }
+        }
+        
+        .timestamp__text {
+            color: #B6BFDA;
+            font-size: 12px;
+            font-weight: 400;
+            /* line-height: 0.5; */
+        }
+    }
+
+    .daily-report__detail {
+        background-color: #1A2632;
+        display: flex;
+        justify-content: space-between;
+        .detail__history {
+            padding: 12px 16px;
+
+            .history__title {
+                color: #828F98;
+                font-size: 10px;
+                font-weight: 500;
+                margin-bottom: 12px;
+            }
+
+            .history__statistics {
+                display: flex;
+                align-items: center;
+                gap: 24px;
+
+                .statistics__system-status {
+                    display: flex;
+                    align-items: center;
+                    gap: 12px;
+
+                    .system-status__icon {
+                        width: 26px;
+                        line-height: 0.8;
+
+                        img {
+                            width: 100%;
+                        }
+                    }
+
+                    .system-status__percent {
+                        .percent__big {
+                            color: #E6E6E6;
+                            font-size: 16px;
+                            font-weight: 700;
+                        }
+                        .percent__small {
+                            color: #D2D2D2;
+                            font-size: 10px;
+                            font-weight: 500;
+
+                        }
+                    }
+                }
+
+                .statistics__threat-count {
+                    display: flex;
+                    flex-direction: column;
+                    gap: 3px;
+
+                    .threat-count__item {
+                        display: flex;
+                        align-items: center;
+                        gap: 6px;
+
+                        .item__name {
+                            color: #D2D2D2;
+                            font-size: 10px;
+                            font-weight: 500;
+                        }
+                        
+                        .item__val {
+                            font-size: 10px;
+                            font-weight: 500;
+                        }
+                    }
+                }
+            }
+        }
+
+        .detail__optimize-report {
+            padding: 12px 16px;
+            .optimize-report__title {
+                color: #828F98;
+                font-size: 10px;
+                font-weight: 500;
+                margin-bottom: 12px;
+            }
+            .optimize-report__data {
+                display: flex;
+                align-items: center;
+                gap: 16px;
+                
+                .data__chart {
+                    width: 45px;
+                    height: 45px;
+                }
+                .data__legend {
+                    .legend__item {
+                        display: flex;
+                        align-items: center;
+                        gap: 5px;
+
+                        .item__color {
+                            /* margin-right: 5px; */
+                            width: 8px;
+                            height: 8px;
+                            border-radius: 50%;
+                            background-color: var(--item__color);
+                        }
+                        .item__value, .item__title {
+                            color: #FFF;
+                            font-size: 10px;
+                            font-weight: 400;
+                        }
+
+                    }
+                }
+            }
+        }
+    }
+
+    .daily-report__optimize {
+        background-color: rgba(46, 58, 70, 0.2);
+        padding: 12px 16px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+
+        .optimize-details {
+            display: flex;
+        }
+
+        .optimize-details__icon {
+            width: 32px;
+            margin-right: 8px;
+            line-height: 0.5;
+
+            img {
+                width: 100%;
+            }
+        }
+
+        .optimize-details__text {
+            margin-right: 16px;
+
+            .text__title {
+                color: #E6E6E6;
+                font-size: 16px;
+                font-weight: 700;
+            }
+            .text__desc {
+                color: rgba(250, 250, 250, 0.7);
+                font-size: 9px;
+                font-weight: 200;
+                letter-spacing: 0.4px;
+            }
+        }
+
+        .optimize__action {
+            margin-right: 0px;
+        }
+    }
+}

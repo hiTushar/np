@@ -23,14 +23,17 @@
     
     .control-panel__report {
         grid-column: 2 / 5;
-        outline: dotted 1px yellow;
-
+        
         .report__title {
             color: #FFF;
             font-size: 12px;
             font-weight: 700;
             letter-spacing: 0.5px;
             margin-bottom: 8px;
+        }
+
+        .report__daily-data {
+            
         }
     }
 

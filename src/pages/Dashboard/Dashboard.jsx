@@ -1,16 +1,14 @@
 import { Link } from "react-router-dom";
 import './Dashboard.css';
-import protectionIcon from './assets/shield-check.png';
-import privacyIcon from './assets/privacy-check.png';
-import tunerIcon from './assets/gear-check.png';
-import globeIcon from './assets/globe-check.png';
 import UtilityCard from "./UtilityCard";
+import { gearCheckPng, globeCheckPng, privacyCheckPng, shieldCheckPng } from "../../assets/assets";
+import DailyReport from "./DailyReport";
 
 const UTILITIES_CARD_DATA = [
     {
         key: 'protection',
         title: 'Protection',
-        icon: protectionIcon,
+        icon: shieldCheckPng,
         desc: 'Enable web-shield and safe application mode to increase the score',
         inc: '20',
         navUrl: '/user/protection'
@@ -18,7 +16,7 @@ const UTILITIES_CARD_DATA = [
     {
         key: 'privacy',
         title: 'Privacy',
-        icon: privacyIcon,
+        icon: privacyCheckPng,
         desc: 'Enable web-shiled and safe application mode to increase the score',
         inc: '10',
         navUrl: '/user/privacy'
@@ -26,7 +24,7 @@ const UTILITIES_CARD_DATA = [
     {
         key: 'tuner',
         title: 'System tuner',
-        icon: tunerIcon,
+        icon: gearCheckPng,
         desc: 'Enable block/unblock games to increase the security score',
         inc: '25',
         navUrl: '/user/system-tuner'
@@ -34,7 +32,7 @@ const UTILITIES_CARD_DATA = [
     {
         key: 'web',
         title: 'Web Security',
-        icon: globeIcon,
+        icon: globeCheckPng,
         desc: 'Enable block/unblock games to increase the security score',
         inc: '35',
         navUrl: '/user/web-security'
@@ -49,6 +47,7 @@ export default function Dashboard({ props }) {
                 <div className="control-panel__report">
                     <div className="report__title">Daily Report</div>
                     <div className="report__daily-data">
+                        <DailyReport />
                     </div>
                     <div className="report__upgrade-cta"></div>
                 </div>
