@@ -22,6 +22,24 @@ const OPTIMIZE_REPORT_CHART_DATA = [
     },
 ]
 
+const getDashArray = (percent) => {
+    const circumference = 2 * Math.PI * 40;
+    const strokeLength = circumference * percent / 100;
+    const blankLength = circumference - strokeLength;
+    return `${strokeLength.toFixed(2)} ${blankLength.toFixed(2)}`;
+}
+
+const getDashOffset = (index, array) => {
+    let percentageCovered = 0;
+    for(let i = 0; i < index; i++) {
+        percentageCovered += parseInt(array[i].percent);
+    }
+
+    const circumference = 2 * Math.PI * 40;
+    const offsetLength = -circumference * percentageCovered / 100;
+    return offsetLength.toFixed(2);
+}
+
 export default function DailyReport() {
     const { system_status, files_count, files_scanned, threats_found, threats_fixed } = useSelector(state => state.scanStatusReducer)
     
@@ -77,19 +95,29 @@ export default function DailyReport() {
                     <div className="optimize-report__title">Optimization Report</div>
                     <div className="optimize-report__data">
                         <div className="data__chart">
-                            <svg viewBox="0 0 50 50">
-                                <circle
-                                    cx='25'
-                                    cy='25'
-                                    r='20'
-                                    fill='transparent'
-                                    stroke='#FF5F1F'
-                                    strokeWidth='5'
-                                    strokeDasharray='100 500'
-                                    strokeDashoffset='10'
-                                ></circle>
-                                <circle></circle>
-                                <circle></circle>
+                            <svg viewBox="0 0 100 100">
+                                <style>
+                                    {`
+                                    circle {
+                                        cx: 50;
+                                        cy: 50;
+                                        r: 40;
+                                        fill: transparent;
+                                        stroke-width: 10;
+                                        transform-origin: center;
+                                        transform: rotate(-90deg);
+                                    }`}
+                                </style>
+                                {
+                                    OPTIMIZE_REPORT_CHART_DATA.map((dataPt, index, array) => (
+                                        <circle
+                                            key={dataPt.title}
+                                            stroke={dataPt.color}
+                                            strokeDasharray={getDashArray(parseInt(dataPt.percent))}
+                                            strokeDashoffset={getDashOffset(index, array)}
+                                        ></circle>
+                                    ))
+                                }
                             </svg>
                         </div>
                         <div className="data__legend">
