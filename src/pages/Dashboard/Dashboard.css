@@ -32,8 +32,12 @@
             margin-bottom: 8px;
         }
 
-        .report__daily-data {
-            
+        .report__panel {
+            display: flex;
+            gap: 4px;
+        }
+        .panel__daily-data {
+            flex: 1;
         }
     }
 

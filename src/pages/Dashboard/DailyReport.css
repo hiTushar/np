@@ -166,22 +166,26 @@
 
         .optimize-details__text {
             margin-right: 16px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
 
             .text__title {
                 color: #E6E6E6;
-                font-size: 16px;
+                font-size: 12px;
                 font-weight: 700;
             }
             .text__desc {
                 color: rgba(250, 250, 250, 0.7);
-                font-size: 9px;
+                font-size: 8px;
                 font-weight: 200;
                 letter-spacing: 0.4px;
             }
         }
 
         .optimize__action {
-            margin-right: 0px;
+            /* margin-right: 0px; */
+            min-width: 96px;
         }
     }
 }

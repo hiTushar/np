@@ -1,0 +1,39 @@
+.upgrade-cta {
+    max-width: 115px;
+    height: 100%;
+    border-radius: 1px;
+    background-color: #2D3F39;
+    padding: 10px;
+    position: relative;
+
+    .upgrade-cta__discount-text {
+        color: #FFF;
+        margin-bottom: 8px;
+        line-height: 1.2;
+
+        .discount-text__big {
+            font-size: 22px;
+            font-weight: 700;
+        }
+        .discount-text__small {
+            font-size: 12px;
+            font-weight: 700;
+        }
+    }
+    .upgrade-cta__desc {
+        color: #FFF;
+        font-size: 10px;
+        font-weight: 200;
+        opacity: 0.5;
+    }
+    .upgrade-cta__action {
+        position: absolute;
+        bottom: 10px;
+        color: rgba(243, 182, 23, 1);
+        font-size: 10px;
+        font-weight: 500;
+        cursor: pointer;
+    }
+
+
+}

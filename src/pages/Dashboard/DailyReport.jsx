@@ -115,6 +115,11 @@ export default function DailyReport() {
                     <Button
                         text='Optimize now'
                         type='primary'
+                        customStyle={{
+                            padding: '8px 14px',
+                            fontSize: '10px',
+                            lineHeight: '1'
+                        }}
                     />
                 </div>
             </div>
