@@ -1,44 +1,26 @@
 import { useSelector } from "react-redux"
 import { greenTickPng, insecureShieldSvg, optimizeIconPng, partialShieldSvg, secureShieldSvg } from "../../assets/assets"
-import Button from '../../components/Button/Button';
-
 import './DailyReport.css';
+import Button from '../../components/Button/Button';
+import DonutChart from "../../components/DonutChart_/DonutChart";
 
 const OPTIMIZE_REPORT_CHART_DATA = [
     {
         title: 'Temp Files',
-        percent: '29',
+        percent: '25',
         color: '#FF5F1F'
     },
     {
         title: 'Cache and Cookies',
-        percent: '23',
+        percent: '25',
         color: '#3D7BC4'
     },
     {
         title: 'Registry Junk',
-        percent: '48',
+        percent: '50',
         color: '#29A197'
     },
 ]
-
-const getDashArray = (percent) => {
-    const circumference = 2 * Math.PI * 40;
-    const strokeLength = circumference * percent / 100;
-    const blankLength = circumference - strokeLength;
-    return `${strokeLength.toFixed(2)} ${blankLength.toFixed(2)}`;
-}
-
-const getDashOffset = (index, array) => {
-    let percentageCovered = 0;
-    for(let i = 0; i < index; i++) {
-        percentageCovered += parseInt(array[i].percent);
-    }
-
-    const circumference = 2 * Math.PI * 40;
-    const offsetLength = -circumference * percentageCovered / 100;
-    return offsetLength.toFixed(2);
-}
 
 export default function DailyReport() {
     const { system_status, files_count, files_scanned, threats_found, threats_fixed } = useSelector(state => state.scanStatusReducer)
@@ -95,30 +77,11 @@ export default function DailyReport() {
                     <div className="optimize-report__title">Optimization Report</div>
                     <div className="optimize-report__data">
                         <div className="data__chart">
-                            <svg viewBox="0 0 100 100">
-                                <style>
-                                    {`
-                                    circle {
-                                        cx: 50;
-                                        cy: 50;
-                                        r: 40;
-                                        fill: transparent;
-                                        stroke-width: 10;
-                                        transform-origin: center;
-                                        transform: rotate(-90deg);
-                                    }`}
-                                </style>
-                                {
-                                    OPTIMIZE_REPORT_CHART_DATA.map((dataPt, index, array) => (
-                                        <circle
-                                            key={dataPt.title}
-                                            stroke={dataPt.color}
-                                            strokeDasharray={getDashArray(parseInt(dataPt.percent))}
-                                            strokeDashoffset={getDashOffset(index, array)}
-                                        ></circle>
-                                    ))
-                                }
-                            </svg>
+                            <DonutChart 
+                                data={OPTIMIZE_REPORT_CHART_DATA}
+                                thickness={10}
+                                radius={40}
+                            />
                         </div>
                         <div className="data__legend">
                             {
