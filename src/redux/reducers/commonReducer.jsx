@@ -1,7 +1,7 @@
 import { SET_UPGRADE_STATUS } from "../actions/actionTypes";
 
 const initialState = {
-    upgrade_done: false
+    upgrade_done: true
 }
 
 const commonReducer = (state = initialState, action) => {

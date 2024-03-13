@@ -6,25 +6,29 @@ import DonutChart from "../../components/DonutChart_/DonutChart";
 
 const OPTIMIZE_REPORT_CHART_DATA = [
     {
+        key: 'temp_files_percent',
         title: 'Temp Files',
         percent: '25',
         color: '#FF5F1F'
     },
     {
+        key: 'cache_and_cookies_percent',
         title: 'Cache and Cookies',
         percent: '25',
         color: '#3D7BC4'
     },
     {
+        key: 'registry_junk_percent',
         title: 'Registry Junk',
         percent: '50',
         color: '#29A197'
     },
 ]
 
-export default function DailyReport() {
-    const { system_status, files_count, files_scanned, threats_found, threats_fixed } = useSelector(state => state.scanStatusReducer)
-    
+export default function DailyReport(props) {
+    // const { system_status, threats_found, threats_fixed } = useSelector(state => state.scanStatusReducer)
+    const { system_status, secure_percent, last_week_percent, threats_found, threats_fixed, temp_files_percent, cache_and_cookies_percent, registry_junk_percent } = props;
+
     const getStatusIcon = (status) => {
         switch(status) {
             case 'secure':
@@ -57,8 +61,8 @@ export default function DailyReport() {
                                 <img src={getStatusIcon(system_status)} alt='status icon' />
                             </div>
                             <div className="system-status__percent">
-                                <div className="percent__big">80% Secure</div>
-                                <div className="percent__small">from last week <span className="threat-fixed-color">20%</span></div>
+                                <div className="percent__big">{secure_percent}% Secure</div>
+                                <div className="percent__small">from last week <span className="threat-fixed-color">{last_week_percent}%</span></div>
                             </div>
                         </div>
                         <div className="statistics__threat-count">
@@ -86,7 +90,7 @@ export default function DailyReport() {
                         <div className="data__legend">
                             {
                                 OPTIMIZE_REPORT_CHART_DATA.map(dataPt => (
-                                    <div className="legend__item">
+                                    <div className="legend__item" key={dataPt.key}>
                                         <div className="item__color" style={{ '--item__color': dataPt.color }}></div>
                                         <div className="item__value">{dataPt.percent}%</div>
                                         <div className="item__title">{dataPt.title}</div>

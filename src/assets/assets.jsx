@@ -13,6 +13,9 @@ import bulbPng from './bulb.png';
 import greenTickPng from './green-tick.png';
 import optimizeIconPng from './optimize-icon.png';
 import chevronRightPng from './chevron-right.png';
+import indicatorSecure from './indicator-secure.png';
+import indicatorPartial from './indicator-partial.png';
+import indicatorInsecure from './indicator-insecure.png';
 
 export { 
     bugPng, 
@@ -28,5 +31,8 @@ export {
     bulbPng,
     greenTickPng,
     optimizeIconPng,
-    chevronRightPng
+    chevronRightPng,
+    indicatorSecure,
+    indicatorPartial,
+    indicatorInsecure
 };
