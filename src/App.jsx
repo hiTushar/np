@@ -5,7 +5,7 @@ import Main from './pages/Main/Main';
 import Protection from './components/ProtectionFlowComponents/Protection';
 import UserWindow from './pages/UserWindow/UserWindow';
 import { QueryClient, QueryClientProvider } from 'react-query';
-import CardSlider from './components/CardSlider/CardSlider';
+// import CardSlider from './components/CardSlider/CardSlider';
 import TaskbarPanel from './pages/TaskbarPanel/TaskbarPanel';
 
 function App() {
