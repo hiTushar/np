@@ -21,7 +21,6 @@ function App() {
             <Route path='/taskbar' element={<TaskbarPanel />} />
             <Route path='/protection' element={<Protection />} />
             <Route path='/user/*' element={<UserWindow />} />
-            <Route path='/test' element={<CardSlider />} /> {/* TODO: testing 3d card slider  */}
             {/* TODO: scalable routing architecture - all routes in one file */}
           </Routes>
         </div>
