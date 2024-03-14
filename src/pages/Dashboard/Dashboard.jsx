@@ -5,7 +5,7 @@ import DailyReport from "./DailyReport";
 import UpgradeCta from "./UpgradeCta";
 import { useSelector } from "react-redux";
 import { ReportData } from './ReportData';
-import { useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 
 const UTILITIES_CARD_DATA = [
     {
@@ -44,15 +44,72 @@ const UTILITIES_CARD_DATA = [
 
 export default function Dashboard({ props }) {
     const upgradeStatus = useSelector(state => state.commonReducer['upgrade_done']);
-    const [timestamp, setTimestamp] = useState(null);
+    const slideClassArray = useRef(null);
+    const carouselRef = useRef(null);
     const [allReportPanels, setAllReportPanels] = useState([...ReportData]);
-    const [visibleReportPanels, setVisibleReportPanels] = useState([...ReportData].slice(0, 4));
     
-    const selectTime = (timestamp) => {
-        /**
-         * find the index of the report data with the timestamp
-         */
-        
+    useEffect(() => {
+        let allChildNodes = carouselRef.current.children;
+        Array.from(allChildNodes).map((node, index) => {
+            switch(index) {
+                case 0:
+                    node.classList.add('slide__one');
+                    break;
+                case 1: 
+                    node.classList.add('slide__two');
+                    break;
+                case 2: 
+                    node.classList.add('slide__three');
+                    break;
+                case 3: 
+                    node.classList.add('slide__four');
+                    break;
+                default: 
+                    node.classList.add('slide__after');
+                    break;
+            }
+        })
+
+        slideClassArray.current = Array.from(allChildNodes).map(node => node.classList.value);
+    }, [])
+
+    const selectSlide = (timestampSelected) => {
+        let selectedReportIndex = allReportPanels.findIndex(report => report.timestamp === timestampSelected);
+
+        if(selectedReportIndex > -1) {
+            let allChildNodes = carouselRef.current.children;
+            let currentReportIndex = Array.from(carouselRef.current.children).findIndex(node => node.classList.contains('slide__one'));
+            
+            if(currentReportIndex > selectedReportIndex) {
+                let steps = Math.abs(currentReportIndex - selectedReportIndex);
+                for(let i = 0; i < steps; i++) {
+                    setTimeout(() => {
+                        slideClassArray.current.push('slide__after');
+                        if(slideClassArray.current[0] === 'slide__ahead')
+                            slideClassArray.current.shift();
+                        applyClassArrayToSlides(slideClassArray.current, allChildNodes);
+                    }, 400 * i)
+                }
+            }
+            else if(currentReportIndex < selectedReportIndex) {
+                let steps = Math.abs(currentReportIndex - selectedReportIndex);
+                for(let i = 0; i < steps; i++) {
+                    setTimeout(() => {
+                        slideClassArray.current.unshift('slide__ahead');
+                        if(slideClassArray.current[slideClassArray.current.length - 1] === 'slide__after')
+                            slideClassArray.current.pop();
+                        applyClassArrayToSlides(slideClassArray.current, allChildNodes);
+                    }, 400 * i)
+                }
+            }
+        }
+    }
+
+    const applyClassArrayToSlides = (slideClassArray, allChildNodes) => {
+        Array.from(allChildNodes).forEach((node, index) => {
+            node.classList.value = '';
+            node.classList.value = slideClassArray[index];
+        })
     }
 
     const getStatusNotch = (status) => {
@@ -68,16 +125,17 @@ export default function Dashboard({ props }) {
         }
     }
 
+    // console.log(timeStampRef);
     return (
         <div className="dashboard">
-            <div className='dashboard__carousel'>
+            <div className='dashboard__carousel' ref={carouselRef}>
                 {
-                    visibleReportPanels.map(dataPt => (
-                        <div className="carousel__panel" key={dataPt.timestamp}>
-                            <div className="panel__scan"></div>
-                            <div className="panel__report">
-                                <div className="report__title">Daily Report</div>
-                                <div className="report__panel">
+                    allReportPanels.map(dataPt => (
+                        <div className="" key={dataPt.timestamp}>
+                            <div className="slide__scan-section"></div>
+                            <div className="slide__report-section">
+                                <div className="report-section__title">Daily Report</div>
+                                <div className="report-section__panel">
                                     <div className="panel__daily-data">
                                         <DailyReport 
                                             system_status={dataPt.system_status}
@@ -96,15 +154,15 @@ export default function Dashboard({ props }) {
                                     }
                                 </div>
                             </div>
-                            <div className="panel__utilities">
-                                <div className="utilities__title">Utilities</div>
-                                <div className="utilities__cards">
+                            <div className="slide__utilities-section">
+                                <div className="utilities-section__title">Utilities</div>
+                                <div className="utilities-section__cards">
                                     {
                                         UTILITIES_CARD_DATA.map(cardData => <UtilityCard {...cardData} key={cardData.key} />)
                                     }
                                 </div>
                             </div>
-                            <div className='panel__indicator'>
+                            <div className='slide__indicator'>
                                 <img src={getStatusNotch(dataPt.system_status)} alt='panel indicator' style={{ fill: '#FFF' }} />
                             </div>
                         </div>
@@ -114,7 +172,7 @@ export default function Dashboard({ props }) {
             <div className="dashboard__timeline">
                 {
                     allReportPanels.map(dataPt => (
-                        <div className='timeline__element' onClick={() => selectTime(dataPt.timestamp)}></div>
+                        <div className='timeline__element' onClick={() => selectSlide(dataPt.timestamp)} key={dataPt.timestamp}></div>
                     ))
                 }
             </div>
