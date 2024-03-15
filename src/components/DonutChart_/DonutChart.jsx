@@ -37,10 +37,14 @@ export default function DonutChart(props) {
     const { data, thickness, radius } = props;
     return (
         <svg viewBox="0 0 100 100">
+            <style>
+                {``}
+            </style>
             {
                 data.map((dataPt, index, array) => (
                     <circle
                         key={dataPt.title}
+                        className='donut-chart'
                         cx={50}
                         cy={50}
                         r={radius}
@@ -49,8 +53,8 @@ export default function DonutChart(props) {
                         strokeWidth={thickness}
                         strokeDasharray={getDashArray(parseInt(dataPt.percent), radius)}
                         strokeDashoffset={getDashOffset(index, array, radius)}
-                        transform='rotate(-90deg)'
-                        transformOrigin='center'
+                        // transform='rotate(-90deg)'
+                        // transformOrigin='center'
                         // style={{ '--thick': thickness, '--radius': radius }}
                     ></circle>
                 ))

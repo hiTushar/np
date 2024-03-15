@@ -1,3 +1,7 @@
 /* circle {
     stroke-width: var(--thick);
 } */
+.donut-chart {
+    transform-origin: center;
+    transform: rotate(-90deg);
+}
