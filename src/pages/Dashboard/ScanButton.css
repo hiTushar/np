@@ -1,0 +1,36 @@
+.scan-button {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.scan-button__outer-section {
+    background-color: rgb(244, 211, 82);
+    width: 100%;
+    aspect-ratio: 1;
+    border-radius: 50%;
+    padding: 25px;
+}
+
+.scan-button__inner-section {
+    background: linear-gradient(0deg, #FAE17D 1.53%, #C09B06 90.08%);
+    width: 100%;
+    aspect-ratio: 1;
+    border-radius: 50%;
+    border: rgb(248, 221, 113) solid 1px;
+
+    color: #17222D;
+    font-size: 15px;
+    font-weight: 700;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    cursor: pointer;
+}
+
+.inner-section__text {
+    width: 70px;
+    text-align: center;
+}

@@ -27,7 +27,7 @@ const OPTIMIZE_REPORT_CHART_DATA = [
 
 export default function DailyReport(props) {
     // const { system_status, threats_found, threats_fixed } = useSelector(state => state.scanStatusReducer)
-    const { system_status, secure_percent, last_week_percent, threats_found, threats_fixed, temp_files_percent, cache_and_cookies_percent, registry_junk_percent } = props;
+    const { system_status, secure_percent, last_week_percent, threats_found, threats_fixed, files_scanned, temp_files_percent, cache_and_cookies_percent, registry_junk_percent } = props;
 
     const getStatusIcon = (status) => {
         switch(status) {
@@ -73,6 +73,10 @@ export default function DailyReport(props) {
                             <div className="threat-count__item">
                                 <div className="item__name">Threat Neutralized</div>
                                 <div className="item__val threat-fixed-color">{threats_fixed}</div>
+                            </div>
+                            <div className="threat-count__item">
+                                <div className="item__name">Files Scanned</div>
+                                <div className="item__val">{files_scanned}</div>
                             </div>
                         </div>
                     </div>

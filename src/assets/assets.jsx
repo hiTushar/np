@@ -16,6 +16,8 @@ import chevronRightPng from './chevron-right.png';
 import indicatorSecure from './indicator-secure.png';
 import indicatorPartial from './indicator-partial.png';
 import indicatorInsecure from './indicator-insecure.png';
+import ChevronSvg from './ChevronSvg.jsx';
+import hourglassPng from './hourglass.png';
 
 export { 
     bugPng, 
@@ -34,5 +36,7 @@ export {
     chevronRightPng,
     indicatorSecure,
     indicatorPartial,
-    indicatorInsecure
+    indicatorInsecure,
+    ChevronSvg,
+    hourglassPng
 };

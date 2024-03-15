@@ -1,10 +1,4 @@
 .daily-report {
-    .threat-found-color {
-        color: #CF4545;
-    }
-    .threat-fixed-color {
-        color: #4FD88A;
-    }
     .daily-report__timestamp {
         background-color: #2E3A46;
         padding: 8px 16px;
@@ -73,13 +67,17 @@
                             font-weight: 500;
 
                         }
+
+                        .threat-fixed-color {
+                            color: #4FD88A;
+                        }
                     }
                 }
 
                 .statistics__threat-count {
                     display: flex;
                     flex-direction: column;
-                    gap: 3px;
+                    gap: 1px;
 
                     .threat-count__item {
                         display: flex;
@@ -93,8 +91,17 @@
                         }
                         
                         .item__val {
+                            color: #D2D2D2;
                             font-size: 10px;
                             font-weight: 500;
+                        }
+
+                        .threat-found-color {
+                            color: #CF4545;
+                        }
+
+                        .threat-fixed-color {
+                            color: #4FD88A;
                         }
                     }
                 }
