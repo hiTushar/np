@@ -7,12 +7,6 @@ const FULL_ARC = 2 * Math.PI * 40;
 export default function ScanProgress(props) {
     const { progress, pause, scanSwitch } = props;
 
-    const getProgress = (progress) => {
-
-    }
-
-    getProgress(progress);
-
     return (
         <div className="npav-scan_progress">
             <svg viewBox='0 0 101 101'>
@@ -62,7 +56,6 @@ export default function ScanProgress(props) {
                 >
                 </circle>
             </svg>
-            {/* TODO: Add font and img size control prop or use em unit */}
             <div className={`progress__data ${progress >= 1 ? 'complete' : ''}`}>
                 <div className='data__percent'>{parseInt(progress * 100)}</div>
                 <div className='data__symbol'>%</div>

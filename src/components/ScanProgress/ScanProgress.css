@@ -7,6 +7,8 @@
     /* clip-path: polygon(0% 0%, 0% 100%, 100% 100%, 100% 50%, 50% 50%, 50% 0%); */
     
     position: relative;
+    container-type: inline-size;
+    container-name: scan-progress;
 
     .progress__data {
         position: absolute;
@@ -26,19 +28,26 @@
 
         .data__percent {
             color: #FFF;
-            font-size: 40px;
             font-weight: 700;
             line-height: 1;
+
+            @container scan-progress (min-width: 1px) { /* 1px the least value, container query then works everytime  */
+                font-size: 20cqw;
+            }
         }
         .data__symbol {
             color: #FFF;
-            font-size: 20px;
+            font-size: 1em;
             font-weight: 500;
+
+            @container scan-progress (min-width: 1px) {
+                font-size: 10cqw;
+            }
         }
     }
 
     .progress__control {
-        width: 30px;
+        width: 18%;
         position: absolute;
         left: 50%;
         top: 65%;
@@ -60,4 +69,12 @@
     100% {
         opacity: 1;
     }
+    
+
 }
+
+/* @container scanProgress (min-width: 1px) {
+    .data__percent {
+        font-size: 50cqw;
+    }
+} */
