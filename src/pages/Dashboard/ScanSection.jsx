@@ -12,7 +12,8 @@ import { splitTimestamp } from '../../utils/Utils';
 export default function ScanSection({data, index}) {
     const dispatch = useDispatch();
     const scanStatusData = useSelector(state => state.scanStatusReducer);
-    const { system_status, files_scanned, threats_found, threats_fixed, last_scan_timestamp } = data;
+    const navigate = useNavigate();
+    const { system_status, files_scanned, threats_found, threats_fixed, timestamp } = data;
     
     const fileTimerId = useRef(null);
     const timeTimerId = useRef(null);
@@ -48,8 +49,6 @@ export default function ScanSection({data, index}) {
             statusTitle = '';
             statusClass = '';
     }
-
-    const navigate = useNavigate();
 
     // TODO: make all this timer function either as custom hook or function - IMP
     useEffect(() => {
@@ -113,11 +112,11 @@ export default function ScanSection({data, index}) {
         return `Scanned ${files_scanned} Files`
     }
 
-    const getLastScanTime = (index, last_scan_timestamp) => {
+    const getLastScanTime = (index, timestamp) => {
         if(index === 0) {
-            return `${formatDistanceToNow(new Date(last_scan_timestamp))} ago`
+            return `${formatDistanceToNow(new Date(timestamp))} ago`
         }
-        return format(new Date(last_scan_timestamp), "EEE dd MMM ''yy hh:mm b")
+        return format(new Date(timestamp), "EEE dd MMM ''yy hh:mm a")
     }
 
     return (
@@ -135,7 +134,7 @@ export default function ScanSection({data, index}) {
                         </div>
                         <div className='inactive__timestamp'>
                             <div className='timestamp__title'>Scanned on</div>
-                            <div className='timestamp__value'>{getLastScanTime(index, last_scan_timestamp)}</div>
+                            <div className='timestamp__value'>{getLastScanTime(index, timestamp)}</div>
                         </div>
                         <div className='inactive__scan-button'>
                             <ScanButton startScan={() => dispatch(setScanning(true))}/>                 
@@ -178,7 +177,7 @@ export default function ScanSection({data, index}) {
                             </div>
                         </div>
                         <div className='active__view-details'>
-                            <div className='view-details__title'>View Details</div>
+                            <div className='view-details__title' onClick={() => navigate('/user/scan?type=quick')}>View Details</div>
                             <div className='view-details__icon'>
                                 <ChevronSvg fillColor='rgba(243, 182, 23, 1)' />
                             </div>

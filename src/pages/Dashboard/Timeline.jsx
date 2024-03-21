@@ -238,7 +238,7 @@ export default function Timeline({ data, selectSlide, quickPass }) {
                                         onMouseOut={timelineSection === sectionIndex ? (event) => removeTimelineTickHoverStyle(event) : () => {}}
                                         key={dataPt.timestamp}
                                     >
-                                        <div className={`tick__visible ${getColorClass(dataPt.system_status)}`}></div>
+                                        <div className={`tick__visible ${getColorClass(timelineSection === sectionIndex ? dataPt.system_status : section.avgScore)}`}></div>
                                         {
                                             timelineSection === sectionIndex && (
                                                 <div className='tick__day'>{format(new Date(dataPt.timestamp), 'EEE')}</div>
