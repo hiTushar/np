@@ -7,7 +7,7 @@
     .dashboard__carousel {
         margin-inline: 50px;
         position: relative;
-        flex: 1;
+        flex: 4;
         perspective: 5500px;
         transform-style: preserve-3d;
     }
@@ -63,20 +63,11 @@
     }
 
     .dashboard__timeline {
+        flex: 1;
+        margin-right: 150px;   
+        padding-bottom: 30px;
+        /* outline: green solid 1px; */
         display: flex;
-        align-items: flex-end;
-        gap: 5px;
-
-        .timeline__element {
-            width: 4px;
-            height: 8px;
-            background-color: red;
-            cursor: pointer;
-            transition: all 0.05s;
-        }
-
-        .timeline__element:hover {
-            height: 16px;
-        }
+        align-items: end;
     }
 }

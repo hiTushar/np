@@ -3,6 +3,7 @@ import { useSelector } from "react-redux";
 import { ReportData } from './ReportData';
 import { useEffect, useRef, useState } from 'react';
 import CarouselSlide from './CarouselSlide';
+import Timeline from './Timeline';
 
 
 export default function Dashboard({ props }) {
@@ -10,6 +11,8 @@ export default function Dashboard({ props }) {
     const slideClassArray = useRef(null);
     const carouselRef = useRef(null);
     const [allReportPanels, setAllReportPanels] = useState([...ReportData]);
+
+    const quickPass = useRef(false); // when a slide is selected, the respective slide comes up in a one by one manner; but when a new timeline section is selected we jump directly to the first slide of that section
 
     useEffect(() => {
         let allChildNodes = carouselRef.current.children;
@@ -51,7 +54,8 @@ export default function Dashboard({ props }) {
                         if (slideClassArray.current[0] === 'slide__ahead') // so as to not lose the slide specific positioning classes - slide__one, ...
                             slideClassArray.current.shift();
                         applyClassArrayToSlides(slideClassArray.current, allChildNodes);
-                    }, 400 * i)
+                        quickPass.current = false;
+                    }, quickPass.current ? 400 : 400 * i)
                 }
             }
             else if (currentReportIndex < selectedReportIndex) { // moving slides forward
@@ -62,7 +66,8 @@ export default function Dashboard({ props }) {
                         if (slideClassArray.current[slideClassArray.current.length - 1] === 'slide__after') // so as to not lose the slide specific positioning classes - slide__one, ...
                             slideClassArray.current.pop();
                         applyClassArrayToSlides(slideClassArray.current, allChildNodes);
-                    }, 400 * i)
+                        quickPass.current = false;
+                    }, quickPass.current ? 400 : 400 * i)
                 }
             }
         }
@@ -86,11 +91,7 @@ export default function Dashboard({ props }) {
                 }
             </div>
             <div className="dashboard__timeline">
-                {
-                    allReportPanels.map(dataPt => (
-                        <div className='timeline__element' onClick={() => selectSlide(dataPt.timestamp)} key={dataPt.timestamp}></div>
-                    ))
-                }
+                <Timeline data={allReportPanels} selectSlide={(timestamp) => selectSlide(timestamp)} quickPass={quickPass} />
             </div>
         </div>
     )

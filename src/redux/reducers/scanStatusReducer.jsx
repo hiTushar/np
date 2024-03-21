@@ -11,7 +11,7 @@ const initialState = {
     files_scanned: 0,
     threats_found: 203,
     threats_fixed: 197,
-    last_scan_timestamp: 1707915973000, // 14/02/2024
+    next_scan_timestamp: 1713595892000 // TODO: schedule scan action, reducer
 }
 
 const scanStatusReducer = (state = initialState, action) => {
