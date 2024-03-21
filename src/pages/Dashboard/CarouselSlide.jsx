@@ -64,6 +64,7 @@ export default function CarouselSlide ({ dataPt, upgradeStatus, index }) {
                 <div className="report-section__panel">
                     <div className="panel__daily-data">
                         <DailyReport
+                            timestamp={dataPt.timestamp}
                             system_status={dataPt.system_status}
                             secure_percent={dataPt.secure_percent}
                             last_week_percent={dataPt.last_week_percent}

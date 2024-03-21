@@ -1,4 +1,5 @@
 import { useSelector } from "react-redux"
+import { format } from 'date-fns';
 import { greenTickPng, insecureShieldSvg, optimizeIconPng, partialShieldSvg, secureShieldSvg } from "../../assets/assets"
 import './DailyReport.css';
 import Button from '../../components/Button/Button';
@@ -27,7 +28,7 @@ const OPTIMIZE_REPORT_CHART_DATA = [
 
 export default function DailyReport(props) {
     // const { system_status, threats_found, threats_fixed } = useSelector(state => state.scanStatusReducer)
-    const { system_status, secure_percent, last_week_percent, threats_found, threats_fixed, files_scanned, temp_files_percent, cache_and_cookies_percent, registry_junk_percent } = props;
+    const { timestamp, system_status, secure_percent, last_week_percent, threats_found, threats_fixed, files_scanned, temp_files_percent, cache_and_cookies_percent, registry_junk_percent } = props;
 
     const getStatusIcon = (status) => {
         switch(status) {
@@ -49,7 +50,7 @@ export default function DailyReport(props) {
                     <img src={greenTickPng} alt='tick icon' />
                 </div>
                 <div className="timestamp__text">
-                    Updated on: Thu 01 Dec 04:15 {/* implement a utility function to convert timestamp to date time string - date-fns */}
+                    Updated on: {format(new Date(timestamp), "EEE dd MMM ''yy hh:mm a")} {/* implement a utility function to convert timestamp to date time string - date-fns */}
                 </div>
             </div>
             <div className="daily-report__detail">
