@@ -9,7 +9,7 @@ import { setScanning } from '../../redux/actions/scanStatusActions';
 import ScanProgress from '../../components/ScanProgress/ScanProgress';
 import { splitTimestamp } from '../../utils/Utils';
 
-export default function ScanSection({data, index}) {
+export default function ScanSection({data, slideIndex}) {
     const dispatch = useDispatch();
     const scanStatusData = useSelector(state => state.scanStatusReducer);
     const navigate = useNavigate();
@@ -134,17 +134,25 @@ export default function ScanSection({data, index}) {
                         </div>
                         <div className='inactive__timestamp'>
                             <div className='timestamp__title'>Scanned on</div>
-                            <div className='timestamp__value'>{getLastScanTime(index, timestamp)}</div>
+                            <div className='timestamp__value'>{getLastScanTime(slideIndex, timestamp)}</div>
                         </div>
-                        <div className='inactive__scan-button'>
-                            <ScanButton startScan={() => dispatch(setScanning(true))}/>                 
-                        </div>
-                        <div className='inactive__scan-options' onClick={() => navigate('/user/scan-options')}>
-                            <div className='scan-options__title'>Scan Options</div>
-                            <div className='scan-options__icon'>
-                                <ChevronSvg fillColor='rgba(250, 250, 250, 0.5)' />
-                            </div>
-                        </div>
+                        {
+                            slideIndex === 0 ? (
+                                <div className='inactive__scan-button'>
+                                    <ScanButton startScan={() => dispatch(setScanning(true))}/>                 
+                                </div>
+                            ) : <></>
+                        }
+                        {
+                            slideIndex === 0 ? (
+                                <div className='inactive__scan-options' onClick={() => navigate('/user/scan-options')}>
+                                    <div className='scan-options__title'>Scan Options</div>
+                                    <div className='scan-options__icon'>
+                                        <ChevronSvg fillColor='rgba(250, 250, 250, 0.5)' />
+                                    </div>
+                                </div>
+                            ) : <></>
+                        }
                     </div>
                 ) : (
                     <div className='scan-section__active'>

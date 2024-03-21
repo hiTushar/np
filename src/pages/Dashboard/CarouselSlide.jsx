@@ -53,11 +53,11 @@ const getStatusNotch = (status) => {
     }
 }
 
-export default function CarouselSlide ({ dataPt, upgradeStatus, index }) { 
+export default function CarouselSlide ({ dataPt, upgradeStatus, slideIndex }) { 
    return (
         <div className="" key={dataPt.timestamp}>
             <div className="slide__scan-section">
-                <ScanSection data={dataPt} index={index} />
+                <ScanSection data={dataPt} slideIndex={slideIndex} />
             </div>
             <div className="slide__report-section">
                 <div className="report-section__title">Daily Report</div>

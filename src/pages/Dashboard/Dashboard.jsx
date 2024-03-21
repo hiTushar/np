@@ -86,7 +86,7 @@ export default function Dashboard({ props }) {
                 {
                     /* separate component for better debugging */
                     allReportPanels.map((dataPt, index) => (
-                        <CarouselSlide key={new Date(dataPt.timestamp)} upgradeStatus={upgradeStatus} dataPt={dataPt} index={index} />
+                        <CarouselSlide key={new Date(dataPt.timestamp)} upgradeStatus={upgradeStatus} dataPt={dataPt} slideIndex={index} />
                     ))
                 }
             </div>
