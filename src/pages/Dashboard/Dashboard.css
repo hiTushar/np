@@ -64,7 +64,7 @@
 
     .dashboard__timeline {
         flex: 1;
-        margin-right: 150px;   
+        margin-right: 80px;   
         padding-bottom: 30px;
         /* outline: green solid 1px; */
         display: flex;

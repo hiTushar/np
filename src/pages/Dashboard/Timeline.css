@@ -24,8 +24,6 @@
 .timeline__section {
     position: relative;
     width: 150px;
-
-    
     padding-block: 5px;
 
     &.selected {
@@ -95,7 +93,7 @@
     height: 10px;
     flex: 1;
     /* cursor: pointer; */
-    transition: all 0.3s;   
+    transition: all 0.1s;   
 
     position: relative;
 }
@@ -109,7 +107,7 @@
     left: 50%;
     transform: translateX(-50%);
 
-    transition: all 0.3s, box-shadow 2.5s;
+    transition: all 0.1s, box-shadow 2.5s;
 
 }
 
@@ -202,5 +200,25 @@
 
     &.active {
         box-shadow: var(--partial-color) 0px 0px 5px 1.5px;
+    }
+}
+
+.timeline__next {
+    padding-left: 25px;
+}
+
+.next__tick {
+    width: 4px;
+    height: 4px;
+    border-radius: 50%;
+    background-color: #6F7078;
+    position: relative;
+
+    .tick__tooltip {
+        opacity: 1;
+
+        .tooltip__title {
+            color: #6F7078;
+        }
     }
 }

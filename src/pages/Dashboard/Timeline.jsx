@@ -1,8 +1,9 @@
 import { useEffect, useMemo, useRef, useState } from 'react';
 import { v4 as uuidv4 } from 'uuid';
 import './Timeline.css';
-import { format } from 'date-fns';
+import { format, isToday } from 'date-fns';
 import { tooltipFrillPng } from '../../assets/assets';
+import { useSelector } from 'react-redux';
 
 const getColorClass = (status) => {
     switch(status) {
@@ -22,6 +23,7 @@ export default function Timeline({ data, selectSlide, quickPass }) {
     const timelineRef = useRef(null);
     const [timelineSection, setTimelineSection] = useState(0);
     const timestampNodeRef = useRef(null);
+    const nextScanTimestamp = useSelector(state => state.scanStatusReducer.next_scan_timestamp)
 
     useEffect(() => {
         if(!timestampNodeRef.current) {
@@ -29,7 +31,6 @@ export default function Timeline({ data, selectSlide, quickPass }) {
             timestampNodeRef.current = firstTimelineSection.querySelectorAll('.timeline__tick')[0];
         }
         highlightSelectedTimestamp(timestampNodeRef.current);
-        console.log(timestampNodeRef.current);
     }, [timelineSection])
 
     let timelineSectionData = useMemo(() => {
@@ -62,7 +63,6 @@ export default function Timeline({ data, selectSlide, quickPass }) {
     }, [data])
 
     const jumpToTimelineSection = (event, sectionIndex) => {
-        console.log('jump');
         setTimelineSection(sectionIndex);
         quickPass.current = true;
 
@@ -70,7 +70,6 @@ export default function Timeline({ data, selectSlide, quickPass }) {
         selectSlide(timelineSectionFirstSlideTimestamp);
 
         timestampNodeRef.current = event.currentTarget.querySelectorAll('.timeline__tick')[0];
-        console.log(timestampNodeRef.current); 
     }
 
     const walkToSlide = (timestamp) => {
@@ -153,8 +152,6 @@ export default function Timeline({ data, selectSlide, quickPass }) {
     }
 
     const highlightSelectedTimestamp = (selected) => {
-        // const selected = event.currentTarget;
-        console.log('highlight');
         let allSectionPts = selected.closest('.timeline__section > .section__ticks').children;
         Array.from(allSectionPts).forEach(node => {
             if(node.querySelector('.tick__visible').classList.contains('active')) {
@@ -217,10 +214,26 @@ export default function Timeline({ data, selectSlide, quickPass }) {
         return `${startDate} - ${endDate}`;
     }
 
-    console.log('render');
-    console.log(timestampNodeRef.current);
+    const getNextScanString = (timestamp) => {
+        return `${isToday(timestamp) ? 'Today' : format(timestamp, "EEE dd MMM ''yy")} ${format(timestamp, 'hh:mm a')}` 
+    }
+
     return (
         <div className='timeline' ref={timelineRef}>
+            <div className='timeline__next'>
+                <div className='next__tick'>
+                    <div className='tick__tooltip'>
+                        <div className='tooltip__title'>Next Scan</div>
+                        <div className='tooltip__threat'>{getNextScanString(nextScanTimestamp)}</div>
+                        <div className='tooltip__frills'>
+                            <img src={tooltipFrillPng} alt={'tooltip frill'} />
+                        </div>
+                    </div>
+                </div>
+                <div className='section__frills'>
+                    <div className='section__date'>{nextScanTimestamp}</div>
+                </div>
+            </div>
             {
                 timelineSectionData.map((section, sectionIndex) => (
                     <div 
