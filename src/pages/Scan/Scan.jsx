@@ -35,6 +35,7 @@ const insightsCardData = [
 ]
 
 export default function Scan({ props }) {
+    // TODO: get values from scanstatusreducer
     const navigate = useNavigate();
     const [searchParams] = useSearchParams();
     const type = searchParams.get('type');
@@ -42,6 +43,7 @@ export default function Scan({ props }) {
     const fileTimerId = useRef(null);
     const timeTimerId = useRef(null);
 
+    // TODO: move all this to redux store for the time being
     const [progress, setProgress] = useState(0);
     const [scanPause, setScanPause] = useState(false);
     const [totalFileCount, setTotalFileCount] = useState(100);
@@ -113,7 +115,7 @@ export default function Scan({ props }) {
             propObj = {
                 titleBreadcrumbs: ['Cloud Scan'],
                 desc: 'Our artificial intelligence Cloud Scan is now shielding you form viruses, spyware, and other threats.',
-                onClick: () => navigate('/user'),
+                onClick: () => navigate('/user/scan-options'),
             }
             children = null;
         }

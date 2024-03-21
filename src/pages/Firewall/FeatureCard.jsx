@@ -8,7 +8,7 @@ export default function FeatureCard({ data }) {
 
     return (
         <Card>
-            <div className="feature-card" onClick={() => navigate(`/user/web-security/firewall/features?section=${section}`)}>
+            <div className="feature-card" onClick={() => navigate(`/user/web-security/firewall/features?section=${key}`)}>
                 <div className="feature-card__title">
                     <div className="title__icon">
                         <img src={icons[0]} alt='icon' />
