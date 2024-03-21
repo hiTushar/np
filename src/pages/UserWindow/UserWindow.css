@@ -1,6 +1,6 @@
 .window {
     width: 1085px;
-    height: 690px;
+    height: 750px;
     border-radius: 2px;
     background: linear-gradient(0deg, rgba(255, 255, 255, 0.02) 0%, rgba(255, 255, 255, 0.02) 100%), rgba(13, 14, 25, 0.90);
     backdrop-filter: blur(100px);

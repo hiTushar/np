@@ -50,7 +50,7 @@ export default function FirewallStatsChart(props) {
     const options = {
         responsive: true,
         // maintainAspectRatio: false,
-        aspectRatio: 3.5 / 1,
+        aspectRatio: 3 / 1,
         plugins: {
             legend: {
                 display: false
