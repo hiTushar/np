@@ -122,73 +122,80 @@ export default function ScanSection({data, slideIndex}) {
     return (
         <div className="scan-section">
             {
-                !scanStatusData.scanning ? (
+                slideIndex === 0 ? (    
+                    scanStatusData.scanning ? (
+                        <div className='scan-section__active'>
+                            <div className='active__title'>Quick Scan Running</div>
+                            <div className='active__scanner'>
+                                <div className='scanner__display'>
+                                    <ScanProgress progress={progress} pause={scanPause} scanSwitch={scanSwitch} />
+                                </div>
+                                <div className='scanner__file-count'>
+                                    <div className='file-count__title'>Files Scanned</div>
+                                    <div className='file-count__value'>{scannedFileCount}</div>
+                                </div>
+                                <div className='scanner__threat-count'>
+                                    <div className='threat-count__title'>Threats Found</div>
+                                    <div className='threat-count__value'>23</div>
+                                </div>
+                                <div className='scanner__timer'>
+                                    <div className='timer__time-left'>
+                                        <div className='time-left__icon'>
+                                            <img src={hourglassPng} alt='timer icon'/>
+                                        </div>
+                                        <div className='time-left__value'>
+                                            {+splitTimestamp(panelData.time_left)[0] ? `${splitTimestamp(panelData.time_left)[0]}:` : null}
+                                            {splitTimestamp(panelData.time_left)[1]}:
+                                            {splitTimestamp(panelData.time_left)[2]}{' '}
+                                            {splitTimestamp(panelData.time_left)[3]}
+                                        </div>
+                                    </div>
+                                    <div className='timer__title'>Time Remaining</div>
+                                </div>
+                            </div>
+                            <div className='active__view-details'>
+                                <div className='view-details__title' onClick={() => navigate('/user/scan?type=quick')}>View Details</div>
+                                <div className='view-details__icon'>
+                                    <ChevronSvg fillColor='rgba(243, 182, 23, 1)' />
+                                </div>
+                            </div>
+                        </div>
+                    ) : (
+                        <div className='scan-section__inactive'>
+                            <div className='inactive__system-status'>
+                                <div className='system-status__icon'>
+                                    <img src={statusIcon} alt='icon' />
+                                </div>
+                                <div className='system-status__text'>{statusTitle}</div>
+                            </div>
+                            <div className='inactive__timestamp'>
+                                <div className='timestamp__title'>Scanned on</div>
+                                <div className='timestamp__value'>{getLastScanTime(slideIndex, timestamp)}</div>
+                            </div>
+                            
+                            <div className='inactive__scan-button'>
+                                <ScanButton startScan={() => dispatch(setScanning(true))}/>                 
+                            </div>
+                    
+                            <div className='inactive__scan-options' onClick={() => navigate('/user/scan-options')}>
+                                <div className='scan-options__title'>Scan Options</div>
+                                <div className='scan-options__icon'>
+                                    <ChevronSvg fillColor='rgba(250, 250, 250, 0.5)' />
+                                </div>
+                            </div>
+                        </div>
+                    )
+                ) : (
                     <div className='scan-section__inactive'>
                         <div className='inactive__system-status'>
                             <div className='system-status__icon'>
                                 <img src={statusIcon} alt='icon' />
                             </div>
                             <div className='system-status__text'>{statusTitle}</div>
-                            {/* <div className='system-status__files-scanned'>{getScannedFilesText(parseInt(files_scanned))}</div>
-                            <div className={`system-status__threats-found ${parseInt(threats_found) > 0 ? 'threat-found' : 'threat-safe'}`}>{getThreatCountText(threats_found)}</div> */}
                         </div>
                         <div className='inactive__timestamp'>
                             <div className='timestamp__title'>Scanned on</div>
                             <div className='timestamp__value'>{getLastScanTime(slideIndex, timestamp)}</div>
-                        </div>
-                        {
-                            slideIndex === 0 ? (
-                                <div className='inactive__scan-button'>
-                                    <ScanButton startScan={() => dispatch(setScanning(true))}/>                 
-                                </div>
-                            ) : <></>
-                        }
-                        {
-                            slideIndex === 0 ? (
-                                <div className='inactive__scan-options' onClick={() => navigate('/user/scan-options')}>
-                                    <div className='scan-options__title'>Scan Options</div>
-                                    <div className='scan-options__icon'>
-                                        <ChevronSvg fillColor='rgba(250, 250, 250, 0.5)' />
-                                    </div>
-                                </div>
-                            ) : <></>
-                        }
-                    </div>
-                ) : (
-                    <div className='scan-section__active'>
-                        <div className='active__title'>Quick Scan Running</div>
-                        <div className='active__scanner'>
-                            <div className='scanner__display'>
-                                <ScanProgress progress={progress} pause={scanPause} scanSwitch={scanSwitch} />
-                            </div>
-                            <div className='scanner__file-count'>
-                                <div className='file-count__title'>Files Scanned</div>
-                                <div className='file-count__value'>{scannedFileCount}</div>
-                            </div>
-                            <div className='scanner__threat-count'>
-                                <div className='threat-count__title'>Threats Found</div>
-                                <div className='threat-count__value'>23</div>
-                            </div>
-                            <div className='scanner__timer'>
-                                <div className='timer__time-left'>
-                                    <div className='time-left__icon'>
-                                        <img src={hourglassPng} alt='timer icon'/>
-                                    </div>
-                                    <div className='time-left__value'>
-                                        {+splitTimestamp(panelData.time_left)[0] ? `${splitTimestamp(panelData.time_left)[0]}:` : null}
-                                        {splitTimestamp(panelData.time_left)[1]}:
-                                        {splitTimestamp(panelData.time_left)[2]}{' '}
-                                        {splitTimestamp(panelData.time_left)[3]}
-                                    </div>
-                                </div>
-                                <div className='timer__title'>Time Remaining</div>
-                            </div>
-                        </div>
-                        <div className='active__view-details'>
-                            <div className='view-details__title' onClick={() => navigate('/user/scan?type=quick')}>View Details</div>
-                            <div className='view-details__icon'>
-                                <ChevronSvg fillColor='rgba(243, 182, 23, 1)' />
-                            </div>
                         </div>
                     </div>
                 )
