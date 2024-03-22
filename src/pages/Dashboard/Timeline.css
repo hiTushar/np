@@ -204,7 +204,10 @@
 }
 
 .timeline__next {
-    padding-left: 25px;
+    width: 40px;
+    position: relative;
+    display: flex;
+    justify-content: center;
 }
 
 .next__tick {
@@ -221,4 +224,9 @@
             color: #6F7078;
         }
     }
+}
+
+.next__frills {
+    position: absolute;
+    bottom: -36px;
 }

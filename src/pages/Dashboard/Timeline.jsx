@@ -215,7 +215,7 @@ export default function Timeline({ data, selectSlide, quickPass }) {
     }
 
     const getNextScanString = (timestamp) => {
-        return `${isToday(timestamp) ? 'Today' : format(timestamp, "EEE dd MMM ''yy")} ${format(timestamp, 'hh:mm a')}` 
+        return `${isToday(timestamp) ? 'Today' : format(timestamp, "dd MMM ''yy")} ${format(timestamp, 'hh:mm a')}` 
     }
 
     return (
@@ -230,8 +230,8 @@ export default function Timeline({ data, selectSlide, quickPass }) {
                         </div>
                     </div>
                 </div>
-                <div className='section__frills'>
-                    <div className='section__date'>{nextScanTimestamp}</div>
+                <div className='next__frills'>
+                    <div className='section__date'>{format(nextScanTimestamp, 'EEE')}</div>
                 </div>
             </div>
             {
