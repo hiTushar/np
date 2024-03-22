@@ -52,25 +52,29 @@ export default function ScanSection({data, slideIndex}) {
 
     // TODO: make all this timer function either as custom hook or function - IMP
     useEffect(() => {
-        if(!fileTimerId.current) {
-            fileTimerId.current = setInterval(() => {
-                setScannedFileCount(prev => prev + 1);
-            }, 100)
+        if(scanStatusData.scanning) {
+            if(!fileTimerId.current) {
+                fileTimerId.current = setInterval(() => {
+                    setScannedFileCount(prev => prev + 1);
+                }, 100)
+            }
+    
+            if(!timeTimerId.current) {
+                timeTimerId.current = setInterval(() => {
+                    setPanelData(prev => ({ ...prev, time_left: prev.time_left - 10}))
+                }, 1)
+            }
         }
-
-        if(!timeTimerId.current) {
-            timeTimerId.current = setInterval(() => {
-                setPanelData(prev => ({ ...prev, time_left: prev.time_left - 10}))
-            }, 1)
-        }
-    }, [])
+    }, [scanStatusData.scanning])
 
     useEffect(() => {
-        if(progress >= 1) {
-            clearInterval(fileTimerId.current);
-        }
-        if(progress >= 1 || panelData.time_left <= 0) {
-            clearInterval(timeTimerId.current);
+        if(scanStatusData.scanning) {
+            if(progress >= 1) {
+                clearInterval(fileTimerId.current);
+            }
+            if(progress >= 1 || panelData.time_left <= 0) {
+                clearInterval(timeTimerId.current);
+            }
         }
     }, [progress, panelData.time_left])
 
