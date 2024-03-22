@@ -125,6 +125,7 @@
 }
 
 .tick__tooltip {
+    pointer-events: none;
     position: absolute;
     top: -45px;
     left: 50%;
