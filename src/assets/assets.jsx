@@ -19,6 +19,7 @@ import indicatorInsecure from './indicator-insecure.png';
 import ChevronSvg from './ChevronSvg.jsx';
 import hourglassPng from './hourglass.png';
 import tooltipFrillPng from './tooltipFrill.png';
+import xPng from './x.png';
 
 export { 
     bugPng, 
@@ -40,5 +41,6 @@ export {
     indicatorInsecure,
     ChevronSvg,
     hourglassPng,
-    tooltipFrillPng
+    tooltipFrillPng,
+    xPng
 };
