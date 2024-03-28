@@ -20,6 +20,16 @@ import ChevronSvg from './ChevronSvg.jsx';
 import hourglassPng from './hourglass.png';
 import tooltipFrillPng from './tooltipFrill.png';
 import xPng from './x.png';
+import AppstoreSvg from './AppstoreSvg.jsx';
+import BackupSvg from './BackupSvg.jsx';
+import CloudSvg from './CloudSvg.jsx';
+import GoldSvg from './GoldSvg.jsx';
+import LanSvg from './LanSvg.jsx';
+import MailSvg from './MailSvg.jsx';
+import OsCircleSvg from './OsCircleSvg.jsx';
+import SecurityScanSvg from './SecurityScanSvg.jsx';
+import StopSvg from './StopSvg.jsx';
+import ThunderboltSvg from './ThunderboltSvg.jsx';
 
 export { 
     bugPng, 
@@ -42,5 +52,15 @@ export {
     ChevronSvg,
     hourglassPng,
     tooltipFrillPng,
-    xPng
+    xPng,
+    AppstoreSvg,
+    BackupSvg,
+    CloudSvg,
+    GoldSvg,
+    LanSvg,
+    MailSvg,
+    OsCircleSvg,
+    SecurityScanSvg,
+    StopSvg,
+    ThunderboltSvg
 };
