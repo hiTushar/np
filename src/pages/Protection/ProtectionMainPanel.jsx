@@ -1,3 +1,4 @@
+import './Protection.css';
 import AdBlocker from './AllTypes/AdBlocker';
 import AppProtection from './AllTypes/AppProtection';
 import CloudProtection from './AllTypes/CloudProtection';
@@ -8,54 +9,55 @@ import Ids from './AllTypes/Ids';
 import LanProtection from './AllTypes/LanProtection';
 import OnlineProtection from './AllTypes/OnlineProtection';
 import OsProtection from './AllTypes/OsProtection';
-import './Protection.css';
+import data from './data';
 
 const protectionSectionUI = [
     {
         key: 'app',
-        component: <AppProtection /> 
+        component: AppProtection 
     },
     {
         key: 'fort',
-        component: <FortProtection /> 
+        component: FortProtection 
     },
     {
         key: 'cloud',
-        component: <CloudProtection /> 
+        component: CloudProtection
     },
     {
         key: 'os',
-        component: <OsProtection /> 
+        component: OsProtection 
     },
     {
         key: 'adblock',
-        component: <AdBlocker /> 
+        component: AdBlocker 
     },
     {
         key: 'online',
-        component: <OnlineProtection /> 
+        component: OnlineProtection 
     },
     {
         key: 'email',
-        component: <EmailProtection /> 
+        component: EmailProtection 
     },
     {
         key: 'lan',
-        component: <LanProtection /> 
+        component: LanProtection 
     },
     {
         key: 'ids',
-        component: <Ids /> 
+        component: Ids 
     },
     {
         key: 'data',
-        component: <DataProtection /> 
+        component: DataProtection 
     },
 ]
 
 const getSection = (sectionRoute) => {
-    const uiSection = protectionSectionUI.filter(protectionSection => protectionSection.key === sectionRoute)[0];
-    return uiSection.component;
+    const sectionUI = protectionSectionUI.filter(protectionSection => protectionSection.key === sectionRoute)[0];
+    const sectionData = data.filter(protectionSection => protectionSection.key === sectionRoute)[0];
+    return <sectionUI.component sectionData={sectionData} />;
 }
 export default function ProtectionMainPanel({ sectionRoute }) {
     return (
