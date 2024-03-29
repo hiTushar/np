@@ -4,12 +4,11 @@
     aspect-ratio: 2;
     padding: 2px;
     cursor: pointer;
-    border: 2px solid rgba(103, 106, 132, 1);
+    border: 1px solid rgba(103, 106, 132, 1);
 
     &.checked {
         background-color: rgba(243, 182, 23, 1);
         border: none;
-        padding: 3px;
     }
 
     &.disabled {
