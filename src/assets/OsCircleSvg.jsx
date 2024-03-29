@@ -1,6 +1,6 @@
 export default function OsCircleSvg({ fillColor }) {
     return (
-        <svg width="18" height="19" viewBox="0 0 18 19" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <svg viewBox="0 0 18 19" fill="none" xmlns="http://www.w3.org/2000/svg">
             <g clipPath="url(#clip0_1921_1223)">
                 <path 
                     d="M9 0.5C4.02991 0.5 0 4.52991 0 9.5C0 14.4701 4.02991 18.5 9 18.5C13.9701 18.5 18 14.4701 18 9.5C18 4.52991 13.9701 0.5 9 0.5ZM9 16.9732C4.87366 16.9732 1.52679 13.6263 1.52679 9.5C1.52679 5.37366 4.87366 2.02679 9 2.02679C13.1263 2.02679 16.4732 5.37366 16.4732 9.5C16.4732 13.6263 13.1263 16.9732 9 16.9732Z" 
