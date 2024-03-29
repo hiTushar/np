@@ -1,4 +1,4 @@
-import { SET_FILES_SCANNED, SET_SCANNING, SET_SYSTEM_STATUS, SET_THREATS_COUNT } from "./actionTypes";
+import { SET_FILES_SCANNED, SET_SCANNING, SET_SCHEDULE_SCAN, SET_SYSTEM_STATUS, SET_THREATS_COUNT } from "./actionTypes";
 
 const setSystemStatus = (payload) => ({
     type: SET_SYSTEM_STATUS,
@@ -20,4 +20,9 @@ const setScanning = (payload) => ({
     payload
 })
 
-export { setSystemStatus, setFilesScanned, setThreatsCount, setScanning }
+const setScheduleScan = (payload) => ({
+    type: SET_SCHEDULE_SCAN,
+    payload
+})
+
+export { setSystemStatus, setFilesScanned, setThreatsCount, setScanning, setScheduleScan }

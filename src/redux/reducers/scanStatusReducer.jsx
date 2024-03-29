@@ -2,7 +2,7 @@
  * these values will be shared between taskbar panel, dashboard and quick scan screen
  */
 
-import { SET_FILES_SCANNED, SET_SCANNING, SET_SYSTEM_STATUS, SET_THREATS_COUNT } from "../actions/actionTypes";
+import { SET_FILES_SCANNED, SET_SCANNING, SET_SCHEDULE_SCAN, SET_SYSTEM_STATUS, SET_THREATS_COUNT } from "../actions/actionTypes";
 
 const initialState = {
     system_status: 'secure', // values: secure, partial, insecure
@@ -11,7 +11,9 @@ const initialState = {
     files_scanned: 0,
     threats_found: 203,
     threats_fixed: 197,
-    next_scan_timestamp: 1713595892000 // TODO: schedule scan action, reducer
+    next_scan_frequency: 'weekly',
+    next_scan_time: JSON.stringify({ hh: 9, mm: 30 }),
+    next_scan_day: [0] // 0 - sunday, 1 - monday, and so on
 }
 
 const scanStatusReducer = (state = initialState, action) => {
@@ -28,7 +30,6 @@ const scanStatusReducer = (state = initialState, action) => {
                 ...state,
                 files_scanned: payload
             }
-
         case SET_THREATS_COUNT:
             return {
                 ...state,
@@ -40,7 +41,15 @@ const scanStatusReducer = (state = initialState, action) => {
                 ...state,
                 scanning: payload
             }
-        default: 
+        case SET_SCHEDULE_SCAN: {
+            return {
+                ...state,
+                next_scan_frequency: payload.next_scan_frequency,
+                next_scan_time: payload.next_scan_time,
+                next_scan_day: payload.next_scan_day
+            }
+        }
+        default:
             return state;
     }
 }
