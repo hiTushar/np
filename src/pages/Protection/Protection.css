@@ -53,4 +53,9 @@
             width: 24px;
         }
     }
+
+    .protection__main-panel {
+        padding: 30px;
+        height: 100%;
+    }
 }
