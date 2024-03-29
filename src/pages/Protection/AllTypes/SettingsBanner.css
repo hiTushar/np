@@ -1,0 +1,53 @@
+.settings-banner {
+    border-radius: 1px;
+    background-color: #222D38;
+    padding: 16px 16px 16px 24px;
+    
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 8px;
+
+}
+
+.settings-banner__content {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+}
+
+.content__icon {
+    width: 32px;
+    height: 32px;
+}
+
+.content__text {
+}
+
+.text__title {
+    color: #FFF;
+    font-size: 16px;
+    font-weight: 700;
+}
+
+.text__desc {
+    color: rgba(250, 250, 250, 0.7);
+    font-size: 14px;
+    font-weight: 400;
+}
+
+.settings-banner__control {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.control__text {
+    color: #FFF;
+    font-size: 14px;
+    font-weight: 400;
+}
+
+.control__button {
+    width: 30px;
+}
