@@ -10,7 +10,7 @@ const initialState = {
     email: true,
     lan: false,
     ids: true,
-    backup: true
+    data: false
 }
 
 const protectionReducer = (state = initialState, action) => {

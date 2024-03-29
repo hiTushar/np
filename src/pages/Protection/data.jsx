@@ -65,11 +65,11 @@ const data = [
         navUrl: '/user/protection?section=ids'
     },
     {
-        key: 'backup',
+        key: 'data',
         title: 'Data Protection & Backup',
         svgIcon: (fillColor) => <BackupSvg fillColor={fillColor}/>,
         desc: '',
-        navUrl: '/user/protection?section=backup'
+        navUrl: '/user/protection?section=data'
     },
 ]
 
