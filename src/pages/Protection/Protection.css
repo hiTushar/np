@@ -23,6 +23,8 @@
             align-items: center;
             cursor: pointer;
 
+            position: relative;
+
             &.highlight {
                 background: linear-gradient(90deg, rgba(243, 182, 23, 0.52) 0%, rgba(243, 182, 23, 0.2) 30%, rgba(25, 37, 49, 0.5) 95%, rgba(25, 37, 49, 0) 100%);
                 border-left: #E5BE20 2px solid;
@@ -37,11 +39,18 @@
             color: #71748E;
             font-size: 12px;
             font-weight: 700;
-            line-height: 1;
-            
+            line-height: 1.5;
+            width: 60%;
+
             &.highlight {
                 color: #C3E3E9;
             }
+        }
+
+        .section__status {
+            position: absolute;
+            right: 20px;
+            width: 24px;
         }
     }
 }
