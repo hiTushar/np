@@ -3,6 +3,7 @@ import { formReducer } from "./reducers/formReducer"
 import { commonReducer } from "./reducers/commonReducer"
 import { scanStatusReducer } from "./reducers/scanStatusReducer"
 import { firewallReducer } from "./reducers/firewallReducer"
+import protectionReducer from "./reducers/protectionReducer"
 import { protectionSelReducer} from "./reducers/protectionSelectedFeature"
 
 
@@ -11,6 +12,7 @@ const rootReducer = combineReducers({
     formReducer,
     scanStatusReducer,
     firewallReducer,
+    protectionReducer,
     protectionSelReducer,
 })
 
