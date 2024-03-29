@@ -14,6 +14,7 @@ import FirewallFeatures from "../FirewallFeatures/FirewallFeatures";
 import FirewallSettings from "../FirewallSettings/FirewallSettings";
 import SystemTuner from "../SystemTuner/SystemTuner";
 import WebSecurity from "../WebSecurity/WebSecurity";
+import Protection from "../Protection/Protection";
 
 export default function UserWindow({ props }) {
     return (
@@ -42,7 +43,7 @@ export default function UserWindow({ props }) {
             <div className="window__body">
                 <Routes>
                     <Route path='/' element={<Dashboard />} />
-                    <Route path='/protection' element={<></>} />
+                    <Route path='/protection' element={<Protection />} />
                     <Route path='/privacy' element={<></>} />
                     <Route path='/system-tuner' element={<SystemTuner />} />
                     <Route path='/system-tuner/junk-cleaner/startup' element={<StartupProgram />} />
