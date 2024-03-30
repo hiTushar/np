@@ -1,7 +1,7 @@
 import { useEffect, useMemo, useRef, useState } from 'react';
 import { v4 as uuidv4 } from 'uuid';
 import './Timeline.css';
-import { format, isToday } from 'date-fns';
+import { eachWeekOfInterval, endOfDay, endOfMonth, format, isToday, startOfMonth } from 'date-fns';
 import { tooltipFrillPng } from '../../assets/assets';
 import { useSelector } from 'react-redux';
 
@@ -22,15 +22,13 @@ const getColorClass = (status) => {
 export default function Timeline({ data, selectSlide, quickPass }) {
     const timelineRef = useRef(null);
     const [timelineSection, setTimelineSection] = useState(0);
-    const timestampNodeRef = useRef(null);
-    const nextScanTimestamp = useSelector(state => state.scanStatusReducer.next_scan_timestamp)
+    // const timestampNodeRef = useRef(null);
+    const { next_scan_frequency, next_scan_time, next_scan_day } = useSelector(state => state.scanStatusReducer)
 
     useEffect(() => {
-        if(!timestampNodeRef.current) {
-            let firstTimelineSection = document.querySelectorAll('.timeline__section > .section__ticks')[0];
-            timestampNodeRef.current = firstTimelineSection.querySelectorAll('.timeline__tick')[0];
-        }
-        highlightSelectedTimestamp(timestampNodeRef.current);
+        let sectionSelected = timelineRef.current.querySelectorAll('.section__ticks')[timelineSection];
+        let sectionFirstTick = sectionSelected.querySelectorAll('.timeline__tick')[0];
+        highlightSelectedTimestamp(sectionFirstTick);
     }, [timelineSection])
 
     let timelineSectionData = useMemo(() => {
@@ -63,13 +61,10 @@ export default function Timeline({ data, selectSlide, quickPass }) {
     }, [data])
 
     const jumpToTimelineSection = (event, sectionIndex) => {
-        setTimelineSection(sectionIndex);
         quickPass.current = true;
-
         let timelineSectionFirstSlideTimestamp = timelineSectionData[sectionIndex].data[0].timestamp;
         selectSlide(timelineSectionFirstSlideTimestamp);
-
-        timestampNodeRef.current = event.currentTarget.querySelectorAll('.timeline__tick')[0];
+        setTimelineSection(sectionIndex);
     }
 
     const walkToSlide = (timestamp) => {
@@ -214,8 +209,22 @@ export default function Timeline({ data, selectSlide, quickPass }) {
         return `${startDate} - ${endDate}`;
     }
 
-    const getNextScanString = (timestamp) => {
-        return `${isToday(timestamp) ? 'Today' : format(timestamp, "dd MMM ''yy")} ${format(timestamp, 'hh:mm a')}` 
+    const getNextScanString = (next_scan_frequency, next_scan_time, next_scan_day) => {
+        return 'asdf'; 
+    }
+
+    const getNextScanDay = (next_scan_frequency, next_scan_time, next_scan_day) => {
+        return 'asdf';
+    }
+
+    const nextScanTimestamp = (next_scan_frequency, next_scan_time, next_scan_day) => {
+        let today = new Date();
+        let startOfCurrentMonth = startOfMonth(today);
+        let endOfCurrentMonth = endOfMonth(today);
+
+        let allWeeks = eachWeekOfInterval({start: startOfCurrentMonth, end: endOfCurrentMonth});
+        
+        let allScanDays = allWeeks;
     }
 
     return (
@@ -224,14 +233,14 @@ export default function Timeline({ data, selectSlide, quickPass }) {
                 <div className='next__tick'>
                     <div className='tick__tooltip'>
                         <div className='tooltip__title'>Next Scan</div>
-                        <div className='tooltip__threat'>{getNextScanString(nextScanTimestamp)}</div>
+                        <div className='tooltip__threat'>{getNextScanString(next_scan_frequency, next_scan_time, next_scan_day)}</div>
                         <div className='tooltip__frills'>
                             <img src={tooltipFrillPng} alt={'tooltip frill'} />
                         </div>
                     </div>
                 </div>
                 <div className='next__frills'>
-                    <div className='section__date'>{format(nextScanTimestamp, 'EEE')}</div>
+                    <div className='section__date'>{nextScanTimestamp(next_scan_frequency, next_scan_time, next_scan_day)}</div>
                 </div>
             </div>
             {

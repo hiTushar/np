@@ -93,7 +93,7 @@
     height: 10px;
     flex: 1;
     /* cursor: pointer; */
-    transition: all 0.1s;   
+    transition: all 0.2s;   
 
     position: relative;
 }
