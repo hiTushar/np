@@ -60,6 +60,11 @@ export default function AdBlocker({ sectionData, toggleProtection }) {
                 </div>
                 <div className="settings__apply">
                     <Button 
+                        text='CANCEL'
+                        type='secondary'
+                        onClick={() => {}}
+                    />
+                    <Button 
                         text='APPLY'
                         type='primary'
                         onClick={() => toast.success('Settings saved!')}
