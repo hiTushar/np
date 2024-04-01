@@ -54,15 +54,16 @@ const protectionSectionUI = [
     },
 ]
 
-const getSection = (sectionRoute) => {
-    const sectionUI = protectionSectionUI.filter(protectionSection => protectionSection.key === sectionRoute)[0];
-    const sectionData = data.filter(protectionSection => protectionSection.key === sectionRoute)[0];
-    return <sectionUI.component sectionData={sectionData} />;
+const getSection = (section, toggleProtection) => {
+    const sectionUI = protectionSectionUI.filter(protectionSection => protectionSection.key === section)[0];
+    const sectionData = data.filter(protectionSection => protectionSection.key === section)[0];
+    return <sectionUI.component sectionData={sectionData} toggleProtection={toggleProtection} />;
 }
-export default function ProtectionMainPanel({ sectionRoute }) {
+
+export default function ProtectionMainPanel({ sectionSelected, toggleProtection }) {
     return (
         <div className='protection__main-panel'>
-            {getSection(sectionRoute)}
+            {getSection(sectionSelected, toggleProtection)}
         </div>
     )
 }

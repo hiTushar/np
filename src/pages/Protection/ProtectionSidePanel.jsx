@@ -1,11 +1,12 @@
 import { useNavigate } from 'react-router-dom';
-import './Protection.css';
 import { useSelector } from 'react-redux';
+import './Protection.css';
 import Switch from '../../components/Switch/Switch';
+import data from './data';
 
-export default function ProtectionSidePanel({ sectionRoute, data }) {
+export default function ProtectionSidePanel({ sectionSelected }) {
     const navigate = useNavigate();
-    const goto = (section) => navigate(`/user/protection?section=${section}`);
+    const goto = (sectionSelected) => navigate(`/user/protection?section=${sectionSelected}`);
 
     const protectionReducer = useSelector(state => state.protectionReducer);
 
@@ -16,13 +17,13 @@ export default function ProtectionSidePanel({ sectionRoute, data }) {
                     const { key, title, SvgIcon } = sectionData;
 
                     return (
-                        <div className={`side-panel__section ${sectionRoute === key ? 'highlight' : ''}`} onClick={() => goto(key)} key={key}>
+                        <div className={`side-panel__section ${sectionSelected === key ? 'highlight' : ''}`} onClick={() => goto(key)} key={key}>
                             <div className='section__icon'>
-                            <SvgIcon fillColor={sectionRoute === key ? '#C3E3E9' : '#676A84'} />
+                                <SvgIcon fillColor={sectionSelected === key ? '#C3E3E9' : '#676A84'} />
                             </div>
-                            <div className={`section__title ${sectionRoute === key ? 'highlight' : ''}`}>{title}</div>
+                            <div className={`section__title ${sectionSelected === key ? 'highlight' : ''}`}>{title}</div>
                             {
-                                sectionRoute !== key && (
+                                sectionSelected !== key && (
                                     <div className='section__status'>
                                         <Switch
                                             disabled={true}
