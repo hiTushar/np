@@ -38,7 +38,7 @@ export default function CloudProtection({ sectionData, toggleProtection }) {
                     <DonutChart 
                         data={CLOUD_PROTECTION_DATA}
                         thickness={20}
-                        radius={38}
+                        radius={40}
                     />
                     <div className='data__max'>65<span className='percent'>%</span></div>
                 </div>

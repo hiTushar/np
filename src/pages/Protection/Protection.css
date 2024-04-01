@@ -9,6 +9,7 @@
 
 .protection__content {
     flex: 1;
+    margin-top: 25px;
 
     .protection__side-panel {
         height: 100%;
