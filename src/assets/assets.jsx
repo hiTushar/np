@@ -30,6 +30,7 @@ import OsCircleSvg from './OsCircleSvg.jsx';
 import SecurityScanSvg from './SecurityScanSvg.jsx';
 import StopSvg from './StopSvg.jsx';
 import ThunderboltSvg from './ThunderboltSvg.jsx';
+import heatmapPng from './heatmap.png';
 
 export { 
     bugPng, 
@@ -62,5 +63,6 @@ export {
     OsCircleSvg,
     SecurityScanSvg,
     StopSvg,
-    ThunderboltSvg
+    ThunderboltSvg,
+    heatmapPng
 };
