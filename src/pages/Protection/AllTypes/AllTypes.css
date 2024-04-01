@@ -134,5 +134,127 @@
     .settings__apply {
         display: flex;
         justify-content: flex-end;
+        gap: 16px;
+    }
+}
+
+.data-protection {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    /* gap: 3px; */
+
+    .data-protection__drives {
+        
+    }
+
+    .drives__title, .backup__title {
+        color: #FFF;
+        font-size: 12px;
+        font-weight: 700;
+
+        margin-bottom: 16px;
+    }
+
+    .drives__all {
+        display: flex;
+        flex-wrap: wrap;
+    }
+
+    .drives__item {
+        display: flex;
+        gap: 16px;
+    }
+
+    .item__icon {
+        width: 48px;
+
+        img {
+            width: 100%;
+        }
+    }
+
+    .item__details {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-around;
+    }
+
+    .details__title {
+        color: #FFF;
+        font-size: 14px;
+        font-weight: 700;
+
+    }
+
+    .details__status {
+
+    }
+
+    .drive__complete {
+        height: 10px;
+        width: 150px;
+        background-color: #32333C;
+        position: relative;
+
+    }
+
+    .drive__fill {
+        height: 10px;
+        width: var(--width);
+        position: absolute;
+        background-color: #F3B617;
+    }
+
+    .details__numeric {
+        color: #FFF;
+        font-size: 10px;
+        font-weight: 400;
+    }
+
+    .data-protection__backup {
+        flex: 1;
+        padding-top: 32px;
+    }
+
+    .backup__details {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .details__item {
+        background-color: rgba(34, 45, 56, 0.6);
+
+        padding: 16px;
+        border-radius: 1px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    .item__title {
+        color: rgba(250, 250, 250, 0.7);
+        font-size: 14px;
+        font-weight: 400;
+        margin: 0px;
+        
+        span {
+            color: #FFF;
+            font-size: 14px;
+            font-weight: 400;
+        }
+    }
+
+    .item__interval {
+        color: #F3B617;
+        font-size: 10px;
+        font-weight: 500;
+    }
+
+    .data-protection__action {
+        display: flex;
+        justify-content: flex-end;
+        gap: 16px;
     }
 }

@@ -31,6 +31,7 @@ import SecurityScanSvg from './SecurityScanSvg.jsx';
 import StopSvg from './StopSvg.jsx';
 import ThunderboltSvg from './ThunderboltSvg.jsx';
 import heatmapPng from './heatmap.png';
+import harddiskPng from './harddisk.png';
 
 export { 
     bugPng, 
@@ -64,5 +65,6 @@ export {
     SecurityScanSvg,
     StopSvg,
     ThunderboltSvg,
-    heatmapPng
+    heatmapPng,
+    harddiskPng
 };
