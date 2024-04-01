@@ -76,3 +76,63 @@
     }
 }
 
+.adblocker {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+
+    .adblocker__banner {
+
+    }
+
+    .adblocker__settings {
+        margin-top: 32px;
+
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+    }
+
+    .settings__title {
+        color: #FFF;
+        font-size: 12px;
+        font-weight: 700;
+
+        margin-bottom: 10px;
+    }
+
+    .settings__options {
+        display: flex;
+        flex: 1;
+        flex-direction: column;
+        gap: 8px;
+    }
+
+    .options__item {
+        background-color: rgba(34, 45, 56, 0.6);
+        border-radius: 1px;
+
+        padding: 16px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }  
+    
+    .item__title {
+        line-height: 1;
+        margin: 0px;
+
+        font-size: 14px;
+        font-weight: 200;
+        letter-spacing: 0.4px;
+    }
+
+    .item__button {
+        height: 15px;
+    }
+
+    .settings__apply {
+        display: flex;
+        justify-content: flex-end;
+    }
+}
