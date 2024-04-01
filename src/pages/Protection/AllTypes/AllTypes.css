@@ -12,8 +12,8 @@
     }
 
     .data__chart {
-        width: 220px;
-        height: 220px;
+        width: 250px;
+        height: 250px;
         position: relative;
     }
 
@@ -238,7 +238,7 @@
         font-size: 14px;
         font-weight: 400;
         margin: 0px;
-        
+
         span {
             color: #FFF;
             font-size: 14px;

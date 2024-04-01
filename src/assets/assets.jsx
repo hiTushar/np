@@ -32,6 +32,7 @@ import StopSvg from './StopSvg.jsx';
 import ThunderboltSvg from './ThunderboltSvg.jsx';
 import heatmapPng from './heatmap.png';
 import harddiskPng from './harddisk.png';
+import warningPng from './warning.png';
 
 export { 
     bugPng, 
@@ -66,5 +67,6 @@ export {
     StopSvg,
     ThunderboltSvg,
     heatmapPng,
-    harddiskPng
+    harddiskPng,
+    warningPng
 };

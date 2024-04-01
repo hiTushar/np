@@ -33,7 +33,7 @@ export default function Protection() {
         <div className='protection'>
             {
                 protectionModalVisible ? (
-                    <ProtectionModal section={section} />
+                    <ProtectionModal section={section} setProtectionModalVisible={setProtectionModalVisible} />
                 ) : (
                     <>
                         <ScreenHead
