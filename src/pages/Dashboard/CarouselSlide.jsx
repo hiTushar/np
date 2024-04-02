@@ -12,7 +12,7 @@ const UTILITIES_CARD_DATA = [
         icon: shieldCheckPng,
         desc: 'Enable web-shield and safe application mode to increase the score',
         inc: '20',
-        navUrl: '/user/protection?section=app'
+        navUrl: '/user/protection?section=cloud'
     },
     {
         key: 'privacy',
