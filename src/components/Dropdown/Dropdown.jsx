@@ -9,11 +9,11 @@
  * @param { Function } props.onChange
  * 
  */
-import { useEffect, useState } from 'react';
+import { forwardRef, useEffect, useState } from 'react';
 import './Dropdown.css';
 import arrow_dropdown from '../../assets/arrow_dropdown.svg';
 
-export default function Dropdown(props) {
+const Dropdown = forwardRef(function(props, ref) {
     const { value, options, loading, placeholder, selectOption } = props;
 
     const [open, setOpen] = useState(false);
@@ -86,6 +86,7 @@ export default function Dropdown(props) {
                 onClick={openMenu}
                 className="npav-dropdown__input"
                 placeholder={placeholder}
+                ref={ref}
             />
             <img
                 onClick={toggleMenu}
@@ -102,4 +103,6 @@ export default function Dropdown(props) {
             }
         </div>
     )
-}
+})
+
+export default Dropdown;
