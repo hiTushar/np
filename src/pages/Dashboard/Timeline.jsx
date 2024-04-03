@@ -1,7 +1,7 @@
 import { useEffect, useMemo, useRef, useState } from 'react';
 import { v4 as uuidv4 } from 'uuid';
 import './Timeline.css';
-import { eachWeekOfInterval, endOfDay, endOfMonth, format, isToday, startOfMonth } from 'date-fns';
+import { compareAsc, format, getDate } from 'date-fns';
 import { tooltipFrillPng } from '../../assets/assets';
 import { useSelector } from 'react-redux';
 
@@ -23,7 +23,7 @@ export default function Timeline({ data, selectSlide, quickPass }) {
     const timelineRef = useRef(null);
     const [timelineSection, setTimelineSection] = useState(0);
     // const timestampNodeRef = useRef(null);
-    const { next_scan_frequency, next_scan_time, next_scan_day } = useSelector(state => state.scanStatusReducer)
+    const { next_scan_timestamp } = useSelector(state => state.scanStatusReducer)
 
     useEffect(() => {
         let sectionSelected = timelineRef.current.querySelectorAll('.section__ticks')[timelineSection];
@@ -209,23 +209,30 @@ export default function Timeline({ data, selectSlide, quickPass }) {
         return `${startDate} - ${endDate}`;
     }
 
-    const getNextScanString = (next_scan_frequency, next_scan_time, next_scan_day) => {
-        return 'asdf'; 
+    const getNextScanString = (next_scan_timestamp) => {
+        let isNextScanToday = compareAsc(new Date(next_scan_timestamp), Date.now()) > -1 && getDate(new Date(next_scan_timestamp)) === getDate(Date.now());
+        if(isNextScanToday) {
+            let time = format(next_scan_timestamp, 'hh:mm a');
+            return `Today (${time})`;
+        }
+
+        return `${format(next_scan_timestamp, "dd MMM ''yy hh:mm a")}`
     }
 
-    const getNextScanDay = (next_scan_frequency, next_scan_time, next_scan_day) => {
-        return 'asdf';
+    const getNextScanDay = (next_scan_timestamp) => {
+        let day = format(next_scan_timestamp, 'eee');
+        return day;
     }
 
-    const nextScanTimestamp = (next_scan_frequency, next_scan_time, next_scan_day) => {
-        let today = new Date();
-        let startOfCurrentMonth = startOfMonth(today);
-        let endOfCurrentMonth = endOfMonth(today);
+    // const nextScanTimestamp = (next_scan_frequency, next_scan_time, next_scan_day) => {
+    //     let today = new Date();
+    //     let startOfCurrentMonth = startOfMonth(today);
+    //     let endOfCurrentMonth = endOfMonth(today);
 
-        let allWeeks = eachWeekOfInterval({start: startOfCurrentMonth, end: endOfCurrentMonth});
+    //     let allWeeks = eachWeekOfInterval({start: startOfCurrentMonth, end: endOfCurrentMonth});
         
-        let allScanDays = allWeeks;
-    }
+    //     let allScanDays = allWeeks;
+    // }
 
     return (
         <div className='timeline' ref={timelineRef}>
@@ -233,14 +240,14 @@ export default function Timeline({ data, selectSlide, quickPass }) {
                 <div className='next__tick'>
                     <div className='tick__tooltip'>
                         <div className='tooltip__title'>Next Scan</div>
-                        <div className='tooltip__threat'>{getNextScanString(next_scan_frequency, next_scan_time, next_scan_day)}</div>
+                        <div className='tooltip__threat'>{getNextScanString(next_scan_timestamp)}</div>
                         <div className='tooltip__frills'>
                             <img src={tooltipFrillPng} alt={'tooltip frill'} />
                         </div>
                     </div>
                 </div>
                 <div className='next__frills'>
-                    <div className='section__date'>{nextScanTimestamp(next_scan_frequency, next_scan_time, next_scan_day)}</div>
+                    <div className='section__date'>{getNextScanDay(next_scan_timestamp)}</div>
                 </div>
             </div>
             {

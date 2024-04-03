@@ -1,11 +1,13 @@
-import { getTime, set } from 'date-fns';
-import { useState } from 'react';
+import { getTime, set, add, compareAsc, getDate } from 'date-fns';
+import { useRef, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import './ScanScheduleModal.css';
 import { xPng } from '../../assets/assets';
 import Button from '../../components/Button/Button';
 import Dropdown from '../../components/Dropdown/Dropdown';
 import { setScheduleScan } from '../../redux/actions/scanStatusActions';
+
+const TIME_FORMAT_STR = /^[0-1]?[0-9]{1}:[0-9]{1}[0-9]{1}(am|pm)$/;
 
 const occursData = [
     {
@@ -88,20 +90,111 @@ export default function ScanScheduleModal({ setScheduleModal }) {
     const [scanTime, setScanTime] = useState(next_scan_time || {});
     const [scanDay, setScanDay] = useState(next_scan_day || []);
     const [scanDate, setScanDate] = useState(next_date_of_month || {})
+    const [timeErr, setTimeErr] = useState(false);
+    const [fieldErr, setFieldErr] = useState({});
+    const timeRef = useRef(null);
 
     const saveData = () => {
+        if (!scanFrequency.value) {
+            setFieldErr(prev => ({
+                ...prev,
+                frequency: 'Enter Frequency'
+            }))
+        }
+
+        let time = null;
+        if (timeRef.current.value) {
+            time = getTimeFromManualInput(timeRef.current.value);
+        }
+        else {
+            time = scanTime.value;
+        }
+
+        if (!time) return;
+
+        let next_scan_timestamp = getNextTimestamp(scanFrequency, time, scanDay, scanDate, timeRef);
+
         dispatch(setScheduleScan({
             next_scan_frequency: scanFrequency,
-            next_scan_time: scanTime,
+            next_scan_time: time,
             next_scan_day: scanDay,
-            next_date_of_month: scanDate
+            next_date_of_month: scanDate,
+            next_scan_timestamp
         }));
         setScheduleModal(false);
     }
 
+    const getTimeFromManualInput = (timeStr) => {
+        if (!timeStr) {
+            setFieldErr(prev => ({
+                ...prev,
+                time: 'Enter/Select Time'
+            }));
+            return null;
+        }
+
+        timeStr = timeStr.toLowerCase().replace(/\s/g, '');
+        let timeFormat = new RegExp(TIME_FORMAT_STR);
+        let checkFormat = timeFormat.test(timeStr);
+        if (checkFormat) {
+            let [hh, mm] = timeStr.replace(/am|pm/g, '').split(':');
+            let ampm = timeStr.match(/am|pm/g)[0];
+
+            if (parseInt(hh) > 12 || parseInt(mm) > 59) {
+                setFieldErr(prev => ({
+                    ...prev,
+                    time: 'Incorrect time values'
+                }))
+                return null;
+            }
+            else {
+                return ({
+                    name: `${hh}:${mm} ${ampm.toUpperCase()}`,
+                    value: JSON.stringify({ hh, mm, ampm })
+                })
+            }
+        }
+        else {
+            setFieldErr(prev => ({
+                ...prev,
+                time: 'Use HH:MM AM format'
+            }))
+            return null;
+        }
+
+    }
+
+    const getNextTimestamp = (frequency, time, timeRef, day, date) => {
+        frequency = frequency.value;
+
+        time = JSON.parse(time.value);
+
+        console.log(time);
+
+        let next_scan_timestamp = 0;
+        if (frequency === 'daily') {
+            let now = Date.now();
+            if (time.ampm === 'am' && +time.hh === 12) {
+                time.hh = 0;
+            }
+            if (time.ampm === 'pm' && +time.hh < 12) {
+                time.hh = +time.hh + 12;
+            }
+            let nextScheduledScan = set(now, { hours: time.hh, minutes: time.mm, seconds: 0 });
+            // console.log(todaysScheduledScan);
+            let isNextScanToday = compareAsc(nextScheduledScan, now) > -1 && getDate(nextScheduledScan) === getDate(now);
+            if (!isNextScanToday) {
+                nextScheduledScan = add(nextScheduledScan, { days: 1 });
+            }
+
+            next_scan_timestamp = getTime(nextScheduledScan);
+        }
+        return next_scan_timestamp;
+    }
+
     const saveFrequency = (option) => {
-        if(option.value === 'daily') {
-            setScanDay([...dayData]);
+        if (option.value === 'daily') {
+            // setScanDay([...dayData]);
         }
         setScanFrequency(option);
     }
@@ -109,7 +202,7 @@ export default function ScanScheduleModal({ setScheduleModal }) {
     const saveDay = (option) => {
         let temp = [...scanDay];
         let index = scanDay.findIndex(item => item.value === option.value);
-        if(index >= 0) { // if selected option is clicked again
+        if (index >= 0) { // if selected option is clicked again
             temp.splice(index, 1);
         }
         else {
@@ -119,7 +212,7 @@ export default function ScanScheduleModal({ setScheduleModal }) {
     }
 
     const saveScanTime = (option) => {
-        if(option.value) {
+        if (option.value) {
             setScanTime(option);
         }
         else {
@@ -133,7 +226,7 @@ export default function ScanScheduleModal({ setScheduleModal }) {
 
     const checkSelected = (item) => {
         let index = scanDay.findIndex(day => day.value === item.value);
-        if(index >= 0) {
+        if (index >= 0) {
             return 'selected';
         }
         return '';
@@ -142,7 +235,7 @@ export default function ScanScheduleModal({ setScheduleModal }) {
     const getDatesOfMonthData = () => {
         let MAX_DAYS = 31;
         let optionsArr = [];
-        for(let i = 1; i <= MAX_DAYS; i++) {
+        for (let i = 1; i <= MAX_DAYS; i++) {
             optionsArr.push({
                 name: `${i}`,
                 value: i
@@ -160,7 +253,7 @@ export default function ScanScheduleModal({ setScheduleModal }) {
                         <div className='options__item'>
                             <div className='item__title'>Occurs<span>*</span></div>
                             <div className='item__dropdown'>
-                                <Dropdown 
+                                <Dropdown
                                     value={scanFrequency}
                                     options={occursData}
                                     placeholder='Select Frequency'
@@ -169,7 +262,7 @@ export default function ScanScheduleModal({ setScheduleModal }) {
                             </div>
                         </div>
                         {
-                           scanFrequency.value === 'monthly' ? (
+                            scanFrequency.value === 'monthly' ? (
                                 <div className='options__item'>
                                     <div className='item__title'>Date of the Month<span>*</span></div>
                                     <div className='item__dropdown'>
@@ -181,7 +274,7 @@ export default function ScanScheduleModal({ setScheduleModal }) {
                                         />
                                     </div>
                                 </div>
-                           ) : <></> 
+                            ) : <></>
                         }
                         <div className='options__item'>
                             <div className='item__title'>At<span>*</span></div>
@@ -191,6 +284,7 @@ export default function ScanScheduleModal({ setScheduleModal }) {
                                     options={timeData}
                                     placeholder='Select Time'
                                     selectOption={saveScanTime}
+                                    ref={timeRef}
                                 />
                             </div>
                         </div>
@@ -203,8 +297,8 @@ export default function ScanScheduleModal({ setScheduleModal }) {
                                     <div className='item__days'>
                                         {
                                             dayData.map(item => (
-                                                <div 
-                                                    className={`days__block ${checkSelected(item)}`} 
+                                                <div
+                                                    className={`days__block ${checkSelected(item)}`}
                                                     key={item.name}
                                                     onClick={() => saveDay(item)}
                                                 >
@@ -220,14 +314,14 @@ export default function ScanScheduleModal({ setScheduleModal }) {
                 </div>
                 <div className='modal__actions'>
                     <div className='actions__item'>
-                        <Button 
+                        <Button
                             text='CANCEL'
                             type='secondary'
                             onClick={() => setScheduleModal(false)}
                         />
                     </div>
                     <div className='actions__item'>
-                        <Button 
+                        <Button
                             text='SCHEDULE'
                             type='primary'
                             onClick={saveData}
