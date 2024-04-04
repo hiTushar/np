@@ -7,9 +7,10 @@
         background-color: #1C2732;
         border-radius: 1px;
         width: 100%;
-        padding: 16px 16px 24px;
+        padding: 16px;
         display: flex;
         justify-content: space-between;
+        align-items: center;
         margin-bottom: 10px;
 
         .schedule__desc {

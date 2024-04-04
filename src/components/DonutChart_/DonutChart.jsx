@@ -15,7 +15,7 @@ const getDashArray = (percent, radius) => {
     const circumference = 2 * Math.PI * radius;
     const strokeLength = circumference * percent / 100;
     const blankLength = circumference - strokeLength;
-    return `${strokeLength.toFixed(2)} ${blankLength.toFixed(2)}`;
+    return `${(strokeLength - 0.5).toFixed(2)} ${blankLength.toFixed(2)}`;
 }
 
 
