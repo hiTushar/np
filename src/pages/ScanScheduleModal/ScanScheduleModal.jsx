@@ -1,4 +1,4 @@
-import { getTime, set, add, compareAsc, getDate } from 'date-fns';
+import { getTime, set, add, compareAsc, getDate, setDay } from 'date-fns';
 import { useRef, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import './ScanScheduleModal.css';
@@ -112,7 +112,7 @@ export default function ScanScheduleModal({ setScheduleModal }) {
 
         if (!time) return;
 
-        let next_scan_timestamp = getNextTimestamp(scanFrequency, time, scanDay, scanDate, timeRef);
+        let next_scan_timestamp = getNextTimestamp(scanFrequency, time, scanDay, scanDate);
 
         dispatch(setScheduleScan({
             next_scan_frequency: scanFrequency,
@@ -164,27 +164,54 @@ export default function ScanScheduleModal({ setScheduleModal }) {
 
     }
 
-    const getNextTimestamp = (frequency, time, timeRef, day, date) => {
+    const getNextTimestamp = (frequency, time, dayArr, date) => {
         frequency = frequency.value;
 
+        let now = Date.now();
         time = JSON.parse(time.value);
-
-        console.log(time);
+        if (time.ampm === 'am' && +time.hh === 12) {
+            time.hh = 0;
+        }
+        if (time.ampm === 'pm' && +time.hh < 12) {
+            time.hh = +time.hh + 12;
+        }
 
         let next_scan_timestamp = 0;
+        let nextScheduledScan = set(now, { hours: time.hh, minutes: time.mm, seconds: 0 });
+        
         if (frequency === 'daily') {
-            let now = Date.now();
-            if (time.ampm === 'am' && +time.hh === 12) {
-                time.hh = 0;
-            }
-            if (time.ampm === 'pm' && +time.hh < 12) {
-                time.hh = +time.hh + 12;
-            }
-            let nextScheduledScan = set(now, { hours: time.hh, minutes: time.mm, seconds: 0 });
-            // console.log(todaysScheduledScan);
             let isNextScanToday = compareAsc(nextScheduledScan, now) > -1 && getDate(nextScheduledScan) === getDate(now);
             if (!isNextScanToday) {
                 nextScheduledScan = add(nextScheduledScan, { days: 1 });
+            }
+
+            next_scan_timestamp = getTime(nextScheduledScan);
+        }
+        else if (frequency === 'weekly') {
+            let foundNext = false;
+            dayArr.forEach(day => {
+                if(!foundNext) {
+                    nextScheduledScan = setDay(nextScheduledScan, day.value);
+                    let isScanDayAboutToCome = compareAsc(nextScheduledScan, now) > -1;
+                    if(isScanDayAboutToCome) {
+                        foundNext = true;
+                    }
+                }
+            })
+
+            if(!foundNext) {
+                nextScheduledScan = add(nextScheduledScan, { weeks: 1 });
+                nextScheduledScan = setDay(nextScheduledScan, dayArr[0].value);
+            }
+
+            next_scan_timestamp = getTime(nextScheduledScan);
+        }
+        else if (frequency === 'monthly') {
+            nextScheduledScan = setDate(nextScheduledScan, date.value);
+            let isNextScanToday = compareAsc(nextScheduledScan, now) > -1 && getDate(nextScheduledScan) === getDate(now);
+
+            if (!isNextScanToday) {
+                nextScheduledScan = add(nextScheduledScan, { months: 1 });
             }
 
             next_scan_timestamp = getTime(nextScheduledScan);
@@ -208,7 +235,7 @@ export default function ScanScheduleModal({ setScheduleModal }) {
         else {
             temp.push(option);
         }
-        setScanDay(temp);
+        setScanDay(temp.sort((a, b) => a.value - b.value));
     }
 
     const saveScanTime = (option) => {
