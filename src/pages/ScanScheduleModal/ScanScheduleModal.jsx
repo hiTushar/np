@@ -1,4 +1,4 @@
-import { getTime, set, add, compareAsc, getDate, setDay } from 'date-fns';
+import { getTime, set, add, compareAsc, getDate, setDay, setDate, getMonth} from 'date-fns';
 import { useRef, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import './ScanScheduleModal.css';
@@ -208,9 +208,9 @@ export default function ScanScheduleModal({ setScheduleModal }) {
         }
         else if (frequency === 'monthly') {
             nextScheduledScan = setDate(nextScheduledScan, date.value);
-            let isNextScanToday = compareAsc(nextScheduledScan, now) > -1 && getDate(nextScheduledScan) === getDate(now);
+            let isNextScanThisMonth = compareAsc(nextScheduledScan, now) > -1 && getMonth(nextScheduledScan) === getMonth(now);
 
-            if (!isNextScanToday) {
+            if (!isNextScanThisMonth) {
                 nextScheduledScan = add(nextScheduledScan, { months: 1 });
             }
 
@@ -285,6 +285,7 @@ export default function ScanScheduleModal({ setScheduleModal }) {
                                     options={occursData}
                                     placeholder='Select Frequency'
                                     selectOption={saveFrequency}
+                                    noEdit={true}
                                 />
                             </div>
                         </div>
@@ -298,6 +299,7 @@ export default function ScanScheduleModal({ setScheduleModal }) {
                                             options={getDatesOfMonthData()}
                                             placeholder='Select Date'
                                             selectOption={saveDate}
+                                            noEdit={true}
                                         />
                                     </div>
                                 </div>
