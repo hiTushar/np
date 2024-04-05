@@ -77,21 +77,22 @@
                 background-color: rgba(34, 45, 56, 0.60);
                 border-radius: 1px;
     
-                padding: 16px;
+                padding: 17px;
     
                 display: flex;
                 justify-content: space-between;
-    
+                align-items: center;
             }
 
             .item__title {
                 color: #FFF;
                 font-size: 14px;
                 font-weight: 200;
+                margin: 0px!important;
             }
 
             .item__switch {
-                width: 32px;
+                height: 16px;
             }
         }
 
