@@ -12,7 +12,6 @@ export default function Step3() {
     useEffect(() => {
         if(!timerId.current) {
             timerId.current = setInterval(() => {
-                console.log('*')
                 setProgress(prev => prev + .25);
             }, 10)
         }

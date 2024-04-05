@@ -224,16 +224,6 @@ export default function Timeline({ data, selectSlide, quickPass }) {
         return day;
     }
 
-    // const nextScanTimestamp = (next_scan_frequency, next_scan_time, next_scan_day) => {
-    //     let today = new Date();
-    //     let startOfCurrentMonth = startOfMonth(today);
-    //     let endOfCurrentMonth = endOfMonth(today);
-
-    //     let allWeeks = eachWeekOfInterval({start: startOfCurrentMonth, end: endOfCurrentMonth});
-        
-    //     let allScanDays = allWeeks;
-    // }
-    console.log('timeline');
     return (
         <div className='timeline' ref={timelineRef}>
             <div className='timeline__next'>

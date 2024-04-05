@@ -49,7 +49,6 @@ const scanStatusReducer = (state = initialState, action) => {
                 scanning: payload
             }
         case SET_SCHEDULE_SCAN: {
-            console.log(payload);
             let { next_scan_frequency, next_scan_time, next_scan_day, next_date_of_month, next_scan_timestamp } = payload;
             // next_scan_frequency = next_scan_frequency.value;
             // next_scan_time = JSON.parse(next_scan_time.value);
