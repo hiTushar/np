@@ -36,7 +36,7 @@
 }
 
 .options__item {
-
+    position: relative;
 }
 
 .item__title {
@@ -56,6 +56,19 @@
     grid-column-start: 1;
     grid-column-end: 3;
 }
+
+.item__error {
+    position: absolute;
+    top: 55px;
+    color: #FF2F62;
+    font-size: 12px;
+    font-weight: 400;
+}
+
+.item__days + .item__error {
+    top: 72px;
+}
+
 
 .days__block {
     background-color: #24303C;

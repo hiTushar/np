@@ -1,5 +1,5 @@
 import { getTime, set, add, compareAsc, getDate, setDay, setDate, getMonth} from 'date-fns';
-import { useRef, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import './ScanScheduleModal.css';
 import { xPng } from '../../assets/assets';
@@ -36,10 +36,6 @@ const timeData = [
     {
         name: '12:00 PM',
         value: JSON.stringify({ hh: 12, mm: 0 })
-    },
-    {
-        name: 'Custom',
-        value: null
     }
 ]
 
@@ -89,10 +85,25 @@ export default function ScanScheduleModal({ setScheduleModal }) {
     const [scanFrequency, setScanFrequency] = useState(next_scan_frequency || {});
     const [scanTime, setScanTime] = useState(next_scan_time || {});
     const [scanDay, setScanDay] = useState(next_scan_day || []);
-    const [scanDate, setScanDate] = useState(next_date_of_month || {})
-    const [timeErr, setTimeErr] = useState(false);
+    const [scanDate, setScanDate] = useState(next_date_of_month || {});
     const [fieldErr, setFieldErr] = useState({});
     const timeRef = useRef(null);
+    const [timeDropdown, setTimeDropdown] = useState('');
+
+    useEffect(() => {
+        if(typeof timeDropdown === 'string' && fieldErr.time) {
+            let timeStr = timeDropdown.toLowerCase().replace(/\s/g, '');
+            let timeFormat = new RegExp(TIME_FORMAT_STR);
+            let checkFormat = timeFormat.test(timeStr);
+
+            if(checkFormat) {
+                setFieldErr(prev => ({
+                    ...prev,
+                    time: null
+                }))
+            }
+        }
+    }, [timeDropdown])
 
     const saveData = () => {
         if (!scanFrequency.value) {
@@ -100,15 +111,31 @@ export default function ScanScheduleModal({ setScheduleModal }) {
                 ...prev,
                 frequency: 'Enter Frequency'
             }))
+            return;
         }
 
-        let time = null;
-        if (timeRef.current.value) {
-            time = getTimeFromManualInput(timeRef.current.value);
+        if(!scanDay.length) {
+            setFieldErr(prev => ({
+                ...prev,
+                weekday: 'Select a day'
+            }))
+            return;
         }
-        else {
-            time = scanTime.value;
+
+        if(!scanDate.value) {
+            setFieldErr(prev => ({
+                ...prev,
+                date: 'Select a date'
+            }))
         }
+
+        // let time = null;
+        // if (timeRef.current.value) {
+        let time = getTimeFromManualInput(timeRef.current.value);
+        // }
+        // else {
+        //     time = scanTime.value;
+        // }
 
         if (!time) return;
 
@@ -220,9 +247,6 @@ export default function ScanScheduleModal({ setScheduleModal }) {
     }
 
     const saveFrequency = (option) => {
-        if (option.value === 'daily') {
-            // setScanDay([...dayData]);
-        }
         setScanFrequency(option);
     }
 
@@ -235,12 +259,23 @@ export default function ScanScheduleModal({ setScheduleModal }) {
         else {
             temp.push(option);
         }
+
+        if(temp.length) {
+            setFieldErr(prev => ({
+                ...prev,
+                weekday: null
+            }))
+        }
         setScanDay(temp.sort((a, b) => a.value - b.value));
     }
 
     const saveScanTime = (option) => {
         if (option.value) {
             setScanTime(option);
+            setFieldErr(prev => ({
+                ...prev,
+                time: null
+            }))
         }
         else {
             console.log(option);
@@ -288,6 +323,11 @@ export default function ScanScheduleModal({ setScheduleModal }) {
                                     noEdit={true}
                                 />
                             </div>
+                            {
+                                fieldErr.frequency && (
+                                    <div className='item__error'>{fieldErr.frequency}</div>
+                                )
+                            }
                         </div>
                         {
                             scanFrequency.value === 'monthly' ? (
@@ -302,6 +342,11 @@ export default function ScanScheduleModal({ setScheduleModal }) {
                                             noEdit={true}
                                         />
                                     </div>
+                                    {
+                                        fieldErr.date && (
+                                            <div className='item__error'>{fieldErr.date}</div>
+                                        )
+                                    }
                                 </div>
                             ) : <></>
                         }
@@ -314,8 +359,15 @@ export default function ScanScheduleModal({ setScheduleModal }) {
                                     placeholder='Select Time'
                                     selectOption={saveScanTime}
                                     ref={timeRef}
+                                    searchEnable={false}
+                                    trackChange={setTimeDropdown}
                                 />
                             </div>
+                            {
+                                fieldErr.time && (
+                                    <div className='item__error'>{fieldErr.time}</div>
+                                )
+                            }
                         </div>
                     </div>
                     <div className='options__days'>
@@ -336,6 +388,11 @@ export default function ScanScheduleModal({ setScheduleModal }) {
                                             ))
                                         }
                                     </div>
+                                    {
+                                        fieldErr.weekday && (
+                                            <div className='item__error'>{fieldErr.weekday}</div>
+                                        )
+                                    }
                                 </div>
                             ) : <></>
                         }
