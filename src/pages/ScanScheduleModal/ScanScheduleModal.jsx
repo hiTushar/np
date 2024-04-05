@@ -412,8 +412,8 @@ export default function ScanScheduleModal({ setScheduleModal }) {
                             type='primary'
                             onClick={saveData}
                             customStyle={{
-                                color: '#CEE6FE',
-                                background: '#566E86'
+                                // color: '#CEE6FE',
+                                // background: '#566E86'
                             }}
                         />
                     </div>
