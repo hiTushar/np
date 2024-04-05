@@ -9,16 +9,25 @@
  * @param { Function } props.onChange
  * 
  */
-import { forwardRef, useEffect, useState } from 'react';
+import { forwardRef, useEffect, useRef, useState } from 'react';
 import './Dropdown.css';
 import arrow_dropdown from '../../assets/arrow_dropdown.svg';
 
 const Dropdown = forwardRef(function(props, ref) {
-    const { value, options, loading, placeholder, selectOption } = props;
+    const { value, options, loading, placeholder, selectOption, noEdit = false, searchEnable = true, trackChange } = props;
 
     const [open, setOpen] = useState(false);
     const [availableOptions, setAvailableOptions] = useState([]);
     const [dropdownDisplayValue, setDropdownDisplayValue] = useState('');
+    const dropdownRef = useRef(null);
+
+    useEffect(() => {
+        document.addEventListener("click", handleOutsideClick);
+
+        return () => {
+            document.removeEventListener("click", handleOutsideClick);
+        }
+    }, [])
 
     useEffect(() => {
         setDropdownDisplayValue(value ? value.name : '');
@@ -27,6 +36,13 @@ const Dropdown = forwardRef(function(props, ref) {
     useEffect(() => {
         setAvailableOptions([...options]);
     }, [options])
+
+    const handleOutsideClick = (e) => {
+        // console.log(dropdownRef.current, e.target)
+        if(dropdownRef.current && !dropdownRef.current.contains(e.target)) {
+            setOpen(false);
+        }
+    }
 
     const toggleMenu = () => setOpen(prev => !prev);
 
@@ -78,15 +94,26 @@ const Dropdown = forwardRef(function(props, ref) {
         }
     }
 
+    const onChange = (e) => {
+        if(searchEnable)
+            searchOption(e);
+        else {
+            let inputVal = e.target.value;
+            setDropdownDisplayValue(inputVal);
+            if(trackChange) trackChange(inputVal);
+        }
+    }
+
     return (
-        <div className="npav-dropdown">
+        <div className="npav-dropdown" ref={dropdownRef}>
             <input
                 value={dropdownDisplayValue}
-                onChange={searchOption}
+                onChange={onChange}
                 onClick={openMenu}
                 className="npav-dropdown__input"
                 placeholder={placeholder}
                 ref={ref}
+                disabled={noEdit}
             />
             <img
                 onClick={toggleMenu}
