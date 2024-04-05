@@ -29,7 +29,7 @@ export default function Timeline({ data, selectSlide, quickPass }) {
         let sectionSelected = timelineRef.current.querySelectorAll('.section__ticks')[timelineSection];
         let sectionFirstTick = sectionSelected.querySelectorAll('.timeline__tick')[0];
         highlightSelectedTimestamp(sectionFirstTick);
-    }, [timelineSection])
+    })
 
     let timelineSectionData = useMemo(() => {
         /* splitting days in sets of 7 */
@@ -233,7 +233,7 @@ export default function Timeline({ data, selectSlide, quickPass }) {
         
     //     let allScanDays = allWeeks;
     // }
-
+    console.log('timeline');
     return (
         <div className='timeline' ref={timelineRef}>
             <div className='timeline__next'>
