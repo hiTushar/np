@@ -1,6 +1,6 @@
 import Card from "../../components/Card/Card";
-import ArrowLeft from '../../assets/arrow-left.png';
 import { useNavigate } from "react-router-dom";
+import { arrowLeftPng } from "../../assets/assets";
 
 export default function FeatureCard({ data }) {
     const { key, title, icons, desc } = data;
@@ -19,7 +19,7 @@ export default function FeatureCard({ data }) {
                 <div className="feature-card__action">
                     <div className="action__name">Manage</div>
                     <div className="action__icon">
-                        <img src={ArrowLeft} alt='arrow left' />
+                        <img src={arrowLeftPng} alt='arrow left' />
                     </div>
                 </div>
             </div>

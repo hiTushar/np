@@ -42,7 +42,7 @@
                 line-height: 1;;
                 width: 16px;
                 height: 16px;
-                background: url('./assets/navRight.png');
+                background: url('../../assets/nav-right.png');
                 background-size: 16px 16px;
                 margin-inline: 8px;
             }

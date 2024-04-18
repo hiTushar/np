@@ -1,12 +1,12 @@
 import { useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import './Firewall.css';
+import { settings2Png } from '../../assets/assets';
 import firewallChange from '../../redux/actions/firewallActions';
 import featuresData from './data'
 import ScreenHead from '../../components/ScreenHead/ScreenHead';
 import Switch from '../../components/Switch/Switch';
 import FeatureCard from './FeatureCard';
-import settings from './assets/settings-2.png';
 import FirewallStatsChart from './FirewallStatsChart';
 
 export default function Firewall(props) {
@@ -38,7 +38,7 @@ export default function Firewall(props) {
                         </div>
                     </div>
                     <div className='options__settings' onClick={() => navigate('/user/web-security/firewall/settings')}>
-                        <img src={settings} alt='settings button icon' />
+                        <img src={settings2Png} alt='settings button icon' />
                     </div>
                 </div>
             </ScreenHead>

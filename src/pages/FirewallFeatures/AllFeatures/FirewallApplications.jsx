@@ -1,10 +1,8 @@
 import { useState } from "react";
 import './FirewallApplication.css';
+import { deletePng, editPng, plusOutlinedPng } from "../../../assets/assets";
 import { outboundData } from './OutboundTableData'; 
 import Table from "../../../components/Table/Table";
-import Edit from '../../Firewall/assets/Edit.png';
-import Delete from '../../Firewall/assets/Delete.png';
-import PlusIcon from '../../Firewall/assets/PlusOutlined.png';
 
 const APPLICATIONS_TYPE = {
     TYPE_1: 'Allow List',
@@ -15,10 +13,10 @@ const ActionsComponent = () => {
     return (
         <div className="actions">
             <div className="actions__edit">
-                <img src={Edit} alt={'edit icon'} />
+                <img src={editPng} alt={'edit icon'} />
             </div>
             <div className="actions__delete">
-                <img src={Delete} alt={'delete icon'} />
+                <img src={deletePng} alt={'delete icon'} />
             </div>
         </div>
     )
@@ -65,7 +63,7 @@ function FirewallApplications() {
             </div>
             <div className='firewall-applications__input'>
                 <div className="input__icon">
-                    <img src={PlusIcon} alt='plus icon' />
+                    <img src={plusOutlinedPng} alt='plus icon' />
                 </div>
                 <div className="input__title">
                     Add New

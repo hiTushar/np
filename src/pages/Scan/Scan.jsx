@@ -2,32 +2,27 @@
 import { useEffect, useRef, useState } from 'react';
 import { useNavigate, useSearchParams } from 'react-router-dom';
 import './Scan.css';
+import { bugPng, folderOpenPng, hourglassPng, medicineBoxPng, radarChartPng, usbPng } from '../../assets/assets';
 import ScreenHead from '../../components/ScreenHead/ScreenHead';
 import InsightActionCard from './InsightActionCard';
 import ScanProgress from '../../components/ScanProgress/ScanProgress';
-import usbIcon from './assets/usb.png';
-import radarIcon from './assets/radar-chart.png';
-import folderIcon from './assets/folder-open.png';
-import bug from './assets/bug.png';
-import medicineBox from './assets/medicine-box.png';
-import hourglass from './assets/hourglass.png';
 import { splitTimestamp } from '../../utils/Utils';
 
 const insightsCardData = [
     {
-        icon: usbIcon,
+        icon: usbPng,
         title: 'USB Flash Drive',
         desc: '22 / 50 Threats were from a  USB devices on to this device',
         action: 'Setup File Protection'
     },
     {
-        icon: radarIcon,
+        icon: radarChartPng,
         title: 'Web Protection',
         desc: '22 / 50 Threats were from a  USB devices on to this device',
         action: 'Setup File Protection'
     },
     {
-        icon: folderIcon,
+        icon: folderOpenPng,
         title: 'Infected Files',
         desc: '22 / 50 Threats were from a  USB devices on to this device',
         action: 'Setup File Protection'
@@ -157,7 +152,7 @@ export default function Scan({ props }) {
                         <div className='panel__item'>
                             <div className='item__display'>
                                 <div className='display__icon'>
-                                    <img src={bug} alt={'bug icon'} />
+                                    <img src={bugPng} alt={'bug icon'} />
                                 </div>
                                 <div className='display__count threat_found'>{panelData.threats_found}</div>
                             </div>
@@ -166,7 +161,7 @@ export default function Scan({ props }) {
                         <div className='panel__item'>
                             <div className='item__display'>
                                 <div className='display__icon'>
-                                    <img src={medicineBox} alt={'medicine box icon'} />
+                                    <img src={medicineBoxPng} alt={'medicine box icon'} />
                                 </div>
                                 <div className='display__count threat_fixed'>{panelData.threats_fixed}</div>
                             </div>
@@ -175,7 +170,7 @@ export default function Scan({ props }) {
                         <div className='panel__item'>
                             <div className='item__display'>
                                 <div className='display__icon'>
-                                    <img src={hourglass} alt={'hourglass icon'} />
+                                    <img src={hourglassPng} alt={'hourglass icon'} />
                                 </div>
                                 <div className='display__count time_left'>
                                     {+splitTimestamp(panelData.time_left)[0] ? `${splitTimestamp(panelData.time_left)[0]}:` : null}

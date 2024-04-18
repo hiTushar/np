@@ -1,6 +1,5 @@
 import './ScanProgress.css';
-import pauseIcon from './assets/pause.png';
-import playIcon from './assets/play.png';
+import { pausePng, playPng } from '../../assets/assets';
 
 const FULL_ARC = 2 * Math.PI * 40;
 
@@ -65,8 +64,8 @@ export default function ScanProgress(props) {
                     <div className='progress__control' onClick={scanSwitch}>
                         {
                             !pause ? (
-                                <img src={pauseIcon} alt={'pause icon'} />
-                            ) : <img src={playIcon} alt={'play icon'} />
+                                <img src={pausePng} alt={'pause icon'} />
+                            ) : <img src={playPng} alt={'play icon'} />
                         }
                     </div>
                 ) : null

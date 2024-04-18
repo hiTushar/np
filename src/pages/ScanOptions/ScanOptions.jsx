@@ -1,46 +1,40 @@
+import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import laptopIcon from './assets/Laptop.png';
-import memoryIcon from './assets/memory.png';
-import securityIcon from './assets/SecurityScan.png';
-import folderIcon from './assets/FolderAdd.png';
-import usbIcon from './assets/Usb.png';
-import cloudIcon from './assets/CloudSync.png';
-import clock from './assets/clock-3.png';
+import './ScanOptions.css';
+import { clock3Png, cloudSyncPng, folderAddPng, laptopPng, memoryPng, securityScanPng, usbOutlinePng } from '../../assets/assets';
 import ScreenHead from '../../components/ScreenHead/ScreenHead';
 import Button from "../../components/Button/Button";
-import './ScanOptions.css';
 import ScanOptionCard from './ScanOptionCard';
-import { useState } from 'react';
 import ScanScheduleModal from '../ScanScheduleModal/ScanScheduleModal';
 
 const scansCardData = [
     {
-        icon: laptopIcon,
+        icon: laptopPng,
         title: 'Scan PC',
         desc: 'Scans complete PC (Requires more than an hour)'
     },
     {
-        icon: memoryIcon,
+        icon: memoryPng,
         title: 'Memory Scan',
         desc: 'Scanning files that are actively being used in their raw state.'
     },
     {
-        icon: securityIcon,
+        icon: securityScanPng,
         title: 'Vulnerability Scan',
         desc: 'Identifying security weaknesses and flaws in systems and software running on them.'
     },
     {
-        icon: folderIcon,
+        icon: folderAddPng,
         title: 'Scan Drive / Folder',
         desc: 'Application that checks the computer\'s hard drive for errors and bad sectors.'
     },
     {
-        icon: usbIcon,
+        icon: usbOutlinePng,
         title: 'Scan Removable Device',
         desc: 'Scans a connected device and its boot sectors for viruses and other malware'
     },
     {
-        icon: cloudIcon,
+        icon: cloudSyncPng,
         title: 'Cloud Scan',
         desc: 'Testing cloud-based infrastructure, services and applications for known security vulnerabilities',
         scanType: 'cloud'
@@ -66,7 +60,7 @@ export default function ScanOptions(props) {
                         <Button type={'primary'} onClick={() => setScheduleModal(true)}>
                             <div className='action__button'>
                                 <div className='button__icon'>
-                                    <img src={clock} alt='clock icon' />
+                                    <img src={clock3Png} alt='clock icon' />
                                 </div>
                                 <div className='button__title'>SCHEDULE SCAN</div>
                             </div>

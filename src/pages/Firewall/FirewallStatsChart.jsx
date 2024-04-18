@@ -3,23 +3,21 @@ import { Line } from 'react-chartjs-2';
 import { faker } from '@faker-js/faker';
 import { Chart as ChartJS, CategoryScale, LineElement, LinearScale, PointElement, Title, Tooltip, Filler, Legend } from 'chart.js';
 import './Firewall.css';
-import lineViolet from './assets/activityViolet.png';
-import lineYellow from './assets/activityYellow.png';
-import lineRed from './assets/activityRed.png';
+import PulseSvg from '../../assets/PulseSvg';
 
 const LEGEND_DATA = [
     {
-        icon: lineViolet,
+        color: 'rgb(159, 88, 223)',
         title: 'Allowed Connections',
         value: 357
     },
     {
-        icon: lineYellow,
+        color: 'rgb(243, 189, 51)',
         title: 'Temporarily Blocked Connections',
         value: 1000
     },
     {
-        icon: lineRed,
+        color: 'rgb(255, 74, 74)',
         title: 'Blocked Connections',
         value: 197
     },
@@ -28,9 +26,11 @@ const LEGEND_DATA = [
 export default function FirewallStatsChart(props) {
     const chartRef = useRef(null);
 
-    const getCanvasGradient = (r, g, b) => {
+    const getCanvasGradient = (color) => {
         let ctx = document.createElement('canvas').getContext('2d');
         const gradient = ctx.createLinearGradient(0, 0, 0, 500);
+
+        let [r, g, b] = color.match(/[0-9]+/g);
         gradient.addColorStop(0, `rgba(${r}, ${g}, ${b}, 0.5)`);
         gradient.addColorStop(1, `rgba(${r}, ${g}, ${b}, 0)`);
         return gradient;
@@ -102,20 +102,20 @@ export default function FirewallStatsChart(props) {
             {
                 fill: true,
                 data: labels.map(() => faker.number.int({ min: 0, max: 1000 })),
-                borderColor: 'rgb(159, 88, 223)',
-                backgroundColor: getCanvasGradient(159, 88, 223),
+                borderColor: LEGEND_DATA[0].color,
+                backgroundColor: getCanvasGradient(LEGEND_DATA[0].color),
             },
             {
                 fill: true,
                 data: labels.map(() => faker.number.int({ min: 0, max: 1000 })),
-                borderColor: 'rgb(243, 189, 51)',
-                backgroundColor: getCanvasGradient(243, 189, 51),
+                borderColor: LEGEND_DATA[1].color,
+                backgroundColor: getCanvasGradient(LEGEND_DATA[1].color),
             },
             {
                 fill: true,
                 data: labels.map(() => faker.number.int({ min: 0, max: 1000 })),
-                borderColor: 'rgb(255, 74, 74)',
-                backgroundColor: getCanvasGradient(255, 74, 74)
+                borderColor: LEGEND_DATA[2].color,
+                backgroundColor: getCanvasGradient(LEGEND_DATA[2].color)
             },
         ]
     }
@@ -130,7 +130,7 @@ export default function FirewallStatsChart(props) {
                     LEGEND_DATA.map(legend => (
                         <div className='legend__item'>
                             <div className='item__icon'>
-                                <img src={legend.icon} alt='legend icon'/>
+                                <PulseSvg fillColor={legend.color} />
                             </div>
                             <div className='item__title'>{legend.title}</div>
                             <div className='item__value'>{legend.value}</div>

@@ -33,6 +33,34 @@ import ThunderboltSvg from './ThunderboltSvg.jsx';
 import heatmapPng from './heatmap.png';
 import harddiskPng from './harddisk.png';
 import warningPng from './warning.png';
+import npavLogoPng from './npav-logo.png';
+import npavSettingsPng from './npav-settings.png';
+import npavSupportPng from './npav-support.png';
+import npavUserPng from './npav-user.png';
+import applicationPng from './application.png';
+import auditPng from './audit.png';
+import historyPng from './history.png';
+import settings2Png from './settings-2.png';
+import plusOutlinedPng from './plus-outlined.png';
+import editPng from './edit.png';
+import deletePng from './delete.png';
+import ApplicationSvg from './ApplicationSvg.jsx';
+import AuditSvg from './AuditSvg.jsx';
+import HistorySvg from './HistorySvg.jsx';
+import alertPng from './alert.png';
+import apiPng from './api.png';
+import usbPng from './usb.png';
+import radarChartPng from './radar-chart.png';
+import folderOpenPng from './folder-open.png';
+import clock3Png from './clock-3.png';
+import cloudSyncPng from './cloud-sync.png';
+import folderAddPng from './folder-add.png';
+import laptopPng from './laptop.png';
+import memoryPng from './memory.png';
+import securityScanPng from './security-scan.png';
+import usbOutlinePng from './usb-outline.png';
+import playPng from './play.png';
+import pausePng from './pause.png';
 
 export { 
     bugPng, 
@@ -68,5 +96,33 @@ export {
     ThunderboltSvg,
     heatmapPng,
     harddiskPng,
-    warningPng
+    warningPng,
+    npavLogoPng,
+    npavSettingsPng,
+    npavSupportPng,
+    npavUserPng,
+    applicationPng,
+    auditPng,
+    historyPng,
+    settings2Png,
+    plusOutlinedPng,
+    editPng,
+    deletePng,
+    ApplicationSvg,
+    AuditSvg,
+    HistorySvg,
+    alertPng,
+    apiPng,
+    usbPng,
+    radarChartPng,
+    folderOpenPng,
+    clock3Png,
+    cloudSyncPng,
+    folderAddPng,
+    laptopPng,
+    memoryPng,
+    securityScanPng,
+    usbOutlinePng,
+    playPng,
+    pausePng
 };

@@ -9,11 +9,12 @@ export default function FirewallFeaturesSidePanel({ sectionRoute, featuresData }
             {
                 featuresData.map(featureSection => {
                     const { key, title, icons } = featureSection;
+                    const SvgIcon = icons[1];
 
                     return (
                         <div className={`side-panel__section ${sectionRoute === key ? 'highlight' : ''}`} onClick={() => goto(key)} key={key}>
                             <div className='section__icon'>
-                                <img src={sectionRoute === key ? icons[1] : icons[2]} alt={'section icon'}/>
+                                <SvgIcon fillColor={sectionRoute === key ? "#CBE3E9" : "#676A84"}/>
                             </div>
                             <div className={`section__title ${sectionRoute === key ? 'highlight' : ''}`}>
                                 {title}

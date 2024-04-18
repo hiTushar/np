@@ -1,8 +1,7 @@
-import './JunkCleaner.css';
-import alertIcon from './assets/Alert.png';
-import apiIcon from './assets/Api.png';
-import ScreenHead from "../../components/ScreenHead/ScreenHead";
 import { useNavigate } from 'react-router-dom';
+import './JunkCleaner.css';
+import { alertPng, apiPng } from '../../assets/assets';
+import ScreenHead from "../../components/ScreenHead/ScreenHead";
 import Button from '../../components/Button/Button';
 import OthersCard from './OthersCard';
 import Table from '../../components/Table/Table';
@@ -40,14 +39,14 @@ const FileSystemData = [
 
 const othersCardData = [
     {
-        icon: alertIcon,
+        icon: alertPng,
         title: 'Start-up Program',
         desc: 'Protects from malware and virus infection over the LAN',
         navUrl: '/user/system-tuner/junk-cleaner/startup',
         state: true
     },
     {
-        icon: apiIcon,
+        icon: apiPng,
         title: 'Uninstaller',
         desc: 'Protect from malware and virus infection over the LAN',
         state: true

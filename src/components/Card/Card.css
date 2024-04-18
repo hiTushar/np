@@ -17,7 +17,7 @@
 
     &::after {
         content: "";
-        background: url('./card-pattern-2.png');
+        background: url('../../assets/card-pattern-2.png');
         background-size: cover;
         position: absolute;
         z-index: -1;
