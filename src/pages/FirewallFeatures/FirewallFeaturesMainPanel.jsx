@@ -23,7 +23,7 @@ const getSection = (sectionRoute) => {
 }
 
 export default function FirewallFeaturesMainPanel({ sectionRoute }) {
-    console.debug({ sectionRoute });
+    // console.debug({ sectionRoute });
     
     return (
         <div className="firewall-features__main-panel">
