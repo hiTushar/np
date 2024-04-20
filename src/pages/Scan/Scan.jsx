@@ -50,16 +50,20 @@ export default function Scan({ props }) {
     })
 
     useEffect(() => {
-        if(!fileTimerId.current) {
+        // if(!fileTimerId.current) {
             fileTimerId.current = setInterval(() => {
                 setScannedFileCount(prev => prev + 1);
             }, 100)
-        }
+        // }
 
-        if(!timeTimerId.current) {
+        // if(!timeTimerId.current) {
             timeTimerId.current = setInterval(() => {
                 setPanelData(prev => ({ ...prev, time_left: prev.time_left - 10}))
             }, 1)
+        // }
+        return () => {
+            clearInterval(fileTimerId.current);
+            clearInterval(timeTimerId.current);
         }
     }, [])
 
