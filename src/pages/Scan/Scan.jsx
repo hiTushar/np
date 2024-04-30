@@ -49,6 +49,17 @@ export default function Scan({ props }) {
         time_left: 90000 // 10000ms == 10s
     })
 
+    /*
+    // game
+    const circleCount = useRef(0);
+    const minLeft = useRef();
+    const maxLeft = useRef();
+    const minTop = useRef();
+    const maxTop = useRef();
+    const centreLeft = useRef();
+    const centreTop = useRef(); 
+    */
+
     useEffect(() => {
         // if(!fileTimerId.current) {
             fileTimerId.current = setInterval(() => {
@@ -79,6 +90,48 @@ export default function Scan({ props }) {
     useEffect(() => {
         setProgress(scannedFileCount / totalFileCount);
     }, [scannedFileCount, totalFileCount])
+
+    /*
+    // game
+    useEffect(() => {
+        
+        const gameWindow = document.querySelector('.scan');
+        let {
+            width: gameWindowWidth,
+            height: gameWindowHeight,
+            top: gameWindowTop,
+            right: gameWindowRight,
+            bottom: gameWindowBottom,
+            left: gameWindowLeft,
+        } = gameWindow.getBoundingClientRect();
+
+        let scanner = document.querySelector('.npav-scan_progress');
+        let {
+            width: scannerWidth,
+            height: scannerHeight,
+            top: scannerTop,
+            right: scannerRight,
+            bottom: scannerBottom,
+            left: scannerLeft
+        } = scanner.getBoundingClientRect();
+
+        minLeft.current = gameWindowLeft - 50;
+        maxLeft.current = gameWindowRight + 50;
+        minTop.current = gameWindowTop - 50;
+        maxTop.current = gameWindowBottom + 50;
+        centreLeft.current = scannerLeft - (scannerWidth / 2);
+        centreTop.current = scannerTop - (scannerHeight / 2);
+
+        let createCircleInterval = setInterval(() => {
+            let element = document.createElement('div');
+            element.dataset.circle = circleCount.current;
+            gameWindow.appendChild(element);
+            animate(element);
+            circleCount.current++;
+        }, 1000)
+
+    }, [])
+    */
 
     const scanSwitch = () => {
         if(!scanPause) {
@@ -128,9 +181,125 @@ export default function Scan({ props }) {
         )
     }
 
+    /*
+    // game
+    function animate(circle) {
+        let edge = parseInt(Math.random() * 20) % 4;
+        let top = null, left = null, x1 = null, y1 = null;
+        switch(edge) {
+            // case 0:
+            //     top = y1 = minTop.current;
+            //     left = x1 = Math.floor(Math.random() * (maxLeft.current - minLeft.current) + minLeft.current);
+            //     break;
+            case 1:
+                top = y1 = Math.floor(Math.random() * (maxTop.current - minTop.current) + minTop.current);
+                left = x1 = maxLeft.current;
+                break;
+            // case 2:
+            //     top = y1 = maxTop.current;
+            //     left = x1 = Math.floor(Math.random() * (maxLeft.current - minLeft.current) + minLeft.current);
+            //     break;
+            case 3:
+                top = y1 = Math.floor(Math.random() * (maxTop.current - minTop.current) + minTop.current);
+                left = x1 = minLeft.current;
+                break;
+        }
+    
+        let interval = setInterval(() => {
+            switch(edge) {
+                case 0: 
+                //     // if(top >= centreTop) {
+                    // if(checkBreach(left, top)) {
+                        clearInterval(interval);
+                        setTimeout(() => {
+                            circle.remove();
+                        }, 10);
+                    // }
+                //     else {
+                //         top++;
+                //         left = getX(x1, y1, top); 
+                //         circle.style.top = `${top}px`;
+                //         circle.style.left = `${left}px`;
+                //     }
+                    break;
+                case 1:
+                    if(checkBreach(left, top)) {
+                        clearInterval(interval);
+                        setTimeout(() => {
+                            circle.remove();
+                        }, 10);
+                    }
+                    else {
+                        left--;
+                        top = getY(x1, y1, left); 
+                        circle.style.top = `${top}px`;
+                        circle.style.left = `${left}px`;
+                    }
+                    break;
+                case 2:
+                //     if(checkBreach(left, top)) {
+                        clearInterval(interval);
+                        setTimeout(() => {
+                            circle.remove();
+                        }, 10);
+                //     }
+                //     else {
+                //         top--;
+                //         left = getX(x1, y1, top); 
+                //         circle.style.top = `${top}px`;
+                //         circle.style.left = `${left}px`;
+                //     }
+                    break;
+                case 3:
+                    if(checkBreach(left, top)) {
+                        clearInterval(interval);
+                        setTimeout(() => {
+                            circle.remove();
+                        }, 10);
+                    }
+                    else {
+                        left++;
+                        top = getY(x1, y1, left);
+                        circle.style.top = `${top}px`;
+                        circle.style.left = `${left}px`;
+                    }
+                    break;
+            }
+        }, 1 + Math.random() * 9)
+    
+        circle.addEventListener('click', () => {
+            clearInterval(interval);
+            circle.remove();
+        })
+    }
+
+    function getX(x1, y1, currentY) {
+        let slope = (centreLeft.current - x1) / (centreTop.current - y1);
+        return slope * (currentY - y1) + x1;
+    }
+    
+    function getY(x1, y1, currentX) {
+        let slope = (centreTop.current - y1) / (centreLeft.current - x1);
+        return slope * (currentX - x1) + y1;
+    }
+    
+    function checkBreach(currentX, currentY) {
+        let distanceFromCentre = Math.sqrt(Math.pow(currentX - centreLeft.current, 2) + Math.pow(currentY - centreTop.current, 2));
+        return distanceFromCentre - 25 <= 75;
+    }
+    */
+   
     // console.log(progress, panelData.time_left);
     return (
         <div className='scan'>
+            {/* <div style={{
+                position: 'absolute',
+                top: centreTop.current + 'px',
+                left: centreLeft.current + 'px',
+                width: '2px',
+                height: '2px',
+                background: 'red'
+            }}></div> */}
             <div className='scan__header'>
                 {getScreenHead(type)}
             </div>
